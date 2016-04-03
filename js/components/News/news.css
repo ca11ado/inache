@@ -1,0 +1,19 @@
+.header {
+  composes: headerBig from '../../composes/fonts.css';
+  text-align: center;
+  padding: 20px 0;
+}
+
+.subHeader {
+  composes: headerSmall from '../../composes/fonts.css';
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.years {
+  margin-left: 10px;
+}
+
+.content {
+  composes: content from '../../composes/blocks.css';
+}

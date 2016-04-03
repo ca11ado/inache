@@ -1,0 +1,7 @@
+.blockHeader {
+  composes: blockHeader from '../../../composes/blocks.css';
+}
+
+.newsBlock {
+  padding-top: 10px;
+}
