@@ -1,9 +1,9 @@
 {
-  "name": "todomvc-flux",
-  "version": "0.0.3",
-  "description": "Example Flux architecture.",
-  "repository": "https://github.com/facebook/flux",
-  "main": "js/app.js",
+  "name": "inache",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "",
+  "main": "serverNode.js",
   "dependencies": {
     "classnames": "^2.1.3",
     "flux": "^2.0.1",
@@ -20,11 +20,15 @@
     "watchify": "^2.1.1"
   },
   "scripts": {
-    "start": "watchify -o js/bundle.js -v -d js/app.js",
-    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
-    "test": "jest"
+    "start": "npm run create-dirs && npm run build-css && npm run build-index && npm run watch & node serverNode.js",
+    "watch": "watchify -o public/js/bundle.js -v -d js/app.js -t reactify -t [babelify --presets [ es2015 ] ]",
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > public/js/bundle.min.js",
+    "test": "jest",
+    "create-dirs": "mkdir -p public/css && mkdir -p public/js",
+    "build-index": "cp js/index.html public/",
+    "build-css": "cat css/*.css > public/css/app.css"
   },
-  "author": "Bill Fisher",
+  "author": "Khimtsov Anton",
   "browserify": {
     "transform": [
       "reactify",

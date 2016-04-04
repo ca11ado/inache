@@ -8,33 +8,25 @@
  */
 
 var React = require('react');
-var ReactPropTypes = React.PropTypes;
-var TodoActions = require('../actions/TodoActions');
-var TodoItem = require('./TodoItem.react');
 
-let style_block = {
-  background: '#d1e0e0',
-  height: '500px'
+var style_block = {
+  background: '#3399ff'
 };
 
-var MainSection = React.createClass({
-
-  propTypes: {
-  },
+var Menu = React.createClass({
 
   /**
    * @return {object}
    */
   render: function() {
-
     return (
-      <section id="main" style={style_block}>
+      <div id="menu" style={style_block}>
         <p>
-            it will be a main section of our application [change text]
+            here will be menu [change text]
         </p>
-      </section>
+      </div>
     );
-  }
+  },
 });
 
-module.exports = MainSection;
+module.exports = Menu;
