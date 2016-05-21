@@ -1,4 +1,4 @@
-let Logo = require('./Logo.react');
+let Logo = require('./Logo.react/logo');
 let Menu = require('./Menu.react');
 let MainSection = require('./MainSection.react');
 let React = require('react');

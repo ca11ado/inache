@@ -21,13 +21,14 @@
     "watchify": "^2.1.1"
   },
   "scripts": {
-    "start": "npm run create-dirs && npm run build-css && npm run build-index && npm run watch & node serverNode.js",
+    "start": "npm run create-dirs && npm run cp-images && npm run build-css && npm run build-index && npm run watch & node serverNode.js",
     "watch": "watchify -p [css-modulesify -o public/css/app.css] -o public/js/bundle.js -v -d js/app.js -t reactify -t [babelify --presets [ es2015 ] ]",
     "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > public/js/bundle.min.js",
     "test": "jest",
-    "create-dirs": "mkdir -p public/css && mkdir -p public/js",
+    "create-dirs": "mkdir -p public/css && mkdir -p public/js && mkdir -p public/img",
     "build-index": "cp js/index.html public/",
-    "build-css": "cat css/*.css > public/css/app.css"
+    "build-css": "cat css/*.css > public/css/app.css",
+    "cp-images": "cp -R img public"
   },
   "author": "Khimtsov Anton",
   "browserify": {
