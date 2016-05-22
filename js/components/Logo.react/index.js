@@ -1,14 +1,10 @@
 let React = require('react');
-
-let style_logo = {
-  backgroundColor: '#99ccff',
-  height: '150px'
-};
+let css = require('./style.css');
 
 let Logo = React.createClass({
   render: function () {
     return (
-      <div id="logo" style={style_logo}>
+      <div id="logo" className={css.block}>
         <img />
       </div>
     );
