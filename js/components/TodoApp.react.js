@@ -1,5 +1,5 @@
 let Logo = require('./Logo.react/logo');
-let Menu = require('./Menu.react');
+let Menu = require('./Menu.react/menu');
 let MainSection = require('./MainSection.react');
 let React = require('react');
 let TodoStore = require('../stores/TodoStore');
