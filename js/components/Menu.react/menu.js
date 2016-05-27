@@ -1,5 +1,6 @@
 let css = require('./menu.css');
 let React = require('react');
+let Element = require('./MenuElement.react/element');
 
 let Menu = React.createClass({
   /**
@@ -7,20 +8,28 @@ let Menu = React.createClass({
    */
   render: function() {
     let menuSections = [
-      { name: 'Новости' },
-      { name: 'Афиша' },
-      { name: 'О группе' },
-      { name: 'Музыка' },
-      { name: 'Видео' },
-      { name: 'Фото' },
-      { name: 'Пресса ' }
+      { name: 'Новости', link: 'news' },
+      { name: 'Афиша', link: 'tour' },
+      { name: 'О группе', link: 'band' },
+      { name: 'Музыка', link: 'music' },
+      { name: 'Видео', link: 'video' },
+      { name: 'Фото', link: 'gallery' },
+      { name: 'Пресса', link: 'press' }
     ];
-    let htmlMenus = menuSections.reduce((prev, menu) => {
-      return prev + `<span>${name}</span>`;
-    }, '');
+
+    let menu = menuSections.reduce((accum, tab, index) => {
+      let key = `tab-${index}`;
+      let props = {
+        key,
+        tab
+      };
+      accum.push(<Element { ...props } />);
+      return accum;
+    }, []);
+
     return (
-      <div id="menu" className={css.block}>
-        {htmlMenus}
+      <div className={css.block}>
+        {menu}
       </div>
     );
   }
