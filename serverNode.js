@@ -1,8 +1,19 @@
-'use strict';
-let express = require('express');
-let app = express();
+// server.js
+var express = require('express');
+var path = require('path');
+var compression = require('compression');
 
-app.use(express.static(__dirname + '/public'));
-app.listen(3008);
+var app = express();
 
-console.log('server starts on port 3008');
+// serve our static stuff like index.css
+app.use(express.static(path.join(__dirname, 'public')));
+
+// send all requests to index.html so browserHistory in React Router works
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+var PORT = process.env.PORT || 3008;
+app.listen(PORT, function() {
+  console.log('Production Express server running at localhost:' + PORT);
+});
