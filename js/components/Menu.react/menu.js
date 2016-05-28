@@ -1,6 +1,7 @@
 let css = require('./menu.css');
 let React = require('react');
 let Element = require('./MenuElement.react/element');
+let assign = require('object-assign');
 
 let Menu = React.createClass({
   /**
