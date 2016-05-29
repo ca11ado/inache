@@ -20,7 +20,7 @@ let TodoApp = React.createClass({
       <div style={flexBox}>
         <Logo />
         <Menu />
-        <MainSection />
+        {this.props.children}
       </div>
     );
   },
