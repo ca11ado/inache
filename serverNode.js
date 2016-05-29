@@ -4,7 +4,7 @@ var path = require('path');
 var compression = require('compression');
 
 var app = express();
-
+app.use(compression());
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public')));
 
