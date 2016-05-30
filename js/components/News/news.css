@@ -1,0 +1,20 @@
+.header {
+  composes: headerBig from '../../composes/fonts.css';
+  text-align: center;
+  padding: 20px 0;
+}
+
+.subHeader {
+  composes: headerSmall from '../../composes/fonts.css';
+  text-align: center;
+  padding: 10px 0;
+}
+
+.years {
+  margin-left: 10px;
+}
+
+.content {
+  padding: 10px 100px;
+  background-color: lightgrey;
+}

@@ -1,9 +1,9 @@
 let { Route, IndexRoute } = require('react-router');
 let React = require('react');
 
-let App = require('../App.react');
-let News = require('../News/news');
-let Tour = require('../Tour/tour');
+let App = require('./components/App.react');
+let News = require('./components/News/news');
+let Tour = require('./components/Tour/tour');
 
 module.exports = (
   <Route path="/" component={App}>
