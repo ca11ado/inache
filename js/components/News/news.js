@@ -1,26 +1,33 @@
 let _ = require('lodash');
 let css = require('./news.css');
 let React = require('react');
+let moment = require('moment');
 
-let longText = 'This reset gives you more flexibility than its predecessors — you can use content-box or padding-box (where supported) at will, without worrying about a universal selector overriding your CSS. We went into more depth on this technique and the reasoning behind it in "Inheriting box-sizing Probably Slightly Better Best Practice". One potential gripe with it is that box-sizing isnt normally inherited, so its specialized behavior, not quite the same as something youd normally put in a reset.Vendor Prefixes';
+let NewsItem = require('./news-item/NewsItem.js');
 
-let years = [
-  { year: 2013, content: longText, isActive: true },
-  { year: 2014, content: 'Новости для 2014 года'},
-  { year: 2015, content: 'Новости для 2015 года'}
-];
-let showYears = years.reduce((accum, year, index) => {
-  let key = `news-year-${index}`;
-  let className = css.years;
-  accum.push(React.createElement('span', { key, className }, year.year));
-  return accum;
-}, []);
+let newsFromDB = require('./dataForPage');
+let activeYear = moment().year();
 
-let currentYear = _.chain(years)
-  .find({ isActive: true })
+let showYears = _.chain(newsFromDB)
+  .map(({ date }) => moment(date).year())
+  .uniq()
+  .map((year, index) => {
+    let key = `news-year-${index}`;
+    let className = css.years;
+    return React.createElement('span', { key, className }, year);
+  })
   .value();
 
-let { year:data, content:text } = currentYear;
+let showActiveYearNews = _.chain(newsFromDB)
+  .filter(({ date }) => moment(date).year() === activeYear)
+  .map((item, index) => {
+    let key = `activeYearNews-${index}`;
+    let text = _.get(item, 'text');
+    let date = _.get(item, 'date');
+    let props = { key, text, date };
+    return <NewsItem { ...props } />;
+  })
+  .value();
 
 let News = React.createClass({
   render () {
@@ -33,8 +40,7 @@ let News = React.createClass({
           {showYears}
         </div>
         <div className={css.content}>
-          {data}<br />
-          {text}
+          {showActiveYearNews}
         </div>
       </div>
     );
