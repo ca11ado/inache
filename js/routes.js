@@ -5,9 +5,13 @@ let App = require('./components/App.react');
 let News = require('./components/News/news');
 let Tour = require('./components/Tour/tour');
 
+let TestComponent = require('./components/TestComponent');
+
 module.exports = (
   <Route path="/" component={App}>
-    <Route path="news" component={News}/>
+    <Route path="news" component={News}>
+      <Route path="/news/test" component={TestComponent} />
+    </Route>
     <Route path="tour" component={Tour}/>
   </Route>
 );

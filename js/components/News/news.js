@@ -42,6 +42,7 @@ let News = React.createClass({
         <div className={css.content}>
           {showActiveYearNews}
         </div>
+        {this.props.children}
       </div>
     );
   }
