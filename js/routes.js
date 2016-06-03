@@ -10,7 +10,7 @@ let TestComponent = require('./components/TestComponent');
 module.exports = (
   <Route path="/" component={App}>
     <Route path="news" component={News}>
-      <Route path="/news/test" component={TestComponent} />
+      <Route path="/news/:year" component={News} />
     </Route>
     <Route path="tour" component={Tour}/>
   </Route>
