@@ -2,6 +2,7 @@ let _ = require('lodash');
 let css = require('./news.css');
 let React = require('react');
 let moment = require('moment');
+let NavLink = require('../framework/NavLink.react/navlink');
 
 let NewsItem = require('./news-item/NewsItem.js');
 
@@ -15,10 +16,15 @@ let News = React.createClass({
       .map(({ date }) => moment(date).year())
       .uniq()
       .map((year, index) => {
+        let className = css.years;
         let key = `news-year-${index}`;
-        let className = activeYear === year ? `${css.years} ${css.active}` : css.years;
-        let href = `/news/${year}`;
-        return React.createElement('a', { key, className, href }, year);
+        let to = `/news/${year}`;
+        let props = { key, to, className };
+        return (
+          <NavLink { ...props }>
+            {year}
+          </NavLink>
+        );
       })
       .reverse()
       .value();

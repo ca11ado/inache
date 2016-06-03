@@ -1,0 +1,26 @@
+.block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.leftBlock,
+.middleBlock,
+.rightBlock {
+  min-height: 100px;
+}
+
+.leftBlock {
+  width: 20%;
+  border: 1px solid black;
+}
+
+.middleBlock {
+  width: 56%;
+  background: grey;
+}
+
+.rightBlock {
+  width: 20%;
+  border: 1px solid black;
+}

@@ -5,7 +5,9 @@ let Logo = React.createClass({
   render: function () {
     return (
       <div id="logo" className={css.block}>
-        <img className={css.logo} src="/img/icons/logo.jpg" />
+        <a href="/">
+          <img className={css.logo} src="/img/icons/logo.jpg" />
+        </a>
         <div id="contacts" className={css.contactsWrapper}>
           Связь с группой<br />
           <a href="mailto:inache.band@mail.ru">inache.band@mail.ru</a><br />
