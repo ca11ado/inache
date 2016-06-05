@@ -49,9 +49,9 @@ let News = React.createClass({
         let className = css.years;
         let key = `news-year-${index}`;
         let to = `/news/${year}`;
-        let props = { key, to, className };
+        let props = { key, to, className, 'data-year': year };
         return (
-          <NavLink { ...props }>
+          <NavLink { ...props } onClick={this.updateNewsItems}>
             {year}
           </NavLink>
         );
@@ -85,6 +85,11 @@ let News = React.createClass({
 
   _onChange: function() {
     this.setState(getNewsState());
+  },
+
+  updateNewsItems (e) {
+    let activeYear = Number(e.currentTarget.dataset.year);
+    NewsActions.getNewsForYear(activeYear);
   }
 });
 
