@@ -1,25 +1,21 @@
-/*
- * Copyright (c) 2014-2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * TodoActions
- */
-
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var TodoConstants = require('../constants/TodoConstants');
+var AllConstants = require('../constants/AllConstants');
 
-var TodoActions = {
+var NewsActions = {
+
+  getNewsForYear: function(year) {
+    AppDispatcher.dispatch({
+      actionType: AllConstants.GET_NEWS,
+      year
+    });
+  },
 
   /**
    * @param  {string} text
    */
   create: function(text) {
     AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_CREATE,
+      actionType: AllConstants.TODO_CREATE,
       text: text
     });
   },
@@ -30,7 +26,7 @@ var TodoActions = {
    */
   updateText: function(id, text) {
     AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_UPDATE_TEXT,
+      actionType: AllConstants.TODO_UPDATE_TEXT,
       id: id,
       text: text
     });
@@ -43,8 +39,8 @@ var TodoActions = {
   toggleComplete: function(todo) {
     var id = todo.id;
     var actionType = todo.complete ?
-        TodoConstants.TODO_UNDO_COMPLETE :
-        TodoConstants.TODO_COMPLETE;
+        AllConstants.TODO_UNDO_COMPLETE :
+        AllConstants.TODO_COMPLETE;
 
     AppDispatcher.dispatch({
       actionType: actionType,
@@ -57,7 +53,7 @@ var TodoActions = {
    */
   toggleCompleteAll: function() {
     AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_TOGGLE_COMPLETE_ALL
+      actionType: AllConstants.TODO_TOGGLE_COMPLETE_ALL
     });
   },
 
@@ -66,7 +62,7 @@ var TodoActions = {
    */
   destroy: function(id) {
     AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_DESTROY,
+      actionType: AllConstants.TODO_DESTROY,
       id: id
     });
   },
@@ -76,10 +72,10 @@ var TodoActions = {
    */
   destroyCompleted: function() {
     AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_DESTROY_COMPLETED
+      actionType: AllConstants.TODO_DESTROY_COMPLETED
     });
   }
 
 };
 
-module.exports = TodoActions;
+module.exports = NewsActions;

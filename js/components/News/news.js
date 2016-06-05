@@ -3,16 +3,27 @@ let css = require('./news.css');
 let React = require('react');
 let moment = require('moment');
 let NavLink = require('../framework/NavLink.react/navlink');
-
+let NewsStore = require('../../stores/NewsStore');
+let newsFromDB = require('./dataForPage');
 let NewsItem = require('./news-item/NewsItem.js');
 
-let newsFromDB = require('./dataForPage');
+function getNewsState() {
+  let activeYear = Number(this.props.params.year) || moment().year();
+
+  return {
+    news: NewsStore.getNewsForYear(activeYear)
+  };
+}
 
 let News = React.createClass({
+  getInitialState () {
+    return getNewsState();  
+  },
+
   render () {
     let activeYear = Number(this.props.params.year) || moment().year();
 
-    let showYears = _.chain(newsFromDB)
+    let showYears = _.chain(this.props.news)
       .map(({ date }) => moment(date).year())
       .uniq()
       .map((year, index) => {
