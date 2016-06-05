@@ -1,11 +1,18 @@
 let _ = require('lodash');
 let moment = require('moment');
-let _allNews = require('../components/News/dataForPage');
+let _allNews = require('../constants/dataForPage');
 
 let DataBase = {
-  getAllNews: () => new Promise((res, rej) => {
-    res(_allNews);
-  }),
+  getAvailableYears: () => new Promise((res, rej) => {
+    let years = _.chain(_allNews)
+      .map(({ date }) => moment(date).year())
+      .uniq()
+      .reverse()
+      .value();
+    
+    res(years);
+  })
+  ,
   
   getNewsForYear: (year) => new Promise ((res, rej) => {
     let showActiveYearNews = _.chain(_allNews)

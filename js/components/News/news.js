@@ -4,28 +4,47 @@ let React = require('react');
 let moment = require('moment');
 let NavLink = require('../framework/NavLink.react/navlink');
 let NewsStore = require('../../stores/NewsStore');
-let newsFromDB = require('./dataForPage');
+let NewsActions = require('../../actions/NewsActions');
 let NewsItem = require('./news-item/NewsItem.js');
 
 function getNewsState() {
-  let activeYear = Number(this.props.params.year) || moment().year();
-
   return {
-    news: NewsStore.getNewsForYear(activeYear)
+    news: NewsStore.getNews(),
+    years: NewsStore.getAvailableYears()
   };
 }
 
 let News = React.createClass({
+  /**
+   * Отсылаем запрос к БДа, чтобы получить новости
+   * @returns {{}}
+   */
   getInitialState () {
-    return getNewsState();  
+    let activeYear = Number(this.props.params.year) || moment().year();
+    NewsActions.getNewsForYear(activeYear);
+    NewsActions.getAvailableYears();
+    return {};
+  },
+
+  getDefaultProps () {
+    return {
+      isPreloader: true
+    };
+  },
+
+  componentDidMount: function() {
+    NewsStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    NewsStore.removeChangeListener(this._onChange);
   },
 
   render () {
-    let activeYear = Number(this.props.params.year) || moment().year();
+    let years = this.state.years;
+    let news = this.state.news;
 
-    let showYears = _.chain(this.props.news)
-      .map(({ date }) => moment(date).year())
-      .uniq()
+    let showYears = _.chain(years)
       .map((year, index) => {
         let className = css.years;
         let key = `news-year-${index}`;
@@ -37,11 +56,9 @@ let News = React.createClass({
           </NavLink>
         );
       })
-      .reverse()
       .value();
 
-    let showActiveYearNews = _.chain(newsFromDB)
-      .filter(({ date }) => moment(date).year() === activeYear)
+    let showActiveYearNews = _.chain(news)
       .map((item, index) => {
         let key = `activeYearNews-${index}`;
         let text = _.get(item, 'text');
@@ -64,6 +81,10 @@ let News = React.createClass({
         </div>
       </div>
     );
+  },
+
+  _onChange: function() {
+    this.setState(getNewsState());
   }
 });
 

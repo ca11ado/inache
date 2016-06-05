@@ -2,7 +2,8 @@ let keyMirror = require('keymirror');
 
 module.exports = keyMirror({
   GET_NEWS: null,
-  TODO_CREATE: null,
+  GET_YEARS: null,
+  TODO_CREAT: null,
   TODO_COMPLETE: null,
   TODO_DESTROY: null,
   TODO_DESTROY_COMPLETED: null,

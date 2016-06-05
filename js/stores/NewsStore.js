@@ -1,12 +1,22 @@
 let AppDispatcher = require('../dispatcher/AppDispatcher');
 let EventEmitter = require('events').EventEmitter;
-let TodoConstants = require('../constants/TodoConstants');
+let AllConstants = require('../constants/AllConstants');
+let _database = require('./DataBaseMock');
+
 let assign = require('object-assign');
 
 let CHANGE_EVENT = 'change';
-
 let _todos = {};
-let _database = require('./DataBaseMock');
+let _news = [];
+let _years = [];
+
+function setNews (news) {
+  _news = news;
+}
+
+function setYears (years) {
+  _years = years;
+}
 
 /**
  * Create a TODO item.
@@ -66,10 +76,20 @@ function destroyCompleted() {
 
 let TodoStore = assign({}, EventEmitter.prototype, {
   /**
-   * Получить новости для определнного года
-   * @param year
+   * Вытащить из store новости
+   * @returns {Array}
+     */
+  getNews: () => {
+    return _news;
+  },
+
+  /**
+   * Получить список лет, для которых есть новости
+   * @returns {Array}
    */
-  getNewsForYear: (year) => _database.getNewsForYear(year),
+  getAvailableYears: () => {
+    return _years;
+  },
 
   /**
    * Tests whether all the remaining TODO items are marked as completed.
@@ -116,7 +136,24 @@ AppDispatcher.register(function(action) {
   let text;
 
   switch(action.actionType) {
-    case TodoConstants.GET_NEWS:
+    case AllConstants.GET_NEWS:
+      let year = action.year;
+      _database.getNewsForYear(year)
+        .then((news) => {
+          setNews(news);
+          TodoStore.emitChange();
+        });
+      break;
+
+    case AllConstants.GET_YEARS:
+      _database.getAvailableYears()
+        .then((years) => {
+          setYears(years);
+          TodoStore.emitChange();
+        });
+      break;
+
+    case AllConstants.TODO_CREATE:
       text = action.text.trim();
       if (text !== '') {
         create(text);
@@ -124,15 +161,7 @@ AppDispatcher.register(function(action) {
       }
       break;
 
-    case TodoConstants.TODO_CREATE:
-      text = action.text.trim();
-      if (text !== '') {
-        create(text);
-        TodoStore.emitChange();
-      }
-      break;
-
-    case TodoConstants.TODO_TOGGLE_COMPLETE_ALL:
+    case AllConstants.TODO_TOGGLE_COMPLETE_ALL:
       if (TodoStore.areAllComplete()) {
         updateAll({complete: false});
       } else {
@@ -141,17 +170,17 @@ AppDispatcher.register(function(action) {
       TodoStore.emitChange();
       break;
 
-    case TodoConstants.TODO_UNDO_COMPLETE:
+    case AllConstants.TODO_UNDO_COMPLETE:
       update(action.id, {complete: false});
       TodoStore.emitChange();
       break;
 
-    case TodoConstants.TODO_COMPLETE:
+    case AllConstants.TODO_COMPLETE:
       update(action.id, {complete: true});
       TodoStore.emitChange();
       break;
 
-    case TodoConstants.TODO_UPDATE_TEXT:
+    case AllConstants.TODO_UPDATE_TEXT:
       text = action.text.trim();
       if (text !== '') {
         update(action.id, {text: text});
@@ -159,12 +188,12 @@ AppDispatcher.register(function(action) {
       }
       break;
 
-    case TodoConstants.TODO_DESTROY:
+    case AllConstants.TODO_DESTROY:
       destroy(action.id);
       TodoStore.emitChange();
       break;
 
-    case TodoConstants.TODO_DESTROY_COMPLETED:
+    case AllConstants.TODO_DESTROY_COMPLETED:
       destroyCompleted();
       TodoStore.emitChange();
       break;

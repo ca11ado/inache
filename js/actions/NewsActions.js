@@ -10,6 +10,12 @@ var NewsActions = {
     });
   },
 
+  getAvailableYears: function () {
+    AppDispatcher.dispatch({
+      actionType: AllConstants.GET_YEARS
+    })
+  },
+
   /**
    * @param  {string} text
    */
