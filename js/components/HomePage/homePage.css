@@ -12,15 +12,14 @@
 
 .leftBlock {
   width: 20%;
-  border: 1px solid black;
+  background: lightgrey;
 }
 
 .middleBlock {
   width: 56%;
-  background: grey;
 }
 
 .rightBlock {
   width: 20%;
-  border: 1px solid black;
+  background: lightgrey;
 }

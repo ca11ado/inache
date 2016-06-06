@@ -72,6 +72,15 @@ AppDispatcher.register(function(action) {
         });
       break;
 
+    case AllConstants.GET_LAST_NEWS:
+      let count = action.count;
+      _database.getLastNews(count)
+        .then((news) => {
+          setNews(news);
+          TodoStore.emitChange();
+        });
+      break;
+
     default:
     // no op
   }

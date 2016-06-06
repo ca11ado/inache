@@ -14,6 +14,17 @@ var NewsActions = {
     AppDispatcher.dispatch({
       actionType: AllConstants.GET_YEARS
     })
+  },
+
+  /**
+   * Получить какое-то количество последних новостей
+   * @param {Number} count
+   */
+  getLastNews: function (count = 2) {
+    AppDispatcher.dispatch({
+      actionType: AllConstants.GET_LAST_NEWS,
+      count
+    });
   }
 };
 

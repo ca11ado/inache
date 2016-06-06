@@ -9,20 +9,28 @@ let DataBase = {
       .uniq()
       .reverse()
       .value();
-    
+
     res(years);
   })
   ,
-  
+
   getNewsForYear: (year) => new Promise ((res, rej) => {
     let showActiveYearNews = _.chain(_allNews)
       .filter(({ date }) => moment(date).year() === year)
       .value();
-    
+
     res(showActiveYearNews);
-  })
+  }),
 
+  getLastNews (count) {
+    return new Promise((res, rej) => {
+      let lastNews = _.chain(_allNews)
+        .takeRight(count)
+        .value();
 
+      res(lastNews);
+    });
+  }
 };
 
 module.exports = DataBase;

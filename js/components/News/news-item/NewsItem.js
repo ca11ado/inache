@@ -12,10 +12,12 @@ let NewsItem = React.createClass({
   render: function() {
     let date = moment(this.props.date).format(FORMAT);
     let text = this.props.text;
+    let header = this.props.header || '';
 
     return (
       <div className={css.newsItemWrap}>
         <div className={css.date}>{date}</div>
+        <div className={css.header}>{header}</div>
         <div className={css.text}>{text}</div>
       </div>
     );
