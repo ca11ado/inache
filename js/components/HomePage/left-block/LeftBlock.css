@@ -1,0 +1,10 @@
+.blockHeader {
+  composes: headerBig from '../../../composes/fonts.css';
+  padding: 10px 0 5px;
+  border-bottom: 1px solid darkgrey;
+}
+
+.line {
+  padding: 10px 0 5px;
+  border-bottom: 1px solid darkgrey;
+}
