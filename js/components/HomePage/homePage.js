@@ -1,10 +1,13 @@
+let _ = require('lodash');
 let css = require('./homePage.css');
 let React = require('react');
-let _ = require('lodash');
-
+let NewsItem = require('../../components/News/news-item/NewsItem');
 let NewsStore = require('../../stores/NewsStore');
 let NewsAction = require('../../actions/NewsActions');
-let NewsItem = require('../../components/News/news-item/NewsItem');
+
+let MiddleBlock = require('./middle-block/MiddleBlock');
+let LeftBlock = require('./left-block/LeftBlock');
+let RightBlock = require('./right-block/RightBlock');
 
 const NEWS_COUNT = 5;
 
@@ -35,16 +38,20 @@ let HomePage = React.createClass({
       let date = _.get(item, 'date');
       let header = _.get(item, 'header');
       let key = `homePageNews-${index}`;
-      let props = { key, header, date, text };
+      let props = { key, date, text };
       return <NewsItem { ...props } />;
     });
 
     return (
       <div className={css.block}>
-        <div className={css.leftBlock}></div>
+        <div className={css.leftBlock}>
+          <div className={css.blockHeader}>Ближайшие концерты:</div>
+        </div>
         <div className={css.middleBlock}>
-          <h2>Последние новости</h2>
-          {showNews}
+          <div className={css.blockHeader}>Последние новости:</div>
+          <div className={css.newsBlock}>
+            {showNews}
+          </div>
         </div>
         <div className={css.rightBlock}></div>
       </div>
