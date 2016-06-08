@@ -1,13 +1,14 @@
 let React = require('react');
 let css = require('./logo.css');
+let NavLink = require('../framework/NavLink.react/navlink');
 
 let Logo = React.createClass({
   render: function () {
     return (
       <div id="logo" className={css.block}>
-        <a href="/">
+        <NavLink to="/">
           <img className={css.logo} src="/img/icons/logo.jpg" />
-        </a>
+        </NavLink>
         <div id="contacts" className={css.contactsWrapper}>
           Связь с группой<br />
           <a href="mailto:inache.band@mail.ru">inache.band@mail.ru</a><br />
