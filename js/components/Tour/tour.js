@@ -1,10 +1,12 @@
-let css = require('./tour');
+let css = require('./tour.css');
 let React = require('react');
 
 let Tour = React.createClass({
   render () {
     return (
-      <h2>Tour</h2>
+      <div className={css.blockHeader}>
+        Афиша
+      </div>
     );
   }
 });

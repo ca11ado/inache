@@ -5,6 +5,7 @@ let moment = require('moment');
 let NavLink = require('../framework/NavLink.react/navlink');
 let NewsStore = require('../../stores/NewsStore');
 let NewsActions = require('../../actions/NewsActions');
+let SubNavigation = require('../sub-navigation/SubNavigation');
 let NewsItem = require('./news-item/NewsItem.js');
 
 function getNewsState() {
@@ -68,6 +69,11 @@ let News = React.createClass({
       })
       .value();
 
+    let list = _.map(years, (year) => {
+      return { link: year, title: year };
+    });
+    let base = 'news';
+
     return (
       <div className={css.blockWrapper}>
         <div className={css.header}>
@@ -75,6 +81,9 @@ let News = React.createClass({
         </div>
         <div className={css.subHeader}>
           {showYears}
+        </div>
+        <div className={css.subHeader}>
+          <SubNavigation base={base} list={list} />
         </div>
         <div className={css.content}>
           {showActiveYearNews}

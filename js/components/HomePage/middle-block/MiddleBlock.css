@@ -1,7 +1,5 @@
 .blockHeader {
-  composes: headerBig from '../../../composes/fonts.css';
-  padding: 10px 0 5px;
-  border-bottom: 1px solid darkgrey;
+  composes: blockHeader from '../../../composes/blocks.css';
 }
 
 .newsBlock {

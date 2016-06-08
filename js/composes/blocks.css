@@ -1,0 +1,6 @@
+.blockHeader {
+  composes: headerBig from './fonts.css';
+  padding: 10px 0 5px;
+  border-bottom: 1px solid darkgrey;
+  text-align: center;
+}
