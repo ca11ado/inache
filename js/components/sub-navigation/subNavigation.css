@@ -4,3 +4,7 @@
   padding: 10px 5px;
   display: inline-block;
 }
+
+.links {
+  text-decoration: none;
+}

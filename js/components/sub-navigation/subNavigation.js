@@ -14,7 +14,7 @@ let SubNavigation = React.createClass({
       let key = `subNav-${index}`;
       return React.createElement('div', {
         className: css.item, key
-      }, <NavLink to={to}>{title}</NavLink>)
+      }, <NavLink className={css.links} to={to}>{title}</NavLink>)
     });
 
     return (
