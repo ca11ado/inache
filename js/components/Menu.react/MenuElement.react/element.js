@@ -8,9 +8,11 @@ let Element = React.createClass({
     let tab = this.props.tab;
 
     return (
-      <NavLink to={tab.link} className={css.tabMenu}>
-        {tab.name}
-      </NavLink>
+      <div className={css.tabMenu}>
+        <NavLink to={tab.link}>
+          {tab.name}
+        </NavLink>
+      </div>
     );
   }
 });
