@@ -7,7 +7,7 @@
 .subHeader {
   composes: headerSmall from '../../composes/fonts.css';
   text-align: center;
-  padding: 10px 0;
+  padding-bottom: 10px;
 }
 
 .years {

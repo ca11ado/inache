@@ -41,23 +41,19 @@ let News = React.createClass({
     NewsStore.removeChangeListener(this._onChange);
   },
 
+  componentWillUpdate: function () {
+  },
+
+  componentWillReceiveProps: function(nextProps, oldProps) {
+    let currentYear = moment().year();
+    let activeYear = _.get(nextProps, 'params.year', currentYear);
+
+    NewsActions.getNewsForYear(activeYear);
+  },
+
   render () {
     let years = this.state.years;
     let news = this.state.news;
-
-    let showYears = _.chain(years)
-      .map((year, index) => {
-        let className = css.years;
-        let key = `news-year-${index}`;
-        let to = `/news/${year}`;
-        let props = { key, to, className, 'data-year': year };
-        return (
-          <NavLink { ...props } onClick={this.updateNewsItems}>
-            {year}
-          </NavLink>
-        );
-      })
-      .value();
 
     let showActiveYearNews = _.chain(news)
       .map((item, index) => {
@@ -78,9 +74,6 @@ let News = React.createClass({
       <div className={css.blockWrapper}>
         <div className={css.header}>
           Новости
-        </div>
-        <div className={css.subHeader}>
-          {showYears}
         </div>
         <div className={css.subHeader}>
           <SubNavigation base={base} list={list} />

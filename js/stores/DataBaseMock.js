@@ -15,8 +15,9 @@ let DataBase = {
   ,
 
   getNewsForYear: (year) => new Promise ((res, rej) => {
+    let activeYear = Number(year);
     let showActiveYearNews = _.chain(_allNews)
-      .filter(({ date }) => moment(date).year() === year)
+      .filter(({ date }) => moment(date).year() === activeYear)
       .value();
 
     res(showActiveYearNews);
