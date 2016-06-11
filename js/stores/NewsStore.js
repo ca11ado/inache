@@ -1,3 +1,4 @@
+let _ = require('lodash');
 let AppDispatcher = require('../dispatcher/AppDispatcher');
 let EventEmitter = require('events').EventEmitter;
 let AllConstants = require('../constants/AllConstants');
@@ -8,13 +9,22 @@ let assign = require('object-assign');
 let CHANGE_EVENT = 'change';
 let _news = [];
 let _years = [];
+let _tours = [];
+let _tourYears = [];
 
 function setNews (news) {
   _news = news;
 }
+function setTours (tours) {
+  _tours = tours;
+}
 
 function setYears (years) {
   _years = years;
+}
+
+function setTourYears (years) {
+  _tourYears = years;
 }
 
 let TodoStore = assign({}, EventEmitter.prototype, {
@@ -32,6 +42,14 @@ let TodoStore = assign({}, EventEmitter.prototype, {
    */
   getAvailableYears: () => {
     return _years;
+  },
+
+  getAvailableTourYears: () => {
+    return _tourYears;
+  },
+
+  getTours: () => {
+    return _tours;
   },
 
   emitChange: function() {
@@ -54,18 +72,20 @@ let TodoStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
+  let year = _.get(action, 'year');
+  let count = _.get(action, 'count');
+
   switch(action.actionType) {
     case AllConstants.GET_NEWS:
-      let year = action.year;
-      _database.getNewsForYear(year)
-        .then((news) => {
-          setNews(news);
+      _database.getSectionItemsForYear('news', year)
+        .then((items) => {
+          setNews(items);
           TodoStore.emitChange();
         });
       break;
 
     case AllConstants.GET_YEARS:
-      _database.getAvailableYears()
+      _database.getAvailableYears('news')
         .then((years) => {
           setYears(years);
           TodoStore.emitChange();
@@ -73,10 +93,25 @@ AppDispatcher.register(function(action) {
       break;
 
     case AllConstants.GET_LAST_NEWS:
-      let count = action.count;
       _database.getLastNews(count)
         .then((news) => {
           setNews(news);
+          TodoStore.emitChange();
+        });
+      break;
+
+    case AllConstants.GET_TOURS:
+      _database.getSectionItemsForYear('tour', year)
+        .then((items) => {
+          setTours(items);
+          TodoStore.emitChange();
+        });
+      break;
+
+    case AllConstants.GET_TOURS_YEARS:
+      _database.getAvailableYears('tour')
+        .then((years) => {
+          setTourYears(years);
           TodoStore.emitChange();
         });
       break;

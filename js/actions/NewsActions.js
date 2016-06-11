@@ -9,6 +9,26 @@ var NewsActions = {
       year
     });
   },
+  
+  getNewsForYear: function(year) {
+    AppDispatcher.dispatch({
+      actionType: AllConstants.GET_NEWS,
+      year
+    });
+  },
+  
+  getToursForYear: function(year) {
+    AppDispatcher.dispatch({
+      actionType: AllConstants.GET_TOURS,
+      year
+    });
+  },
+  
+  getAvailableYearsForTour: function() {
+    AppDispatcher.dispatch({
+      actionType: AllConstants.GET_TOURS_YEARS
+    });
+  },
 
   getAvailableYears: function () {
     AppDispatcher.dispatch({
