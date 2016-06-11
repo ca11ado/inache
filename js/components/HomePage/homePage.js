@@ -26,7 +26,7 @@ let HomePage = React.createClass({
     NewsStore.addChangeListener(this._onChange);
   },
 
-  componentWillUnmont () {
+  componentWillUnmount () {
     NewsStore.removeChangeListener(this._onChange);
   },
 
