@@ -10,13 +10,6 @@ var NewsActions = {
     });
   },
   
-  getNewsForYear: function(year) {
-    AppDispatcher.dispatch({
-      actionType: AllConstants.GET_NEWS,
-      year
-    });
-  },
-  
   getToursForYear: function(year) {
     AppDispatcher.dispatch({
       actionType: AllConstants.GET_TOURS,

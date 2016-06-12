@@ -41,14 +41,14 @@ let DataBase = {
     res(showActiveYearNews);
   }),
 
-  getLastNews (count) {
+  getLastSectionItems (section, count) {
     return new Promise((res, rej) => {
-      let lastNews = _.chain(_data)
-        .filter({ section: 'news' })
+      let lastItems = _.chain(_data)
+        .filter({ section })
         .takeRight(count)
         .value();
 
-      res(lastNews);
+      res(lastItems);
     });
   }
 };

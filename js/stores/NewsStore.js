@@ -93,7 +93,7 @@ AppDispatcher.register(function(action) {
       break;
 
     case AllConstants.GET_LAST_NEWS:
-      _database.getLastNews(count)
+      _database.getLastSectionItems('news', count)
         .then((news) => {
           setNews(news);
           TodoStore.emitChange();
