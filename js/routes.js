@@ -6,6 +6,7 @@ let App = require('./components/App.react');
 let HomePage = require('./components/HomePage/homePage');
 let News = require('./components/News/news');
 let Tour = require('./components/Tour/tour');
+let Band = require('./components/band/band');
 
 let TestComponent = require('./components/TestComponent');
 let currentYear = moment().year();
@@ -23,5 +24,6 @@ module.exports = (
       <IndexRedirect to={toursIndexPath} />
       <Route path="/tour/:year" component={Tour} />
     </Route>
+    <Route path="band" component={Band} />
   </Route>
 );
