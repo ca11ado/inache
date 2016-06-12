@@ -13,11 +13,15 @@ let TourItem = React.createClass({
   render () {
     let date = this.props.date;
     let text = this.props.text;
+    let year = moment(date).year();
+    let formattedDate = moment(date).format(FORMAT);
+    let link = `/tour/${year}#${date}`;
 
     return (
       <div className={css.itemWrapper}>
-        <div className={css.date}>{date}</div>
+        <div className={css.date}>{formattedDate}</div>
         <div className={css.text}>{text}</div>
+        <a href={link}>link</a>
       </div>
     );
   }
@@ -48,7 +52,7 @@ let LeftBlock = React.createClass({
     let tours = this.state.tours;
     let FeatureTours = _.map(tours, ({ header, date, text }, index) => {
       let props = {
-        date: moment(date).format(FORMAT),
+        date,
         text,
         key: `homePage-tour-item-${index}`
       };
@@ -62,6 +66,7 @@ let LeftBlock = React.createClass({
           <ul>
             <li>"Иначе" в электричестве</li>
             <li>"Иначе" в акустике</li>
+            <li>Н. Подорольский в акустике</li>
           </ul>
         </div>
         <div>

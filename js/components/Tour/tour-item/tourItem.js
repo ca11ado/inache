@@ -12,13 +12,15 @@ let TourItem = React.createClass({
    * @return {object}
    */
   render: function() {
-    let date = moment(this.props.date).format(FORMAT);
+    let date = this.props.date;
+    let formattedDate = moment(date).format(FORMAT);
     let text = this.props.text;
     let header = this.props.header || '';
 
     return (
       <div className={css.tourItemWrap}>
-        <div className={css.date}>{date}</div>
+        <a name={date}></a>
+        <div className={css.date}>{formattedDate}</div>
         <div className={css.header}>{header}</div>
         <div className={css.text}>{text}</div>
       </div>
