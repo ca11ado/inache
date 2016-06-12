@@ -1,4 +1,4 @@
-let css = require('./newsItem.css');
+let css = require('./tourItem.css');
 let React = require('react');
 let moment = require('moment');
 
@@ -6,7 +6,7 @@ moment.locale('ru');
 
 const FORMAT = 'DD MMMM YYYY';
 
-let NewsItem = React.createClass({
+let TourItem = React.createClass({
 
   /**
    * @return {object}
@@ -17,7 +17,7 @@ let NewsItem = React.createClass({
     let header = this.props.header || '';
 
     return (
-      <div className={css.newsItemWrap}>
+      <div className={css.tourItemWrap}>
         <div className={css.date}>{date}</div>
         <div className={css.header}>{header}</div>
         <div className={css.text}>{text}</div>
@@ -27,4 +27,4 @@ let NewsItem = React.createClass({
 
 });
 
-module.exports = NewsItem;
+module.exports = TourItem;

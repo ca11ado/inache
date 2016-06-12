@@ -50,6 +50,21 @@ let DataBase = {
 
       res(lastItems);
     });
+  },
+
+  getFeatureTours (count) {
+    return new Promise((res, rej) => {
+      let tours = _.chain(_data)
+        .filter(({ section, date }) => {
+          let tourSection = section === 'tour';
+          let featureDate = moment(date) > moment();
+          return tourSection && featureDate;
+        })
+        .takeRight(count)
+        .value();
+
+      res(tours);
+    });
   }
 };
 

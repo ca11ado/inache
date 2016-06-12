@@ -44,7 +44,7 @@ let News = React.createClass({
   componentWillUpdate: function () {
   },
 
-  componentWillReceiveProps: function(nextProps, oldProps) {
+  componentWillReceiveProps: function(nextProps) {
     let currentYear = moment().year();
     let activeYear = _.get(nextProps, 'params.year', currentYear);
 

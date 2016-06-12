@@ -9,14 +9,14 @@ var NewsActions = {
       year
     });
   },
-  
+
   getToursForYear: function(year) {
     AppDispatcher.dispatch({
       actionType: AllConstants.GET_TOURS,
       year
     });
   },
-  
+
   getAvailableYearsForTour: function() {
     AppDispatcher.dispatch({
       actionType: AllConstants.GET_TOURS_YEARS
@@ -36,6 +36,17 @@ var NewsActions = {
   getLastNews: function (count = 2) {
     AppDispatcher.dispatch({
       actionType: AllConstants.GET_LAST_NEWS,
+      count
+    });
+  },
+
+  /**
+   * Получить n записей самых далеких запланированных концертов
+   * @param {Number} count
+   */
+  getFeatureTours: function (count = 2) {
+    AppDispatcher.dispatch({
+      actionType: AllConstants.GET_FEATURE_TOURS,
       count
     });
   }

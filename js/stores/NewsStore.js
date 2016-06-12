@@ -27,7 +27,7 @@ function setTourYears (years) {
   _tourYears = years;
 }
 
-let TodoStore = assign({}, EventEmitter.prototype, {
+let ItemsStore = assign({}, EventEmitter.prototype, {
   /**
    * Вытащить из store новости
    * @returns {Array}
@@ -80,7 +80,7 @@ AppDispatcher.register(function(action) {
       _database.getSectionItemsForYear('news', year)
         .then((items) => {
           setNews(items);
-          TodoStore.emitChange();
+          ItemsStore.emitChange();
         });
       break;
 
@@ -88,7 +88,7 @@ AppDispatcher.register(function(action) {
       _database.getAvailableYears('news')
         .then((years) => {
           setYears(years);
-          TodoStore.emitChange();
+          ItemsStore.emitChange();
         });
       break;
 
@@ -96,7 +96,7 @@ AppDispatcher.register(function(action) {
       _database.getLastSectionItems('news', count)
         .then((news) => {
           setNews(news);
-          TodoStore.emitChange();
+          ItemsStore.emitChange();
         });
       break;
 
@@ -104,7 +104,7 @@ AppDispatcher.register(function(action) {
       _database.getSectionItemsForYear('tour', year)
         .then((items) => {
           setTours(items);
-          TodoStore.emitChange();
+          ItemsStore.emitChange();
         });
       break;
 
@@ -112,7 +112,15 @@ AppDispatcher.register(function(action) {
       _database.getAvailableYears('tour')
         .then((years) => {
           setTourYears(years);
-          TodoStore.emitChange();
+          ItemsStore.emitChange();
+        });
+      break;
+
+    case AllConstants.GET_FEATURE_TOURS:
+      _database.getFeatureTours(count)
+        .then((tours) => {
+          setTours(tours);
+          ItemsStore.emitChange();
         });
       break;
 
@@ -121,4 +129,4 @@ AppDispatcher.register(function(action) {
   }
 });
 
-module.exports = TodoStore;
+module.exports = ItemsStore;

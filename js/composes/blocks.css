@@ -4,3 +4,8 @@
   border-bottom: 1px solid darkgrey;
   text-align: center;
 }
+
+.content {
+  padding: 10px 100px;
+  background-color: lightgrey;
+}

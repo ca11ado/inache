@@ -8,3 +8,11 @@
   padding: 10px 0 5px;
   border-bottom: 1px solid darkgrey;
 }
+
+.itemWrapper {
+  padding-top: 10px;
+}
+
+.date {
+  font-weight: bold;
+}
