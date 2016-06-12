@@ -25,11 +25,16 @@ let DataBase = {
     res(showActiveYearNews);
   }),
 
-  getSectionItemsForYear: (section, year) => new Promise ((res, rej) => {
+  /**
+   * Получить записи конкретного раздела для конкретного года
+   * @param {String} secionName
+   * @param {Number} year
+   */
+  getSectionItemsForYear: (secionName, year) => new Promise ((res, rej) => {
     let activeYear = Number(year);
     let showActiveYearNews = _.chain(_data)
-      .filter(({ date }) => {
-        return moment(date).year() === activeYear && date.section === section;
+      .filter(({ date, section }) => {
+        return moment(date).year() === activeYear && section === secionName;
       })
       .value();
 
