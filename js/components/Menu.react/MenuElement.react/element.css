@@ -9,6 +9,10 @@
   color: black;
 }
 
+.link:hover {
+  color: #b5155e;
+}
+
 .active {
-  color: red;
+  color: #b5155e;
 }
