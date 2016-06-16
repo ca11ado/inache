@@ -1,0 +1,19 @@
+.albumCover {
+  width: 100%;
+}
+
+.albumsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: lightgray;
+}
+
+.coverWrap {
+  padding: 10px;
+}
+
+.description {
+  text-align: center;
+}
