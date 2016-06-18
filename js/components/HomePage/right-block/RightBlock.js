@@ -1,12 +1,13 @@
 let _ = require('lodash');
 let css = require('./RightBlock.css');
+let Header = require('../../main-block/Header/header');
 let React = require('react');
 
 let RightBlock = React.createClass({
   render () {
     return (
       <div>
-        <h2>Главное событие</h2>
+        <Header>Главное событие</Header>
       </div>
     );
   }

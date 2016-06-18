@@ -2,11 +2,12 @@ let _ = require('lodash');
 let css = require('./MiddleBlock.css');
 let React = require('react');
 let NewsItem = require('../../News/news-item/NewsItem');
+let Header = require('../../main-block/Header/header');
 
 let MiddleBlock = React.createClass({
   render () {
     let news = this.props.news;
-    
+
     let showNews = _.map(news, (item, index) => {
       let text = _.get(item, 'text');
       let date = _.get(item, 'date');
@@ -15,10 +16,10 @@ let MiddleBlock = React.createClass({
       let props = { key, date, text };
       return <NewsItem { ...props } />;
     });
-    
+
     return (
       <div>
-        <div className={css.blockHeader}>Последние новости:</div>
+        <Header>Последние новости:</Header>
         <div className={css.newsBlock}>
           {showNews}
         </div>

@@ -7,6 +7,9 @@ let NewsStore = require('../../stores/NewsStore');
 let NewsActions = require('../../actions/NewsActions');
 let SubNavigation = require('../sub-navigation/SubNavigation');
 let NewsItem = require('./news-item/NewsItem.js');
+let MainBlock = require('../main-block/mainBlock');
+let Header = require('../main-block/Header/header');
+let Content = require('../main-block/Content/content');
 
 function getNewsState() {
   return {
@@ -71,17 +74,13 @@ let News = React.createClass({
     let base = 'news';
 
     return (
-      <div className={css.blockWrapper}>
-        <div className={css.header}>
-          Новости
-        </div>
-        <div className={css.subHeader}>
-          <SubNavigation base={base} list={list} />
-        </div>
-        <div className={css.content}>
+      <MainBlock>
+        <Header>Новости</Header>
+        <SubNavigation base={base} list={list} />
+        <Content>
           {showActiveYearNews}
-        </div>
-      </div>
+        </Content>
+      </MainBlock>
     );
   },
 

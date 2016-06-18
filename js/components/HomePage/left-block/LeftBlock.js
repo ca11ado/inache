@@ -3,6 +3,7 @@ let css = require('./LeftBlock.css');
 let React = require('react');
 let NewsStore = require('../../../stores/NewsStore');
 let NewsActions = require('../../../actions/NewsActions');
+let Header = require('../../main-block/Header/header');
 let moment = require('moment');
 
 moment.locale('ru');
@@ -61,7 +62,7 @@ let LeftBlock = React.createClass({
 
     return (
       <div>
-        <div className={css.blockHeader}>Ближайшие концерты:</div>
+        <Header>Ближайшие концерты:</Header>
         <div className={css.line}>
           <ul>
             <li>"Иначе" в электричестве</li>

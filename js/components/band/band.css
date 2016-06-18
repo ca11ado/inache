@@ -2,7 +2,7 @@
   composes: blockHeader from '../../composes/blocks.css';
 }
 
-.content {
+.textContent {
   composes: content from '../../composes/blocks.css';
 }
 
