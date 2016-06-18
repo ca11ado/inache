@@ -6,10 +6,11 @@ let { Link } = require('react-router');
 
 let NavLink = React.createClass({
   render () {
-    let props = _.defaults({}, this.props, {
+    let def = {
       className: css.link,
       activeClassName: css.activeLink
-    });
+    };
+    let props = _.defaults(this.props, def);
 
     return <Link { ...props } />
   }

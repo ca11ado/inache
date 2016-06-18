@@ -5,6 +5,9 @@ let NewsActions = require('../../actions/NewsActions');
 let NewsStore = require('../../stores/NewsStore');
 let SubNavigation = require('../sub-navigation/SubNavigation');
 let TourItem = require('./tour-item/tourItem');
+let MainBlock = require('../main-block/mainBlock');
+let Header = require('../main-block/Header/header');
+let Content = require('../main-block/Content/content');
 
 let defaultYear = moment().year();
 
@@ -56,17 +59,11 @@ let Tour = React.createClass({
     });
 
     return (
-      <div>
-        <div className={css.blockHeader}>
-          Афиша
-        </div>
-        <div className={css.subHeader}>
-          <SubNavigation base={base} list={list} />
-        </div>
-        <div className={css.content}>
-          {TourItems}
-        </div>
-      </div>
+      <MainBlock>
+        <Header>Афиша</Header>
+        <SubNavigation base={base} list={list} />
+        <Content>{TourItems}</Content>
+      </MainBlock>
     );
   },
 

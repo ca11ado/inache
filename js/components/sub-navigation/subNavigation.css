@@ -1,3 +1,8 @@
+.blockWrapper {
+  text-align: center;
+  border-bottom: 1px solid darkgray;
+}
+
 .item {
   composes: headerSmall from '../../composes/fonts.css';
   text-align: center;
@@ -6,5 +11,10 @@
 }
 
 .links {
+  color: blue;
   text-decoration: none;
+}
+
+.active {
+  color: red;
 }

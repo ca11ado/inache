@@ -1,5 +1,8 @@
 let css = require('./band.css');
 let React = require('react');
+let MainBlock = require('../main-block/mainBlock');
+let Header = require('../main-block/Header/header');
+let Content = require('../main-block/Content/content');
 
 let Band = React.createClass({
   getInitialState () {
@@ -14,9 +17,9 @@ let Band = React.createClass({
 
   render () {
     return (
-      <div>
-        <div className={css.blockHeader}>О группе</div>
-        <div className={css.content}>
+      <MainBlock>
+        <Header>О группе</Header>
+        <Content>
           <h3>Пресс-релиз</h3>
 
           <p>Чаще всего днём рождения коллектива считается дата первого концерта. Именно поэтому настоящим рождением группы "Иначе" музыканты считают 17 октября 2009 года – в этот день группа впервые выступила под нынешним названием.</p>
@@ -28,8 +31,8 @@ let Band = React.createClass({
             <img className={css.photo} src="/img/band/ruslan.jpg" />
             <img className={css.photo} src="/img/band/anna.jpg" />
           </div>
-        </div>
-      </div>
+        </Content>
+      </MainBlock>
     );
   }
 });

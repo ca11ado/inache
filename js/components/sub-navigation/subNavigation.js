@@ -14,8 +14,9 @@ let SubNavigation = React.createClass({
       let key = `subNav-${index}`;
       return React.createElement('div', {
         className: css.item, key
-      }, <NavLink className={css.links} to={to}>{title}</NavLink>)
+      }, <NavLink activeClassName={css.active} className={css.links} to={to}>{title}</NavLink>)
     });
+    SubNav = _.size(SubNav) > 0 ? SubNav : 'Тут будет саб-навигация';
 
     return (
       <div className={css.blockWrapper}>

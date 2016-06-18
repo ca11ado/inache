@@ -8,6 +8,9 @@ let News = require('./components/News/news');
 let Tour = require('./components/Tour/tour');
 let Band = require('./components/band/band');
 let Music = require('./components/Music/music');
+let Video = require('./components/Video/video');
+let Photo = require('./components/photo/photo');
+let Press = require('./components/press/press');
 
 let TestComponent = require('./components/TestComponent');
 let currentYear = moment().year();
@@ -27,5 +30,8 @@ module.exports = (
     </Route>
     <Route path="band" component={Band} />
     <Route path="music" component={Music} />
+    <Route path="video" component={Video} />
+    <Route path="gallery" component={Photo} />
+    <Route path="press" component={Press} />
   </Route>
 );
