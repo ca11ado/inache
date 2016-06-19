@@ -8,7 +8,7 @@ let News = require('./components/News/news');
 let Tour = require('./components/Tour/tour');
 let Band = require('./components/band/band');
 let Music = require('./components/Music/music');
-let Video = require('./components/Video/video');
+let Video = require('./components/video/video');
 let Photo = require('./components/photo/photo');
 let Press = require('./components/press/press');
 

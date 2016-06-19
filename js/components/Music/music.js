@@ -2,7 +2,7 @@ let css = require('./music.css');
 let React = require('react');
 let MainBlock = require('../main-block/mainBlock');
 let Header = require('../main-block/Header/header');
-let Content = require('../main-block/Content/content.js');
+let Content = require('../main-block/content/content.js');
 
 let Music = React.createClass({
   getInitialState () {
