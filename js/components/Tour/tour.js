@@ -3,11 +3,11 @@ let React = require('react');
 let moment = require('moment');
 let NewsActions = require('../../actions/NewsActions');
 let NewsStore = require('../../stores/NewsStore');
-let SubNavigation = require('../sub-navigation/SubNavigation');
+let SubNavigation = require('../sub-navigation/subNavigation');
 let TourItem = require('./tour-item/tourItem');
 let MainBlock = require('../main-block/mainBlock');
 let Header = require('../main-block/Header/header');
-let Content = require('../main-block/Content/content');
+let Content = require('../main-block/content/content');
 
 let defaultYear = moment().year();
 

@@ -5,11 +5,11 @@ let moment = require('moment');
 let NavLink = require('../framework/NavLink.react/navlink');
 let NewsStore = require('../../stores/NewsStore');
 let NewsActions = require('../../actions/NewsActions');
-let SubNavigation = require('../sub-navigation/SubNavigation');
+let SubNavigation = require('../sub-navigation/subNavigation');
 let NewsItem = require('./news-item/NewsItem.js');
 let MainBlock = require('../main-block/mainBlock');
 let Header = require('../main-block/Header/header');
-let Content = require('../main-block/Content/content');
+let Content = require('../main-block/content/content');
 
 function getNewsState() {
   return {
