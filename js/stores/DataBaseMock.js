@@ -1,6 +1,14 @@
 let _ = require('lodash');
 let moment = require('moment');
+
 let _data = require('../constants/dataForPage');
+const low = require('lowdb');
+
+const db = low(path.resolve('../../db.json'));
+
+let news = db.get('news').value();
+console.log('%c some text %o', 'color:red', db);
+console.log('%c some text %o', 'color:red', news);
 
 let DataBase = {
   getAvailableYears: (section) => new Promise((res, rej) => {
