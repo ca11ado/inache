@@ -5,9 +5,7 @@ let React = require('react');
 let Header = React.createClass({
   render () {
     return (
-      <div className={css.headerBlock}>
-        {this.props.children}
-      </div>
+      <div></div>
     );
   }
 });
