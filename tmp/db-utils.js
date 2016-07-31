@@ -34,5 +34,3 @@ function getSection (name) {
   return db.get(name)
     .value();
 }
-
-console.log(db);

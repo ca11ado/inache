@@ -2,13 +2,28 @@ let _ = require('lodash');
 let moment = require('moment');
 
 let _data = require('../constants/dataForPage');
-const low = require('lowdb');
 
-const db = low(path.resolve('../../db.json'));
+const API_URL = 'http://127.0.0.1:3008/api/';
+const _request = require('request');
 
-let news = db.get('news').value();
-console.log('%c some text %o', 'color:red', db);
-console.log('%c some text %o', 'color:red', news);
+function request (path) {
+  return new Promise((res, rej) => {
+    _request(`${API_URL}${path}`, (err, response, body) => {
+      if (body) {
+        let parsedBody;
+        try {
+          parsedBody = JSON.parse(body);
+        } catch (e) {
+          console.log('%c some text %o', 'color:red', 'Parsing Error >>>', e);
+        }
+
+        res(parsedBody);
+      } else {
+        rej(err);
+      }
+    });
+  });
+}
 
 let DataBase = {
   getAvailableYears: (section) => new Promise((res, rej) => {
@@ -35,19 +50,10 @@ let DataBase = {
 
   /**
    * Получить записи конкретного раздела для конкретного года
-   * @param {String} secionName
+   * @param {String} sectionName
    * @param {Number} year
    */
-  getSectionItemsForYear: (secionName, year) => new Promise ((res, rej) => {
-    let activeYear = Number(year);
-    let showActiveYearNews = _.chain(_data)
-      .filter(({ date, section }) => {
-        return moment(date).year() === activeYear && section === secionName;
-      })
-      .value();
-
-    res(showActiveYearNews);
-  }),
+  getSectionItemsForYear: (sectionName, year) => request(`${sectionName}/${year}`),
 
   getLastSectionItems (section, count) {
     return new Promise((res, rej) => {

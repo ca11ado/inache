@@ -2,11 +2,17 @@
 var express = require('express');
 var path = require('path');
 var compression = require('compression');
+let bodyParser = require('body-parser');
+let api = require('./api-middleware');
 
 var app = express();
+
 app.use(compression());
-// serve our static stuff like index.css
+app.use(bodyParser.json());
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api', api);
 
 // send all requests to index.html so browserHistory in React Router works
 app.get('*', function (req, res) {

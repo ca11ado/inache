@@ -101,7 +101,7 @@ AppDispatcher.register(function(action) {
       break;
 
     case AllConstants.GET_TOURS:
-      _database.getSectionItemsForYear('tour', year)
+      _database.getSectionItemsForYear('tours', year)
         .then((items) => {
           setTours(items);
           ItemsStore.emitChange();
@@ -109,7 +109,7 @@ AppDispatcher.register(function(action) {
       break;
 
     case AllConstants.GET_TOURS_YEARS:
-      _database.getAvailableYears('tour')
+      _database.getAvailableYears('tours')
         .then((years) => {
           setTourYears(years);
           ItemsStore.emitChange();

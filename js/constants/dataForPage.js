@@ -15,11 +15,11 @@ module.exports = [
   { section: 'news', date: 1463762230000, header: 'Какая-то майская новость', text: text },
   { section: 'news', date: 1462898229305, header: 'Первая новость в мае', text: text },
   { section: 'news', date: 1431362229305, header: 'Новость из 2015 года', text: text },
-  { section: 'tour', date: 1473714000000, header: 'Следующий концерт в начале сентября', text: tourText },
-  { section: 'tour', date: 1466370000000, header: 'Следующий концерт в июне', text: tourText },
-  { section: 'tour', date: 1464626230695, header: 'Самый последний концерт', text: tourText },
-  { section: 'tour', date: 1463762230000, header: 'Какой-то майский концерт', text: tourText },
-  { section: 'tour', date: 1462898229305, header: 'Первый концерт в мае', text: tourText },
-  { section: 'tour', date: 1431362229305, header: 'Концерт в 2015 году', text: tourText },
-  { section: 'tour', date: 1402347600000, header: 'Концерт в 2014 году', text: tourText }
+  { section: 'tours', date: 1473714000000, header: 'Следующий концерт в начале сентября', text: tourText },
+  { section: 'tours', date: 1466370000000, header: 'Следующий концерт в июне', text: tourText },
+  { section: 'tours', date: 1464626230695, header: 'Самый последний концерт', text: tourText },
+  { section: 'tours', date: 1463762230000, header: 'Какой-то майский концерт', text: tourText },
+  { section: 'tours', date: 1462898229305, header: 'Первый концерт в мае', text: tourText },
+  { section: 'tours', date: 1431362229305, header: 'Концерт в 2015 году', text: tourText },
+  { section: 'tours', date: 1402347600000, header: 'Концерт в 2014 году', text: tourText }
 ];
