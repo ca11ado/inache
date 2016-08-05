@@ -4,14 +4,13 @@
 }
 
 .item {
-  composes: headerSmall from '../../composes/fonts.css';
   text-align: center;
   padding: 10px 5px;
   display: inline-block;
 }
 
 .links {
-  color: blue;
+  color: black;
   text-decoration: none;
 }
 

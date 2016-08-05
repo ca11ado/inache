@@ -7,7 +7,7 @@ let Logo = React.createClass({
     return (
       <div id="logo" className={css.block}>
         <NavLink to="/">
-          <img className={css.logo} src="/img/icons/logo.jpg" />
+          <div className={css.logo}></div>
         </NavLink>
         <div id="contacts" className={css.contactsWrapper}>
           Связь с группой<br />

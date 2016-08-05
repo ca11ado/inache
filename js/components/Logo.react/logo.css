@@ -1,12 +1,12 @@
 .block {
-  background: no-repeat url('/img/group.jpg') 463px -34px;
-  background-size: 500px;
   height: 200px;
   position: relative;
 }
 
 .logo {
   height: 100%;
+  background: no-repeat url('/img/group.jpg') center -34px;
+  background-size: 500px;
 }
 
 .contactsWrapper {
