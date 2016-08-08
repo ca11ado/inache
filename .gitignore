@@ -1,6 +1,0 @@
-node_modules
-.gitignore
-public
-.idea
-*.swp
-npm-debug.log
