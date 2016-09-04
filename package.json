@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "npm run cp-files && if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:dev": "webpack-dev-server --inline --content-base public/ --history-api-fallback",
+    "start:dev": "webpack --watch & node serverNode.js",
     "start:prod": "webpack && node serverNode.js",
     "cp-files": "mkdir -p public/img && cp -R img public && cp js/index.html public"
   },
