@@ -8,7 +8,7 @@ let MainBlock = require('../main-block/mainBlock');
 let Content = require('../main-block/content/content');
 let GalleryActions = require('../../actions/GalleryActions');
 let GalleryStore = require('../../stores/GalleryStore');
-let Album = require('./Album/Album');
+let AlbumCover = require('./AlbumCover/AlbumCover');
 
 function getNewsState() {
   return {
@@ -52,7 +52,7 @@ let Gallery = React.createClass({
         name: album.name,
         link: album.link
       };
-      return <Album { ...props } />;
+      return <AlbumCover { ...props } />;
     });
 
     return (

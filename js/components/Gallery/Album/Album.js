@@ -1,6 +1,11 @@
 let _ = require('lodash');
 let css = require('./Album.css');
 let React = require('react');
+let moment = require('moment');
+let Header = require('../../main-block/Header/header');
+let SubNavigation = require('../../sub-navigation/subNavigation');
+let MainBlock = require('../../main-block/mainBlock');
+let Content = require('../../main-block/content/content');
 
 let Album = React.createClass({
   getInitialState () {
@@ -17,15 +22,19 @@ let Album = React.createClass({
   },
 
   render () {
-    let photoPath = `/img/albums/${this.props.photo}`;
-    let name = this.props.name;
-    let link = this.props.link;
+    let year = this.props.params.year;
+    let backLink = [{ title: `Back to ${year}`, link: year }];
 
     return (
-      <div className={css.albumWrapper}>
-        <img className={css.album} src={photoPath} />
-        <div className={css.albumName}><a href={link}>{name}</a></div>
-      </div>
+      <MainBlock>
+        <Header>Фото</Header>
+        <SubNavigation base='gallery' list={backLink} />
+        <Content>
+          <div>
+            <h2>Here will be album's photos</h2>
+          </div>
+        </Content>
+      </MainBlock>
     );
   }
 });
