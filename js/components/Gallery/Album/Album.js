@@ -7,7 +7,7 @@ let SubNavigation = require('../../sub-navigation/subNavigation');
 let MainBlock = require('../../main-block/mainBlock');
 let Content = require('../../main-block/content/content');
 
-let Lightbox = require('react-images');
+let Gallery = require('react-image-gallery').default;
 
 let Album = React.createClass({
   getInitialState () {
@@ -26,6 +26,11 @@ let Album = React.createClass({
   render () {
     let year = this.props.params.year;
     let backLink = [{ title: `Back to ${year}`, link: year }];
+    const images = [
+      { original: 'http://lorempixel.com/1000/600/nature/1/' },
+      { original: 'http://lorempixel.com/1000/600/nature/2/' },
+      { original: 'http://lorempixel.com/1000/600/nature/3/' }
+    ];
 
     return (
       <MainBlock>
@@ -34,25 +39,18 @@ let Album = React.createClass({
         <Content>
           <div>
             <h2>Here will be album's photos</h2>
-            <Lightbox
-              images={[
-                { src: '/img/albums/1463762230000/1.jpg' },
-                { src: '/img/albums/1463762230000/2.jpg' },
-                { src: '/img/albums/1463762230000/2.jpg' }
-              ]}
-              isOpen={this.state.lightboxIsOpen}
-              onClickPrev={this.gotoPrevious}
-              onClickNext={this.gotoNext}
-              onClose={this.closeLightbox}
-            />
+            <Gallery
+              items={images}
+              slideInterval={2000}
+              onImageLoad={this.handleImageLoad}/>
           </div>
         </Content>
       </MainBlock>
     );
   },
 
-  closeLightbox () {
-
+  handleImageLoad(event) {
+    console.log('Image loaded ', event.target)
   }
 });
 
