@@ -9,6 +9,8 @@ let Content = require('../../main-block/content/content');
 
 let Gallery = require('react-image-gallery').default;
 
+require('style!css!sass!react-image-gallery/styles/scss/image-gallery.scss');
+
 let Album = React.createClass({
   getInitialState () {
     return {};
