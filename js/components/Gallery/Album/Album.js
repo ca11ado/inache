@@ -27,11 +27,22 @@ let Album = React.createClass({
       { original: '/img/albums/4mEhutW27Dw.jpg' },
       { original: '/img/albums/5vGsKR_fk0c.jpg' },
       { original: '/img/albums/6uvv0G7sS9s.jpg' },
+      { original: '/img/albums/4mEhutW27Dw.jpg' },
+      { original: '/img/albums/5vGsKR_fk0c.jpg' },
+      { original: '/img/albums/6uvv0G7sS9s.jpg' },
+      { original: '/img/albums/4mEhutW27Dw.jpg' },
+      { original: '/img/albums/5vGsKR_fk0c.jpg' },
+      { original: '/img/albums/6uvv0G7sS9s.jpg' },
       { original: '/img/albums/4mEhutW27Dw.jpg' }
     ];
 
     let imagesPreview = _.map(images, (image, index) => {
-      return React.createElement('img', { key: `preview-image-${index}`, src: image.original, width: '200px' });
+      return React.createElement('img', {
+        key: `preview-image-${index}`,
+        src: image.original,
+        width: '15%',
+        height: '15%'
+      });
     });
 
     return (
@@ -39,7 +50,7 @@ let Album = React.createClass({
         <Header>Фотографии в альбоме</Header>
         <SubNavigation base='gallery' list={backLink}/>
         <Content>
-          <div>{imagesPreview}</div>
+          <div className={css.block}>{imagesPreview}</div>
         </Content>
       </MainBlock>
     );

@@ -12,6 +12,7 @@ let Video = require('./components/Video/Video');
 let Gallery = require('./components/Gallery/Gallery');
 let Album = require('./components/Gallery/Album/Album');
 let Press = require('./components/press/press');
+let Photo = require('./components/Gallery/Photo/Photo');
 
 let TestComponent = require('./components/TestComponent');
 let currentYear = moment().year();
@@ -38,6 +39,7 @@ module.exports = (
       <Route path="/gallery/:year" component={Gallery} />
     </Route>
     <Route path="/gallery/:year/:album" component={Album} />
+    <Route path="/gallery/:year/:album/:photo" component={Photo} />
     <Route path="/press" component={Press} />
   </Route>
 );
