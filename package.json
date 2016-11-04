@@ -42,7 +42,7 @@
     "start": "npm run cp-files && if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "webpack --watch & node serverNode.js",
     "start:prod": "webpack && node serverNode.js",
-    "cp-files": "mkdir -p public/img && cp -R img public && cp js/index.html js/gallery.css public"
+    "cp-files": "mkdir -p public/img && cp -R img public && cp js/index.html public"
   },
   "author": "Khimtsov Anton"
 }

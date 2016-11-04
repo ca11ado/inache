@@ -1,12 +1,17 @@
 let _ = require('lodash');
-let css = require('./Album.css');
+let css = require('./Photo.css');
 let React = require('react');
+let moment = require('moment');
 let Header = require('../../main-block/Header/header');
 let SubNavigation = require('../../sub-navigation/subNavigation');
 let MainBlock = require('../../main-block/mainBlock');
 let Content = require('../../main-block/content/content');
 
-let Album = React.createClass({
+let Gallery = require('react-image-gallery').default;
+
+require('style!css!sass!react-image-gallery/styles/scss/image-gallery.scss');
+
+let Photo = React.createClass({
   getInitialState () {
     return {};
   },
@@ -30,20 +35,25 @@ let Album = React.createClass({
       { original: '/img/albums/4mEhutW27Dw.jpg' }
     ];
 
-    let imagesPreview = _.map(images, (image, index) => {
-      return React.createElement('img', { key: `preview-image-${index}`, src: image.original, width: '200px' });
-    });
-
     return (
       <MainBlock>
-        <Header>Фотографии в альбоме</Header>
+        <Header>Фото</Header>
         <SubNavigation base='gallery' list={backLink}/>
         <Content>
-          <div>{imagesPreview}</div>
+          <div>
+            <Gallery
+              items={images}
+              slideInterval={2000}
+              onImageLoad={this.handleImageLoad}/>
+          </div>
         </Content>
       </MainBlock>
     );
+  },
+
+  handleImageLoad(event) {
+    console.log('Image loaded ', event.target)
   }
 });
 
-module.exports = Album;
+module.exports = Photo;
