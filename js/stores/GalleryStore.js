@@ -5,8 +5,9 @@ let AllConstants = require('../constants/AllConstants');
 let api = require('./DataBaseMock');
 
 let CHANGE_EVENT = 'change';
-let _albums = [];
+let _albums = {};
 let _years = [];
+let _album = [];
 
 function setAlbums (albums) {
   _albums = albums;
@@ -14,6 +15,10 @@ function setAlbums (albums) {
 
 function setYears (years) {
   _years = years;
+}
+
+function setAlbum (album) {
+  _album = album;
 }
 
 let ItemsStore = Object.assign({}, EventEmitter.prototype, {
@@ -27,6 +32,10 @@ let ItemsStore = Object.assign({}, EventEmitter.prototype, {
   
   getAvailableYears: () => {
     return _years;
+  },
+  
+  getAlbum: () => {
+    return _album;
   },
 
   emitChange: function() {
@@ -50,7 +59,6 @@ let ItemsStore = Object.assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(action) {
   let year = _.get(action, 'year');
-
   switch(action.actionType) {
     case AllConstants.GET_ALBUMS:
       api.getSectionItemsForYear('gallery', year)
@@ -63,6 +71,14 @@ AppDispatcher.register(function(action) {
       api.getAvailableYears('gallery')
         .then((items) => {
           setYears(items);
+          ItemsStore.emitChange();
+        });
+      break;
+    case AllConstants.GET_ALBUM:
+      let albumId = _.get(action, 'albumId');
+      api.getAlbum(albumId)
+        .then((album) => {
+          setAlbum(album);
           ItemsStore.emitChange();
         });
       break;

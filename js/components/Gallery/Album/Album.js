@@ -5,16 +5,43 @@ let Header = require('../../main-block/Header/header');
 let SubNavigation = require('../../sub-navigation/subNavigation');
 let MainBlock = require('../../main-block/mainBlock');
 let Content = require('../../main-block/content/content');
+let AlbumActions = require('../../../actions/GalleryActions');
+let GalleryStore = require('../../../stores/GalleryStore');
+
+function getAlbumState () {
+  return {
+    album: GalleryStore.getAlbum()
+  };
+}
+
+let PhotoPreview = React.createClass({
+  render () {
+    let { src, link } = this.props.photo;
+
+    return (
+      <div className={css.photoPreview}>
+        <a href={link}>
+          <img className={css.previewImg} src={src} />
+        </a>
+      </div>
+    );
+  }
+});
 
 let Album = React.createClass({
   getInitialState () {
-    return {};
+    let albumId = this.props.params.album;
+    AlbumActions.getAlbum(albumId);
+    
+    return { album: {} } ;
   },
 
   componentDidMount: function () {
+    GalleryStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function () {
+    GalleryStore.removeChangeListener(this._onChange);
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -22,27 +49,19 @@ let Album = React.createClass({
 
   render () {
     let year = this.props.params.year;
+    let album = this.props.params.album;
     let backLink = [{ title: `Back to ${year}`, link: year }];
-    const images = [
-      { original: '/img/albums/4mEhutW27Dw.jpg' },
-      { original: '/img/albums/5vGsKR_fk0c.jpg' },
-      { original: '/img/albums/6uvv0G7sS9s.jpg' },
-      { original: '/img/albums/4mEhutW27Dw.jpg' },
-      { original: '/img/albums/5vGsKR_fk0c.jpg' },
-      { original: '/img/albums/6uvv0G7sS9s.jpg' },
-      { original: '/img/albums/4mEhutW27Dw.jpg' },
-      { original: '/img/albums/5vGsKR_fk0c.jpg' },
-      { original: '/img/albums/6uvv0G7sS9s.jpg' },
-      { original: '/img/albums/4mEhutW27Dw.jpg' }
-    ];
+    let images = _.get(this.state.album, 'photos', []);
 
     let imagesPreview = _.map(images, (image, index) => {
-      return React.createElement('img', {
+      let props = {
         key: `preview-image-${index}`,
-        src: image.original,
-        width: '15%',
-        height: '15%'
-      });
+        photo: {
+          src: image.original,
+          link: `/gallery/${year}/${album}/${index}`
+        }
+      };
+      return <PhotoPreview { ...props } />;
     });
 
     return (
@@ -54,6 +73,10 @@ let Album = React.createClass({
         </Content>
       </MainBlock>
     );
+  },
+
+  _onChange () {
+    this.setState(getAlbumState());
   }
 });
 

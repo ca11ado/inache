@@ -41,7 +41,11 @@ module.exports = (req, res, next) => {
       }
       break;
     case METHODS.gallery:
-      if (path1) {
+      if (id) {
+        prom = Promise.resolve(db.get(METHODS.gallery)
+          .find({ date: Number(id) })
+          .value());
+      } else if (path1) {
         prom = Promise.resolve(db.get(METHODS.gallery)
           .filter((item) => moment(item.date).year() === path1)
           .value());

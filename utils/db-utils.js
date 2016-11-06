@@ -24,12 +24,29 @@ const defaultScheme = {
     { date: 1402347600000, header: 'Концерт в 2014 году', text: tourText }
   ],
   gallery: [
-    { date: 1466370000000, name: 'Следующийй концерт в июне', photo: '6uvv0G7sS9s.jpg', link: '/gallery/2016/1466370000000' },
-    { date: 1464626230695, name: 'Самый последний концерт', photo: '6uvv0G7sS9s.jpg', link: '/gallery/2016/1464626230695' },
-    { date: 1463762230000, name: 'Какой-то майский концерт', photo: '6uvv0G7sS9s.jpg', link: '/gallery/2016/1463762230000' },
-    { date: 1462898229305, name: 'Первый концерт в мае', photo: '6uvv0G7sS9s.jpg', link: '/gallery/2016/1462898229305' },
-    { date: 1431362229305, name: 'Концерт в 2015 году', photo: '6uvv0G7sS9s.jpg', link: '/gallery/2015/1431362229305' },
-    { date: 1402347600000, name: 'Концерт в 2014 году', photo: '6uvv0G7sS9s.jpg', link: '/gallery/2014/1402347600000' }
+    {
+      date: 1466370000000,
+      name: 'Следующийй концерт в июне',
+      photo: '/img/albums/6uvv0G7sS9s.jpg',
+      link: '/gallery/2016/1466370000000',
+      photos: [
+        { original: '/img/albums/1466370000000/1.jpg' },
+        { original: '/img/albums/1466370000000/2.jpg' },
+        { original: '/img/albums/1466370000000/3.jpg' },
+        { original: '/img/albums/1466370000000/1.jpg' },
+        { original: '/img/albums/1466370000000/2.jpg' },
+        { original: '/img/albums/1466370000000/1.jpg' },
+        { original: '/img/albums/1466370000000/3.jpg' },
+        { original: '/img/albums/1466370000000/1.jpg' },
+        { original: '/img/albums/1466370000000/2.jpg' },
+        { original: '/img/albums/1466370000000/3.jpg' }
+      ]
+    },
+    { date: 1464626230695, name: 'Самый последний концерт', photo: '/img/albums/6uvv0G7sS9s.jpg', link: '/gallery/2016/1464626230695' },
+    { date: 1463762230000, name: 'Какой-то майский концерт', photo: '/img/albums/6uvv0G7sS9s.jpg', link: '/gallery/2016/1463762230000' },
+    { date: 1462898229305, name: 'Первый концерт в мае', photo: '/img/albums/6uvv0G7sS9s.jpg', link: '/gallery/2016/1462898229305' },
+    { date: 1431362229305, name: 'Концерт в 2015 году', photo: '/img/albums/6uvv0G7sS9s.jpg', link: '/gallery/2015/1431362229305' },
+    { date: 1402347600000, name: 'Концерт в 2014 году', photo: '/img/albums/6uvv0G7sS9s.jpg', link: '/gallery/2014/1402347600000' }
   ]
 };
 

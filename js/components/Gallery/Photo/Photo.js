@@ -6,20 +6,35 @@ let Header = require('../../main-block/Header/header');
 let SubNavigation = require('../../sub-navigation/subNavigation');
 let MainBlock = require('../../main-block/mainBlock');
 let Content = require('../../main-block/content/content');
+let GalleryStore = require('../../../stores/GalleryStore');
+let GalleryAction = require('../../../actions/GalleryActions');
 
 let Gallery = require('react-image-gallery').default;
 
 require('style!css!sass!react-image-gallery/styles/scss/image-gallery.scss');
 
+function getPhotoState () {
+  return {
+    album: GalleryStore.getAlbum()
+  };
+}
+
 let Photo = React.createClass({
   getInitialState () {
-    return {};
+    let albumId = this.props.params.album;
+    GalleryAction.getAlbum(albumId);
+
+    return {
+      album: {}
+    };
   },
 
   componentDidMount: function () {
+    GalleryStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function () {
+    GalleryStore.removeChangeListener(this._onChange);
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -27,13 +42,22 @@ let Photo = React.createClass({
 
   render () {
     let year = this.props.params.year;
-    let backLink = [{ title: `Back to ${year}`, link: year }];
-    const images = [
-      { original: '/img/albums/4mEhutW27Dw.jpg' },
-      { original: '/img/albums/5vGsKR_fk0c.jpg' },
-      { original: '/img/albums/6uvv0G7sS9s.jpg' },
-      { original: '/img/albums/4mEhutW27Dw.jpg' }
-    ];
+    let albumId = this.props.params.album;
+    let photos = _.get(this.state.album, 'photos', []);
+    let photoNumber = Number(this.props.params.photo);
+    let backLink = [{ title: `Back to album`, link: `${year}/${albumId}` }];
+    let startIndex = photoNumber > photos.length ? 0 : photoNumber;
+
+    let GalleryProps = {
+      items: photos,
+      startIndex,
+      slideInterval: 2000,
+      onImageLoad: this.handleImageLoad,
+      showIndex: true
+    };
+    let Gall = photos.length > 0
+      ? React.createElement(Gallery, GalleryProps)
+      : '';
 
     return (
       <MainBlock>
@@ -41,14 +65,15 @@ let Photo = React.createClass({
         <SubNavigation base='gallery' list={backLink}/>
         <Content>
           <div>
-            <Gallery
-              items={images}
-              slideInterval={2000}
-              onImageLoad={this.handleImageLoad}/>
+            {Gall}
           </div>
         </Content>
       </MainBlock>
     );
+  },
+
+  _onChange () {
+    this.setState(getPhotoState());
   },
 
   handleImageLoad(event) {

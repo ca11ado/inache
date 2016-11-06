@@ -17,7 +17,7 @@ let AlbumCover = React.createClass({
   },
 
   render () {
-    let photoPath = `/img/albums/${this.props.photo}`;
+    let photoPath = this.props.photo;
     let name = this.props.name;
     let link = this.props.link;
 

@@ -28,10 +28,10 @@ function request (path) {
 let DataBase = {
   getAvailableYears: (section) => request(`years/${section}`),
 
-  getNewsForYear: (year) => new Promise ((res) => {
+  getNewsForYear: (year) => new Promise((res) => {
     let activeYear = Number(year);
     let showActiveYearNews = _.chain(_data)
-      .filter(({ date }) => {
+      .filter(({date}) => {
         return moment(date).year() === activeYear && date.section === 'news';
       })
       .value();
@@ -49,7 +49,7 @@ let DataBase = {
   getLastSectionItems (section, count) {
     return new Promise((res) => {
       let lastItems = _.chain(_data)
-        .filter({ section })
+        .filter({section})
         .takeRight(count)
         .value();
 
@@ -60,7 +60,7 @@ let DataBase = {
   getFeatureTours (count) {
     return new Promise((res) => {
       let tours = _.chain(_data)
-        .filter(({ section, date }) => {
+        .filter(({section, date}) => {
           let tourSection = section === 'tour';
           let featureDate = moment(date) > moment();
           return tourSection && featureDate;
@@ -70,7 +70,9 @@ let DataBase = {
 
       res(tours);
     });
-  }
+  },
+
+  getAlbum: (album) => request(`gallery/2015/${album}`)
 };
 
 module.exports = DataBase;
