@@ -1,42 +1,73 @@
-let css = require('./music.css');
+let css = require('./Music.css');
 let React = require('react');
 let MainBlock = require('../main-block/mainBlock');
 let Header = require('../main-block/Header/header');
 let Content = require('../main-block/content/content.js');
+let MusicActions = require('../../actions/MusicActions');
+let MusicStore = require('../../stores/MusicStore');
+
+function getMusicState () {
+  return {
+    albums: MusicStore.getAlbums()
+  }
+}
+
+let Album = React.createClass({
+  render () {
+    let { src, name, urlName } = this.props;
+
+    return (
+      <div className={css.coverWrap}>
+        <a href={`/music/${urlName}`}>
+          <img className={css.albumCover} src={src} />
+          <div className={css.description}>{name}</div>
+        </a>
+      </div>
+    );
+  }
+});
 
 let Music = React.createClass({
   getInitialState () {
-    return {};
+    MusicActions.getAlbums();
+    return {
+      albums: []
+    };
   },
 
   componentDidMount: function() {
+    MusicStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
+    MusicStore.removeChangeListener(this._onChange);
   },
 
   render () {
+    let albums = this.state.albums;
+    let showAlbums = _.map(albums, ({ name, photo: src, urlName }, index) => {
+      let props = {
+        key: `music-album-cover-${index}`,
+        name,
+        src,
+        urlName
+      };
+
+      return <Album { ...props } />;
+    });
+
     return (
       <MainBlock>
         <Header>Музыка</Header>
         <Content>
-          <div className={css.albumsRow}>
-            <div className={css.coverWrap}>
-              <img className={css.albumCover} src="/img/albums/4mEhutW27Dw.jpg" />
-              <div className={css.description}>2015 Воспрять</div>
-            </div>
-            <div className={css.coverWrap}>
-              <img className={css.albumCover} src="/img/albums/5vGsKR_fk0c.jpg" />
-              <div  className={css.description}>2016 Теплей (сингл)</div>
-            </div>
-            <div className={css.coverWrap}>
-              <img className={css.albumCover} src="/img/albums/6uvv0G7sS9s.jpg" />
-              <div  className={css.description}>2016 Something else</div>
-            </div>
-          </div>
+          <div className={css.albumsWrapper}>{showAlbums}</div>
         </Content>
       </MainBlock>
     );
+  },
+
+  _onChange () {
+    this.setState(getMusicState());
   }
 });
 

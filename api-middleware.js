@@ -7,7 +7,8 @@ const METHODS = {
   tours: 'tours',
   news: 'news',
   gallery: 'gallery',
-  years: 'years'
+  years: 'years',
+  music: 'music'
 };
 
 module.exports = (req, res, next) => {
@@ -64,6 +65,16 @@ module.exports = (req, res, next) => {
         .uniq()
         .sortBy((year) => year)
         .value());
+      break;
+    case METHODS.music:
+      if (path1) {
+        prom = Promise.resolve(db.get(METHODS.music)
+          .find({ urlName: path1 })
+          .value());
+      } else {
+        prom = Promise.resolve(db.get(METHODS.music)
+          .value()); 
+      }
       break;
     default:
       return next();

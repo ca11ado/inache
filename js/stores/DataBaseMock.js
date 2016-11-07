@@ -40,6 +40,12 @@ let DataBase = {
   }),
 
   /**
+   * Получить записи конкретного раздела
+   * @param {String} sectionName
+   */
+  getSectionItems: (sectionName) => request(`${sectionName}`),
+  
+  /**
    * Получить записи конкретного раздела для конкретного года
    * @param {String} sectionName
    * @param {Number} year
@@ -72,7 +78,17 @@ let DataBase = {
     });
   },
 
-  getAlbum: (album) => request(`gallery/2015/${album}`)
+  /**
+   * Получить альбом для фотогалереи (указанный год в url не имеет значения)
+   * @param {Number} album
+   */
+  getAlbum: (album) => request(`gallery/2015/${album}`),
+
+  /**
+   * Получить музыкальный альбом
+   * @param {String} albumUrlName - название альбома на латинице
+   */
+  getMusicAlbum: (albumUrlName) => request(`music/${albumUrlName}`)
 };
 
 module.exports = DataBase;

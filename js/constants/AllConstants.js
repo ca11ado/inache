@@ -9,5 +9,7 @@ module.exports = keyMirror({
   GET_FEATURE_TOURS: null,
   GET_ALBUMS_YEARS: null,
   GET_ALBUMS: null,
-  GET_ALBUM: null
+  GET_ALBUM: null,
+  GET_MUSIC_ALBUMS: null,
+  GET_MUSIC_ALBUM: null
 });

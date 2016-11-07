@@ -47,6 +47,23 @@ const defaultScheme = {
     { date: 1462898229305, name: 'Первый концерт в мае', photo: '/img/albums/6uvv0G7sS9s.jpg', link: '/gallery/2016/1462898229305' },
     { date: 1431362229305, name: 'Концерт в 2015 году', photo: '/img/albums/6uvv0G7sS9s.jpg', link: '/gallery/2015/1431362229305' },
     { date: 1402347600000, name: 'Концерт в 2014 году', photo: '/img/albums/6uvv0G7sS9s.jpg', link: '/gallery/2014/1402347600000' }
+  ],
+  music: [
+    {
+      date: 1464626230695,
+      name: 'Темплей (сингл)',
+      urlName: 'templey',
+      photo: '/img/music-albums/4mEhutW27Dw.jpg',
+      link: '/music/1464626230695',
+      about: 'А тут будет текст об альбом',
+      sings: [
+        { name: 'Первая песня', text: 'Текст первой песни', playerLink: 'http://yandex.ru' },
+        { name: 'Вторая песня', text: 'Текст второй песни', playerLink: 'http://yandex.ru' },
+        { name: 'Третья песня', text: 'Текст третьей песни', playerLink: 'http://yandex.ru' }
+      ]
+    },
+    { date: 1463762230000, name: 'Воспрять', urlName: 'vospryat', photo: '/img/music-albums/5vGsKR_fk0c.jpg', link: '/music/1463762230000' },
+    { date: 1462898229305, name: 'Первый альбом в мае', urlName: 'first_albom', photo: '/img/music-albums/6uvv0G7sS9s.jpg', link: '/music/1462898229305' }
   ]
 };
 
