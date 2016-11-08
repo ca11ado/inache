@@ -7,6 +7,7 @@ let api = require('./DataBaseMock');
 let CHANGE_EVENT = 'change';
 let _albums = [];
 let _album = {};
+let _activeSongNumber = 0;
 
 function setAlbums (albums) {
   _albums = albums;
@@ -14,6 +15,10 @@ function setAlbums (albums) {
 
 function setAlbum (album) {
   _album = album;
+}
+
+function setActiveSongNumber (number) {
+  _activeSongNumber = number;
 }
 
 let ItemsStore = Object.assign({}, EventEmitter.prototype, {
@@ -27,6 +32,10 @@ let ItemsStore = Object.assign({}, EventEmitter.prototype, {
 
   getAlbum: () => {
     return _album;
+  },
+
+  getActiveSongNumber: () => {
+    return _activeSongNumber;
   },
 
   emitChange: function() {
@@ -66,6 +75,9 @@ AppDispatcher.register(function(action) {
           ItemsStore.emitChange();
         })
         .catch((e) => console.log('Error in MusicStore: get album'));
+      break;
+    case AllConstants.SET_ACTIVE_SONG_NUMBER:
+      setActiveSongNumber(action.number);
       break;
     default:
     // no op

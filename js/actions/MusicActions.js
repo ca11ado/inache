@@ -14,6 +14,13 @@ var NewsActions = {
       actionType: AllConstants.GET_MUSIC_ALBUM,
       albumUrlName
     });
+  },
+  
+  setActiveSongNumber: (number) => {
+    AppDispatcher.dispatch({
+      actionType: AllConstants.SET_ACTIVE_SONG_NUMBER,
+      number
+    })
   }
 };
 

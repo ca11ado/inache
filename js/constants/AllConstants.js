@@ -11,5 +11,6 @@ module.exports = keyMirror({
   GET_ALBUMS: null,
   GET_ALBUM: null,
   GET_MUSIC_ALBUMS: null,
-  GET_MUSIC_ALBUM: null
+  GET_MUSIC_ALBUM: null,
+  SET_ACTIVE_SONG_NUMBER: null
 });

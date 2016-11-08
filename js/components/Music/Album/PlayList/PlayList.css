@@ -1,0 +1,15 @@
+.block {
+  width: 150px;
+  height: 300px;
+}
+
+.songsList {
+}
+
+.song {
+  cursor: pointer;
+}
+
+.activeSong {
+  color: red;
+}

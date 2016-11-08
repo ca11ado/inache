@@ -56,10 +56,10 @@ const defaultScheme = {
       photo: '/img/music-albums/4mEhutW27Dw.jpg',
       link: '/music/1464626230695',
       about: 'А тут будет текст об альбом',
-      sings: [
-        { name: 'Первая песня', text: 'Текст первой песни', playerLink: 'http://yandex.ru' },
-        { name: 'Вторая песня', text: 'Текст второй песни', playerLink: 'http://yandex.ru' },
-        { name: 'Третья песня', text: 'Текст третьей песни', playerLink: 'http://yandex.ru' }
+      songs: [
+        { name: 'Первая песня', text: 'Текст первой песни', playerLink: 'http://kroogi.ru/1' },
+        { name: 'Вторая песня', text: 'Текст второй песни', playerLink: 'http://kroogi.ru/2' },
+        { name: 'Третья песня', text: 'Текст третьей песни', playerLink: 'http://kroogi.ru/3' }
       ]
     },
     { date: 1463762230000, name: 'Воспрять', urlName: 'vospryat', photo: '/img/music-albums/5vGsKR_fk0c.jpg', link: '/music/1463762230000' },
