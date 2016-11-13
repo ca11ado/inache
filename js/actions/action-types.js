@@ -1,0 +1,9 @@
+// Users
+export const GET_PRESS_ITEMS = 'GET_PRESS_ITEMS';
+
+// Widgets
+export const GET_WIDGETS_SUCCESS = 'GET_WIDGETS_SUCCESS';
+export const DELETE_WIDGET_SUCCESS = 'DELETE_WIDGET_SUCCESS';
+
+// Search Layout
+export const LOAD_SEARCH_LAYOUT = 'LOAD_SEARCH_LAYOUT';

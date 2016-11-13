@@ -44,7 +44,7 @@ let DataBase = {
    * @param {String} sectionName
    */
   getSectionItems: (sectionName) => request(`${sectionName}`),
-  
+
   /**
    * Получить записи конкретного раздела для конкретного года
    * @param {String} sectionName
@@ -88,7 +88,12 @@ let DataBase = {
    * Получить музыкальный альбом
    * @param {String} albumUrlName - название альбома на латинице
    */
-  getMusicAlbum: (albumUrlName) => request(`music/${albumUrlName}`)
+  getMusicAlbum: (albumUrlName) => request(`music/${albumUrlName}`),
+
+  /**
+   * Получить записи прессы
+   */
+  getPressItems: () => request('press')
 };
 
 module.exports = DataBase;

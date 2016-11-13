@@ -1,8 +1,11 @@
+let _ = require('lodash');
+let moment = require('moment');
 let css = require('./press.css');
 let React = require('react');
 let MainBlock = require('../main-block/mainBlock');
 let Header = require('../main-block/Header/header');
 let Content = require('../main-block/content/content');
+let PressView = require('./press-view');
 
 let api = require('../../stores/DataBaseMock');
 
@@ -24,23 +27,13 @@ let Press = React.createClass({
 
   render () {
     let pressItems = this.props.pressItems;
-    let pressHeader = _.map(pressItems, ({ date, header }, index) => {
-      return (<li key={`press-${index}`}>{header}</li>);
-    });
+    let items = _.reverse(_.chain(pressItems)
+      .groupBy(({ date}) => moment(date).year())
+      .map((presses, year) => ({ year, presses }))
+      .value());
 
     return (
-      <MainBlock>
-        <Header>Пресса</Header>
-        <Content>
-          <p>2015</p>
-          Заголовок статьи - автор, ресурс
-
-          <h2>Trying redux</h2>
-          <ul>
-            {pressHeader}
-          </ul>
-        </Content>
-      </MainBlock>
+      <PressView items={items} />
     );
   }
 });

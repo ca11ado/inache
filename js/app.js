@@ -1,10 +1,11 @@
 let ReactDOM = require('react-dom');
 let React = require('react');
-let { Router, Route, browserHistory } = require('react-router');
 
-let routes = require('./routes');
+import { Provider } from 'react-redux';
+import store from './store';
+let router = require('./router');
 
 ReactDOM.render(
-  <Router routes={routes} history={browserHistory}/>,
+  <Provider store={store}>{router}</Provider>,
   document.getElementById('app')
 );

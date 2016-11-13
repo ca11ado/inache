@@ -9,6 +9,26 @@ let tourText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasell
  Aliquam a risus a mi blandit facilisis eget nec turpis. Suspendisse potenti. Duis quis metus turpis. Suspendisse venenatis tortor ac nunc varius, vel lobortis mi viverra. In rhoncus ligula lorem, at consequat est cursus ac. Nam pellentesque eleifend enim, sit amet pretium enim sollicitudin eu. Interdum et malesuada fames ac ante ipsum primis in faucibus.`;
 
 const defaultScheme = {
+  press: [
+    {
+      date: 1464626230695,
+      header: 'Самая последняя пресса',
+      author: 'administrator',
+      link: 'http://google.ru'
+    },
+    {
+      date: 1462898229305,
+      header: 'Первая пресса в мае',
+      author: 'administrator',
+      link: 'http://google.ru'
+    },
+    {
+      date: 1431362229305,
+      header: 'Пресса из 2015',
+      author: 'administrator',
+      link: 'http://google.ru'
+    }
+  ],
   news: [
     { date: 1464626230695, header: 'Самая последняя новость', text: text },
     { date: 1463762230000, header: 'Какая-то майская новость', text: text },
