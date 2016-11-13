@@ -1,27 +1,27 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var AllConstants = require('../constants/AllConstants');
+const TYPES = require('../constants/AllConstants');
 
-var NewsActions = {
-  
-  getAlbumsForYear: (year) => {
-    AppDispatcher.dispatch({
-      actionType: AllConstants.GET_ALBUMS,
-      year
-    });
+let GalleryActions = {
+
+  getAlbumsForYear: (albums) => {
+    return {
+      type: TYPES.GET_ALBUMS,
+      albums
+    };
   },
 
-  getAvailableYears: () => {
-    AppDispatcher.dispatch({
-      actionType: AllConstants.GET_ALBUMS_YEARS
-    });
+  getAvailableYears: (years) => {
+    return {
+      type: TYPES.GET_ALBUMS_YEARS,
+      years
+    };
   },
 
-  getAlbum: (albumId) => {
-    AppDispatcher.dispatch({
-      actionType: AllConstants.GET_ALBUM,
-      albumId
-    });
+  getAlbum: (album) => {
+    return {
+      type: TYPES.GET_ALBUM,
+      album
+    };
   }
 };
 
-module.exports = NewsActions;
+module.exports = GalleryActions;

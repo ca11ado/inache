@@ -1,8 +1,11 @@
 let keyMirror = require('keymirror');
 
 module.exports = keyMirror({
+  // PRESS
+  GET_PRESS_ITEMS: null,
+
   GET_NEWS: null,
-  GET_NEWS_YEARS: null,
+  GET_YEARS: null,
   GET_LAST_NEWS: null,
   GET_TOURS: null,
   GET_TOURS_YEARS: null,

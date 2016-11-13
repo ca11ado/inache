@@ -22,7 +22,9 @@
     "react-dom": "^15.1.0",
     "react-image-gallery": "^0.7.3",
     "react-images": "^0.5.1",
+    "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
+    "redux": "^3.6.0",
     "request": "^2.74.0"
   },
   "devDependencies": {
@@ -32,6 +34,7 @@
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
     "http-server": "^0.9.0",
+    "jest": "^17.0.3",
     "node-sass": "^3.11.0",
     "resolve-url": "^0.2.1",
     "sass-loader": "^4.0.2",
@@ -43,7 +46,9 @@
     "start": "npm run cp-files && if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "webpack --watch & node serverNode.js",
     "start:prod": "webpack && node serverNode.js",
-    "cp-files": "mkdir -p public/img && cp -R img public && cp js/index.html public"
+    "cp-files": "mkdir -p public/img && cp -R img public && cp js/index.html public",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "author": "Khimtsov Anton"
 }

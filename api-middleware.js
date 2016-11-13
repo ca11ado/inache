@@ -8,7 +8,8 @@ const METHODS = {
   news: 'news',
   gallery: 'gallery',
   years: 'years',
-  music: 'music'
+  music: 'music',
+  press: 'press'
 };
 
 module.exports = (req, res, next) => {
@@ -23,6 +24,9 @@ module.exports = (req, res, next) => {
 
   let prom;
   switch (section) {
+    case METHODS.press:
+      prom = Promise.resolve(db.get(METHODS.press));
+      break;
     case METHODS.tours:
       if (path1) {
         prom = Promise.resolve(db.get(METHODS.tours)
@@ -73,7 +77,7 @@ module.exports = (req, res, next) => {
           .value());
       } else {
         prom = Promise.resolve(db.get(METHODS.music)
-          .value()); 
+          .value());
       }
       break;
     default:
