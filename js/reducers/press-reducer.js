@@ -1,4 +1,4 @@
-import * as types from '../actions/action-types';
+let TYPES = require('../actions/action-types');
 
 const initialState = {
   pressItems: [{ date: '', header: '', author: '', link: '' }]
@@ -7,13 +7,11 @@ const initialState = {
 const pressReducer = function(state = initialState, action) {
 
   switch(action.type) {
-
-    case types.GET_PRESS_ITEMS:
+    case TYPES.GET_PRESS_ITEMS:
       return Object.assign({}, state, { pressItems: action.pressItems });
   }
 
   return state;
-
 };
 
-export default pressReducer;
+module.exports = pressReducer;

@@ -1,8 +1,8 @@
-import * as types from '../actions/action-types';
+const TYPES = require('../actions/action-types');
 
 export function getPressItems (pressItems) {
   return {
-    type: types.GET_PRESS_ITEMS,
+    type: TYPES.GET_PRESS_ITEMS,
     pressItems
   }
 }

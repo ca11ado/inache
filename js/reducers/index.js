@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
 // Reducers
-import pressReducer from './press-reducer';
+let pressReducer = require('./press-reducer');
+let galleryReducer = require('./GalleryReducer');
 
 // Combine Reducers
-var reducers = combineReducers({
-  pressState: pressReducer
+let reducers = combineReducers({
+  pressState: pressReducer,
+  galleryState: galleryReducer
 });
 
 module.exports = reducers;
