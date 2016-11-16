@@ -8,7 +8,8 @@ let News = require('./components/News/news');
 let Tour = require('./components/Tour/tour');
 let Band = require('./components/band/band');
 let Video = require('./components/Video/Video');
-let Gallery = require('./components/Gallery/AlbumsContainer');
+let Albums = require('./components/Gallery/AlbumsContainer');
+let Album = require('./components/Gallery/Album/AlbumContainer');
 let Press = require('./components/press/press-container');
 let Photo = require('./components/Gallery/Photo/Photo');
 let PageNotFound = require('./components/PageNotFound');
@@ -25,8 +26,8 @@ module.exports = (
       <Route path="press" component={Press} />
       <Route path="gallery">
         <IndexRedirect to={galleryIndexPath} />
-        <Route path=":year" component={Gallery} />
-        <Route path=":year/:albumId" component={PageNotFound} />
+        <Route path=":year" component={Albums} />
+        <Route path=":year/:albumId" component={Album} />
       </Route>
     </Route>
   </Router>
