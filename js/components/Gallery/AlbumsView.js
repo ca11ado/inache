@@ -1,5 +1,5 @@
 let _ = require('lodash');
-let css = require('./GalleryView.css');
+let css = require('./AlbumsView.css');
 let React = require('react');
 let Header = require('../main-block/Header/header');
 let SubNavigation = require('../sub-navigation/subNavigation');

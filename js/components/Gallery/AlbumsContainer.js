@@ -4,7 +4,7 @@ let moment = require('moment');
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
-let GalleryView = require('./GalleryView');
+let AlbumsView = require('./AlbumsView');
 
 const API = require('../../stores/DataBaseMock');
 
@@ -19,7 +19,7 @@ function getAlbumsAPI (year = moment().year()) {
     });
 }
 
-let GalleryContainer = React.createClass({
+let AlbumsContainer = React.createClass({
   componentDidMount () {
     API
       .getAvailableYears('gallery')
@@ -42,11 +42,11 @@ let GalleryContainer = React.createClass({
     let list = _.map(years, (year) => ({ title: year, link: year }));
 
     return (
-      <GalleryView albums={albums} list={list} />
+      <AlbumsView albums={albums} list={list} />
     );
   }
 });
 
 const mapStateToProps = ({ galleryState }) => ({ albums: galleryState.albums, years: galleryState.years });
 
-module.exports = connect(mapStateToProps)(GalleryContainer);
+module.exports = connect(mapStateToProps)(AlbumsContainer);
