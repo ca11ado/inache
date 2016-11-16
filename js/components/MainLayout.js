@@ -8,7 +8,7 @@ let flexBox = {
   justifyContent: 'center'
 };
 
-let TodoApp = React.createClass({
+let MainLayout = React.createClass({
 
   /**
    * @return {object}
@@ -21,14 +21,7 @@ let TodoApp = React.createClass({
         {this.props.children}
       </div>
     );
-  },
-
-  /**
-   * Event handler for 'change' events coming from the TodoStore
-   */
-  _onChange: function() {
   }
-
 });
 
-module.exports = TodoApp;
+module.exports = MainLayout;
