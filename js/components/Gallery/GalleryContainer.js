@@ -8,17 +8,19 @@ let GalleryView = require('./GalleryView');
 
 const API = require('../../stores/DataBaseMock');
 
+function getAlbumsAPI (year = moment().year()) {
+  API
+    .getSectionItemsForYear('gallery', year)
+    .then((albums) => {
+      store.dispatch({
+        type: TYPES.GET_ALBUMS,
+        albums
+      });
+    });
+}
+
 let GalleryContainer = React.createClass({
   componentDidMount () {
-    let year = Number(this.props.params.year) || moment().year();
-    API
-      .getSectionItemsForYear('gallery', year)
-      .then((albums) => {
-        store.dispatch({
-          type: TYPES.GET_ALBUMS,
-          albums
-        });
-      });
     API
       .getAvailableYears('gallery')
       .then((years) => {
@@ -26,7 +28,12 @@ let GalleryContainer = React.createClass({
           type: TYPES.GET_ALBUMS_YEARS,
           years
         })
-      })
+      });
+    getAlbumsAPI(this.props.params.year);
+  },
+
+  componentWillReceiveProps: function (nextProps) {
+    getAlbumsAPI(nextProps.params.year);
   },
 
   render () {

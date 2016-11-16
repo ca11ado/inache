@@ -13,18 +13,21 @@ let Press = require('./components/press/press-container');
 let Photo = require('./components/Gallery/Photo/Photo');
 let PageNotFound = require('./components/PageNotFound');
 
-let TestComponent = require('./components/TestComponent');
-let currentYear = moment().year();
-let newsIndexPath = `/news/${currentYear}`;
-let toursIndexPath = `/tour/${currentYear}`;
-let galleryIndexPath = `/gallery/${currentYear}`;
+const currentYear = moment().year();
+const newsIndexPath = `/news/${currentYear}`;
+const toursIndexPath = `/tour/${currentYear}`;
+const galleryIndexPath = `/gallery/${currentYear}`;
 
 module.exports = (
   <Router history={browserHistory}>
     <Route path="/" component={MainLayout}>
       <IndexRoute component={PageNotFound} />
-      <Route path="press" component={Press}/>
-      <Route path="gallery" component={Gallery}/>
+      <Route path="press" component={Press} />
+      <Route path="gallery">
+        <IndexRedirect to={galleryIndexPath} />
+        <Route path=":year" component={Gallery} />
+        <Route path=":year/:albumId" component={PageNotFound} />
+      </Route>
     </Route>
   </Router>
 );
