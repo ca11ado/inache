@@ -10,10 +10,12 @@ let AlbumPreview = (props) => {
 
   return (
     <div className={css.albumWrapper}>
-      <img className={css.album} src={props.photo} />
-      <div className={css.albumName}>
-        <a href={props.link}>{props.name}</a>
-      </div>
+      <a href={props.link}>
+        <img className={css.album} src={props.photo} />
+        <div className={css.albumName}>
+          {props.name}
+        </div>
+      </a>
     </div>
   );
 };
