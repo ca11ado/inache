@@ -28,6 +28,7 @@ module.exports = (
         <IndexRedirect to={galleryIndexPath} />
         <Route path=":year" component={Albums} />
         <Route path=":year/:albumId" component={Album} />
+        <Route path=":year/:albumId/:photoId" component={Photo} />
       </Route>
     </Route>
   </Router>
