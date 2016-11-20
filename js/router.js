@@ -14,6 +14,7 @@ let Press = require('./components/press/press-container');
 let Photo = require('./components/Gallery/Photo/Photo');
 let PageNotFound = require('./components/PageNotFound');
 let Music = require('./components/Music/MusicContainer');
+let MusicAlbum = require('./components/Music/Album/AlbumContainer');
 
 const currentYear = moment().year();
 const newsIndexPath = `/news/${currentYear}`;
@@ -35,6 +36,7 @@ module.exports = (
       <Route path="tour" component={Tours} />
       <Route path="video" component={Video} />
       <Route path="music" component={Music} />
+      <Route path="music/:albumId" component={MusicAlbum}/>
     </Route>
   </Router>
 );

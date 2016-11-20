@@ -1,6 +1,6 @@
 const TYPES = require('../constants/AllConstants');
 
-const DEFAULT_STATE = { album: {}, albums: [], years: [] };
+const DEFAULT_STATE = { album: {}, activeSong: 0 };
 
 let MusicReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
@@ -8,6 +8,8 @@ let MusicReducer = (state = DEFAULT_STATE, action) => {
       return Object.assign({}, state, { albums: action.albums });
     case TYPES.GET_MUSIC_ALBUM:
       return Object.assign({}, state, { album: action.album });
+    case TYPES.SET_ACTIVE_SONG_NUMBER:
+      return Object.assign({}, state, { activeSongNumber: action.activeSongNumber });
   }
 
   return state;

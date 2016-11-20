@@ -1,52 +1,41 @@
 let _ = require('lodash');
-let css = require('./Album.css');
+let css = require('./album.css');
 let React = require('react');
+let moment = require('moment');
+let store = require('../../../store');
+let { connect } = require('react-redux');
+let TYPES = require('../../../actions/action-types');
 let Header = require('../../main-block/Header/header');
 let SubNavigation = require('../../sub-navigation/subNavigation');
 let MainBlock = require('../../main-block/mainBlock');
 let Content = require('../../main-block/content/content');
-let MusicStore = require('../../../stores/MusicStore');
-let MusicActions = require('../../../actions/MusicActions');
+let AlbumView = require('./AlbumView');
 
 let Cover = require('./Cover/Cover');
 let About = require('./About/About');
 let PlayList = require('./PlayList/PlayList');
 let Song = require('./Song/Song');
 
-const DEFAULT_SONG_NUMBER = 0;
+const API = require('../../../stores/DataBaseMock');
 
-function getAlbumState () {
-  return {
-    album: MusicStore.getAlbum(),
-    activeSongNumber: MusicStore.getActiveSongNumber()
-  };
-}
-
-let Album = React.createClass({
-  getInitialState () {
-    let albumUrlName = this.props.params.album;
-    MusicActions.getAlbum(albumUrlName);
-    MusicActions.setActiveSongNumber(DEFAULT_SONG_NUMBER);
-
-    return getAlbumState();
-  },
-
-  componentDidMount: function () {
-    MusicStore.addChangeListener(this._onChange);
-  },
-
-  componentWillUnmount: function () {
-    MusicStore.removeChangeListener(this._onChange);
-  },
-
-  componentWillReceiveProps: function (nextProps) {
+let AlbumContainer = React.createClass({
+  componentDidMount () {
+    const albumId = this.props.params.albumId;
+    API
+      .getMusicAlbum(albumId)
+      .then((album) => {
+        store.dispatch({
+          type: TYPES.GET_MUSIC_ALBUM,
+          album
+        });
+      });
   },
 
   render () {
     let backLink = [{ title: `Back to albums`, link: '' }];
-    
-    let { photo, name, songs, about } = this.state.album;
-    let activeSongNumber = this.state.activeSongNumber;
+
+    let { album, activeSongNumber } = this.props;
+    let { photo, name, songs, about } = album;
     let song = _.get(songs, activeSongNumber, '');
 
     let playerLink = _.get(song, 'playerLink', false);
@@ -63,15 +52,16 @@ let Album = React.createClass({
             <div>{playerIframe}</div>
             <About about={about} />
             <Song song={song} />
-          </div> 
+          </div>
         </Content>
       </MainBlock>
     );
-  },
-
-  _onChange () {
-    this.setState(getAlbumState());
   }
 });
 
-module.exports = Album;
+const mapStateToProps = ({ musicState }) => ({
+  album: musicState.album,
+  activeSongNumber: musicState.activeSongNumber
+});
+
+module.exports = connect(mapStateToProps)(AlbumContainer);
