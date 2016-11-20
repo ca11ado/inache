@@ -5,17 +5,18 @@ let Header = require('../main-block/Header/header');
 let SubNavigation = require('../sub-navigation/subNavigation');
 let MainBlock = require('../main-block/mainBlock');
 let Content = require('../main-block/content/content');
+let NavLink = require('../framework/NavLink.react/navlink');
 
 let AlbumPreview = (props) => {
 
   return (
     <div className={css.albumWrapper}>
-      <a href={props.link}>
+      <NavLink to={props.link}>
         <img className={css.album} src={props.photo} />
         <div className={css.albumName}>
           {props.name}
         </div>
-      </a>
+      </NavLink>
     </div>
   );
 };

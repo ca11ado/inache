@@ -5,6 +5,7 @@ let Header = require('../../main-block/Header/header');
 let SubNavigation = require('../../sub-navigation/subNavigation');
 let MainBlock = require('../../main-block/mainBlock');
 let Content = require('../../main-block/content/content');
+let NavLink = require('../../framework/NavLink.react/navlink');
 
 let PhotoPreview = React.createClass({
   render () {
@@ -12,9 +13,9 @@ let PhotoPreview = React.createClass({
 
     return (
       <div className={css.photoPreview}>
-        <a href={link}>
+        <NavLink to={link}>
           <img className={css.previewImg} src={src} />
-        </a>
+        </NavLink>
       </div>
     );
   }
