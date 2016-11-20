@@ -33,7 +33,9 @@ let AlbumsContainer = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-    getAlbumsAPI(nextProps.params.year);
+    if (nextProps.params.year !== this.props.params.year) {
+      getAlbumsAPI(nextProps.params.year);
+    }
   },
 
   render () {
