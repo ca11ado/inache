@@ -8,10 +8,10 @@ let AlbumPreview = (props) => {
 
   return (
     <div className={css.coverWrap}>
-      <a href={`/music/${urlName}`}>
+      <NavLink to={`/music/${urlName}`}>
         <img className={css.albumCover} src={src} />
         <div className={css.description}>{name}</div>
-      </a>
+      </NavLink>
     </div>
   );
 };

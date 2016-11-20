@@ -1,18 +1,22 @@
 let _ = require('lodash');
+let shortid = require('shortid');
 let css = require('./PlayList.css');
 let React = require('react');
+let NavLink = require('../../../framework/NavLink.react/navlink');
 
 let PlayList = (props) => {
-  let { name, songs, activeSong } = props;
+  let { name, songs, activeSong, urlName } = props;
 
   return (
     <div className={css.block}>
       <p>{name}</p>
       <ol className={css.songsList}>
         { _.map(songs, (song, index) => {
-          let songClass = css.song;
-          let className = activeSong === index ? `${songClass} ${css.activeSong}` : songClass;
-          return (<li className={className} key={`song-in-playlist-${index}`}>{song.name}</li>);
+          return (
+            <li key={shortid.generate()}>
+              <NavLink to={`/music/${urlName}/${index + 1}`}>{song.name}</NavLink>
+            </li>
+          );
         })}
       </ol>
     </div>

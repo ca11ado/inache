@@ -1,6 +1,6 @@
 const TYPES = require('../constants/AllConstants');
 
-const DEFAULT_STATE = { album: {}, activeSong: 0 };
+const DEFAULT_STATE = { albums: [], album: {}, activeSongNumber: 1 };
 
 let MusicReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {

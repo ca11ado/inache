@@ -33,10 +33,16 @@ module.exports = (
         <Route path=":year/:albumId/:photoId" component={Photo} />
       </Route>
       <Route path="band" component={Band} />
-      <Route path="tour" component={Tours} />
+      <Route path="tour">
+        <IndexRedirect to={toursIndexPath} />
+        <Route path=":year" component={Tours}/>
+      </Route>
       <Route path="video" component={Video} />
       <Route path="music" component={Music} />
-      <Route path="music/:albumId" component={MusicAlbum}/>
+      <Route path="music/:albumId">
+        <IndexRedirect to="1" />
+        <Route path=":activeSongNumber" component={MusicAlbum}/>
+      </Route>
       <Route path="news">
         <IndexRedirect to={newsIndexPath} />
         <Route path=":year" component={News} />

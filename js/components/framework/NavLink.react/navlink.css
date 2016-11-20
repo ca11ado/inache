@@ -1,7 +1,8 @@
 .link {
-  color: blue;
+  composes: links from '../../../composes/links.css';
+
 }
 
 .activeLink {
-  color: green;
+  composes: active from '../../../composes/links.css';
 }

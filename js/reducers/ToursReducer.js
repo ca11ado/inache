@@ -1,6 +1,6 @@
-const TYPES = require('../constants/AllConstants');
+const TYPES = require('../actions/action-types');
 
-const DEFAULT_STATE = { tours: {}, years: [] };
+const DEFAULT_STATE = { tours: [], years: [] };
 
 let ToursReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {

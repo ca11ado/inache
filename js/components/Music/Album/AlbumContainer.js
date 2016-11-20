@@ -34,8 +34,11 @@ let AlbumContainer = React.createClass({
   render () {
     let backLink = [{ title: `Back to albums`, link: '' }];
 
-    let { album, activeSongNumber } = this.props;
-    let { photo, name, songs, about } = album;
+    let { album } = this.props;
+    let propsSongNumber = _.get(this.props, 'activeSongNumber', 1);
+    let activeSongNumber = this.props.params.activeSongNumber || propsSongNumber;
+
+    let { photo, name, songs, about, urlName } = album;
     let song = _.get(songs, activeSongNumber, '');
 
     let playerLink = _.get(song, 'playerLink', false);
@@ -48,7 +51,12 @@ let AlbumContainer = React.createClass({
         <Content>
           <div className={css.block}>
             <Cover photo={photo} />
-            <PlayList name={name} songs={songs} activeSong={activeSongNumber} />
+            <PlayList
+              name={name}
+              songs={songs}
+              activeSong={activeSongNumber}
+              urlName={urlName}
+            />
             <div>{playerIframe}</div>
             <About about={about} />
             <Song song={song} />

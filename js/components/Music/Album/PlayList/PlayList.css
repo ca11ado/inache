@@ -5,11 +5,3 @@
 
 .songsList {
 }
-
-.song {
-  cursor: pointer;
-}
-
-.activeSong {
-  color: red;
-}

@@ -10,7 +10,7 @@ let NavLink = React.createClass({
       className: css.link,
       activeClassName: css.activeLink
     };
-    let props = _.defaults(this.props, def);
+    let props = _.defaults({}, this.props, def);
 
     return <Link { ...props } />
   }
