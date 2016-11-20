@@ -7,7 +7,7 @@ let HomePage = require('./components/HomePage/homePage');
 let News = require('./components/News/news');
 let Tours = require('./components/Tours/ToursContainer');
 let Band = require('./components/Band/BandContainer');
-let Video = require('./components/Video/Video');
+let Video = require('./components/Video/VideoContainer');
 let Albums = require('./components/Gallery/AlbumsContainer');
 let Album = require('./components/Gallery/Album/AlbumContainer');
 let Press = require('./components/press/press-container');
@@ -32,6 +32,7 @@ module.exports = (
       </Route>
       <Route path="band" component={Band} />
       <Route path="tour" component={Tours} />
+      <Route path="video" component={Video} />
     </Route>
   </Router>
 );

@@ -4,18 +4,16 @@ let MainBlock = require('../main-block/mainBlock');
 let Header = require('../main-block/Header/header');
 let Content = require('../main-block/content/content');
 
-let Video = React.createClass({
-  render () {
+let Video = () => {
 
-    return (
-      <MainBlock>
-        <Header>Видео</Header>
-        <Content>
-          Здесь будет видео
-        </Content>
-      </MainBlock>
-    );
-  }
-});
+  return (
+    <MainBlock>
+      <Header>Видео</Header>
+      <Content>
+        Здесь будет видео
+      </Content>
+    </MainBlock>
+  );
+};
 
 module.exports = Video;
