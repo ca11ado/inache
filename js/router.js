@@ -37,6 +37,10 @@ module.exports = (
       <Route path="video" component={Video} />
       <Route path="music" component={Music} />
       <Route path="music/:albumId" component={MusicAlbum}/>
+      <Route path="news">
+        <IndexRedirect to={newsIndexPath} />
+        <Route path=":year" component={News} />
+      </Route>
     </Route>
   </Router>
 );
