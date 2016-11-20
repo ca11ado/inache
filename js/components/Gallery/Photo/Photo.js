@@ -16,15 +16,9 @@ let Gallery = require('react-image-gallery').default;
 require('style!css!sass!react-image-gallery/styles/scss/image-gallery.scss');
 
 let PhotoView = (props) => {
-  let year = props.year;
-  let albumId = props.albumId;
   let photos = _.get(props.album, 'photos', []);
   let photoNumber = Number(props.photoId);
   let startIndex = photoNumber > photos.length ? 0 : photoNumber;
-  let backLink = [
-    { title: `Обратно в ${year}`, link: `${year}` },
-    { title: `Обратно к альбому`, link: `${year}/${albumId}` }
-  ];
 
   let GalleryProps = {
     items: photos,
@@ -38,15 +32,9 @@ let PhotoView = (props) => {
     : '';
 
   return (
-    <MainBlock>
-      <Header>Фото</Header>
-      <SubNavigation base='gallery' list={backLink}/>
-      <Content>
-        <div>
-          {Gall}
-        </div>
-      </Content>
-    </MainBlock>
+    <div>
+      {Gall}
+    </div>
   );
 };
 
@@ -65,16 +53,25 @@ let PhotoContainer = React.createClass({
   },
 
   render () {
+    let { year, albumId, photoId } = this.props.params;
+    let backLink = [
+      { title: `Обратно в ${year}`, link: `${year}` },
+      { title: `Обратно к альбому`, link: `${year}/${albumId}` }
+    ];
     let props = {
       album: this.props.album,
-      year: this.props.params.year,
-      albumId: this.props.params.albumId,
-      photoId: this.props.params.photoId,
-      handleImageLoad: (event) => console.log('Image loaded', event.target)
+      photoId,
+      handleImageLoad: (event) => (event.target)
     };
 
     return (
-      <PhotoView { ...props } />
+      <MainBlock>
+        <Header>Фото</Header>
+        <SubNavigation base='gallery' list={backLink}/>
+        <Content>
+          <PhotoView { ...props } />
+        </Content>
+      </MainBlock>
     );
   }
 });

@@ -1,10 +1,6 @@
 let _ = require('lodash');
 let css = require('./AlbumView.css');
 let React = require('react');
-let Header = require('../../main-block/Header/header');
-let SubNavigation = require('../../sub-navigation/subNavigation');
-let MainBlock = require('../../main-block/mainBlock');
-let Content = require('../../main-block/content/content');
 let NavLink = require('../../framework/NavLink.react/navlink');
 
 let PhotoPreview = React.createClass({
@@ -36,15 +32,9 @@ let AlbumView = (props) => {
   let content = photos.length > 0 ? photos : <h1>Нет ни одной фотографии</h1>;
 
   return (
-    <MainBlock>
-      <Header>Фото</Header>
-      <SubNavigation base='gallery' list={props.backLink} />
-      <Content>
-        <div className={css.block}>
-          {content}
-        </div>
-      </Content>
-    </MainBlock>
+    <div className={css.block}>
+      {content}
+    </div>
   );
 };
 

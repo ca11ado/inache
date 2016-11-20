@@ -3,6 +3,10 @@ let React = require('react');
 let store = require('../../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../../actions/action-types');
+let Header = require('../../main-block/Header/header');
+let SubNavigation = require('../../sub-navigation/subNavigation');
+let MainBlock = require('../../main-block/mainBlock');
+let Content = require('../../main-block/content/content');
 let AlbumView = require('./AlbumView');
 
 const API = require('../../../stores/DataBaseMock');
@@ -25,18 +29,23 @@ let AlbumContainer = React.createClass({
   render () {
     let year = this.props.params.year;
     let albumId = this.props.params.albumId;
-    let backLink = [{ title: `Back to ${year}`, link: year }];
+    let backLink = [{ title: `Обратно к ${year}`, link: year }];
     let images = _.get(this.props.album, 'photos', []);
 
     let props = {
-      backLink,
       images,
       albumId,
       year
     };
 
     return (
-      <AlbumView { ...props } />
+      <MainBlock>
+        <Header>Фото</Header>
+        <SubNavigation base='gallery' list={backLink} />
+        <Content>
+          <AlbumView { ...props } />
+        </Content>
+      </MainBlock>
     );
   }
 });

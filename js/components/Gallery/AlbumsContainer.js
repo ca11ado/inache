@@ -4,6 +4,10 @@ let moment = require('moment');
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
+let Header = require('../main-block/Header/header');
+let SubNavigation = require('../sub-navigation/subNavigation');
+let MainBlock = require('../main-block/mainBlock');
+let Content = require('../main-block/content/content');
 let AlbumsView = require('./AlbumsView');
 
 const API = require('../../stores/DataBaseMock');
@@ -44,7 +48,13 @@ let AlbumsContainer = React.createClass({
     let list = _.map(years, (year) => ({ title: year, link: year }));
 
     return (
-      <AlbumsView albums={albums} list={list} />
+      <MainBlock>
+        <Header>Фото</Header>
+        <SubNavigation base='gallery' list={list} />
+        <Content>
+          <AlbumsView albums={albums} />
+        </Content>
+      </MainBlock>
     );
   }
 });
