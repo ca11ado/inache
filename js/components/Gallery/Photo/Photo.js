@@ -20,8 +20,11 @@ let PhotoView = (props) => {
   let albumId = props.albumId;
   let photos = _.get(props.album, 'photos', []);
   let photoNumber = Number(props.photoId);
-  let backLink = [{ title: `Back to album`, link: `${year}/${albumId}` }];
   let startIndex = photoNumber > photos.length ? 0 : photoNumber;
+  let backLink = [
+    { title: `Обратно в ${year}`, link: `${year}` },
+    { title: `Обратно к альбому`, link: `${year}/${albumId}` }
+  ];
 
   let GalleryProps = {
     items: photos,
