@@ -5,7 +5,7 @@ let moment = require('moment');
 let MainLayout = require('./components/MainLayout');
 let HomePage = require('./components/HomePage/homePage');
 let News = require('./components/News/news');
-let Tour = require('./components/Tour/tour');
+let Tours = require('./components/Tours/ToursContainer');
 let Band = require('./components/Band/BandContainer');
 let Video = require('./components/Video/Video');
 let Albums = require('./components/Gallery/AlbumsContainer');
@@ -31,6 +31,7 @@ module.exports = (
         <Route path=":year/:albumId/:photoId" component={Photo} />
       </Route>
       <Route path="band" component={Band} />
+      <Route path="tour" component={Tours} />
     </Route>
   </Router>
 );
