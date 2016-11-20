@@ -1,13 +1,10 @@
 let _ = require('lodash');
 let css = require('./Photo.css');
 let React = require('react');
-let moment = require('moment');
 let Header = require('../../main-block/Header/header');
 let SubNavigation = require('../../sub-navigation/subNavigation');
 let MainBlock = require('../../main-block/mainBlock');
 let Content = require('../../main-block/content/content');
-let GalleryStore = require('../../../stores/GalleryStore');
-let GalleryAction = require('../../../actions/GalleryActions');
 
 let { connect } = require('react-redux');
 let TYPES = require('../../../actions/action-types');
@@ -19,10 +16,10 @@ let Gallery = require('react-image-gallery').default;
 require('style!css!sass!react-image-gallery/styles/scss/image-gallery.scss');
 
 let PhotoView = (props) => {
-  let year = this.props.params.year;
-  let albumId = this.props.params.albumId;
+  let year = props.year;
+  let albumId = props.albumId;
   let photos = _.get(props.album, 'photos', []);
-  let photoNumber = Number(this.props.params.photoId);
+  let photoNumber = Number(props.photoId);
   let backLink = [{ title: `Back to album`, link: `${year}/${albumId}` }];
   let startIndex = photoNumber > photos.length ? 0 : photoNumber;
 
@@ -30,7 +27,7 @@ let PhotoView = (props) => {
     items: photos,
     startIndex,
     slideInterval: 2000,
-    //onImageLoad: this.handleImageLoad,
+    onImageLoad: props.handleImageLoad,
     showIndex: true
   };
   let Gall = photos.length > 0
@@ -66,7 +63,11 @@ let PhotoContainer = React.createClass({
 
   render () {
     let props = {
-      album: this.props.album
+      album: this.props.album,
+      year: this.props.params.year,
+      albumId: this.props.params.albumId,
+      photoId: this.props.params.photoId,
+      handleImageLoad: (event) => console.log('Image loaded', event.target)
     };
 
     return (
