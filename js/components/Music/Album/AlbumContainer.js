@@ -16,7 +16,7 @@ let About = require('./About/About');
 let PlayList = require('./PlayList/PlayList');
 let Song = require('./Song/Song');
 
-const API = require('../../../stores/DataBaseMock');
+const API = require('../../../api');
 
 let AlbumContainer = React.createClass({
   componentDidMount () {

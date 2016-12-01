@@ -1,7 +1,7 @@
 let _ = require('lodash');
 let moment = require('moment');
 
-let _data = require('../constants/dataForPage');
+let _data = require('./constants/dataForPage');
 
 const API_URL = 'http://127.0.0.1:3008/api/';
 const _request = require('request');

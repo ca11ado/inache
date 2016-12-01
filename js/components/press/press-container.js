@@ -3,7 +3,7 @@ let moment = require('moment');
 let React = require('react');
 let PressView = require('./press-view');
 
-let api = require('../../stores/DataBaseMock');
+let api = require('../../api');
 
 let { connect } = require('react-redux');
 let store = require('../../store');

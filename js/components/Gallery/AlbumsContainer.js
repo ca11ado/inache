@@ -10,7 +10,7 @@ let MainBlock = require('../main-block/mainBlock');
 let Content = require('../main-block/content/content');
 let AlbumsView = require('./AlbumsView');
 
-const API = require('../../stores/DataBaseMock');
+const API = require('../../api');
 
 function getAlbumsAPI (year = moment().year()) {
   API

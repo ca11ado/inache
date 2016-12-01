@@ -10,7 +10,7 @@ let MainBlock = require('../main-block/mainBlock');
 let Content = require('../main-block/content/content');
 let ToursView = require('./ToursView');
 
-const API = require('../../stores/DataBaseMock');
+const API = require('../../api');
 
 function getToursAPI (year = moment().year()) {
   API

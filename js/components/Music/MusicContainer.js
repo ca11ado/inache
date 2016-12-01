@@ -9,7 +9,7 @@ let MainBlock = require('../main-block/mainBlock');
 let Content = require('../main-block/content/content');
 let MusicView = require('./MusicView');
 
-const API = require('../../stores/DataBaseMock');
+const API = require('../../api');
 
 function getMusic (year = moment().year()) {
   API

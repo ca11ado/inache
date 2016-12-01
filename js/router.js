@@ -3,8 +3,7 @@ let React = require('react');
 let moment = require('moment');
 
 let MainLayout = require('./components/MainLayout');
-let HomePage = require('./components/HomePage/homePage');
-let News = require('./components/News/news');
+let News = require('./components/News/NewsContainer');
 let Tours = require('./components/Tours/ToursContainer');
 let Band = require('./components/Band/BandContainer');
 let Video = require('./components/Video/VideoContainer');

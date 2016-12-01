@@ -9,7 +9,7 @@ let Content = require('../../main-block/content/content');
 let { connect } = require('react-redux');
 let TYPES = require('../../../actions/action-types');
 let store = require('../../../store');
-const API = require('../../../stores/DataBaseMock');
+const API = require('../../../api');
 
 let Gallery = require('react-image-gallery').default;
 

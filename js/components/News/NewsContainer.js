@@ -10,7 +10,7 @@ let MainBlock = require('../main-block/mainBlock');
 let Content = require('../main-block/content/content');
 let NewsView = require('./NewsView');
 
-const API = require('../../stores/DataBaseMock');
+const API = require('../../api');
 
 function getNews (year = moment().year()) {
   API
@@ -49,8 +49,8 @@ let NewsContainer = React.createClass({
   },
 
   render () {
-    let years = this.state.years;
-    let news = this.state.news;
+    let years = this.props.years;
+    let news = this.props.news;
     let list = _.map(years, (year) => ({ title: year, link: year }));
 
     return (
