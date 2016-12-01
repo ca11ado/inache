@@ -9,7 +9,6 @@ let Header = require('../../main-block/Header/header');
 let SubNavigation = require('../../sub-navigation/subNavigation');
 let MainBlock = require('../../main-block/mainBlock');
 let Content = require('../../main-block/content/content');
-let AlbumView = require('./AlbumView');
 
 let Cover = require('./Cover/Cover');
 let About = require('./About/About');
@@ -50,16 +49,27 @@ let AlbumContainer = React.createClass({
         <SubNavigation base='music' list={backLink} />
         <Content>
           <div className={css.block}>
-            <Cover photo={photo} />
-            <PlayList
-              name={name}
-              songs={songs}
-              activeSong={activeSongNumber}
-              urlName={urlName}
-            />
-            <div>{playerIframe}</div>
-            <About about={about} />
-            <Song song={song} />
+            <div className={css.half}>
+              <div className={css.cell}>
+                <Cover className={css.leftBlockTop} photo={photo} />
+              </div>
+              <div className={css.cell}>
+                <PlayList
+                  className={css.leftBlockTop}
+                  name={name}
+                  songs={songs}
+                  activeSong={activeSongNumber}
+                  urlName={urlName}
+                />
+              </div>
+              <div className={`${css.cell} ${css.clearfix}`}>
+                <About about={about} />
+              </div>
+            </div>
+            <div className={css.half}>
+              <div>{playerIframe}</div>
+              <Song song={song} />
+            </div>
           </div>
         </Content>
       </MainBlock>

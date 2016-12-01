@@ -2,3 +2,17 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.half {
+  width: 50%;
+}
+
+.cell {
+  float:left;
+}
+
+.clearfix::after {
+  content: ' ';
+  clear: both;
+  display: table;
+}
