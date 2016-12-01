@@ -41,7 +41,7 @@ let AlbumContainer = React.createClass({
     let song = _.get(songs, activeSongNumber, '');
 
     let playerLink = _.get(song, 'playerLink', false);
-    let playerIframe = playerLink ? `<<<${playerLink}>>>` : '';
+    let playerIframe = playerLink ? (<iframe width="404" height="201" frameborder="0" src="//kroogi.com/player/iframe/3224424?locale=ru"></iframe>) : '';
 
     return (
       <MainBlock>
@@ -51,11 +51,10 @@ let AlbumContainer = React.createClass({
           <div className={css.block}>
             <div className={css.half}>
               <div className={css.cell}>
-                <Cover className={css.leftBlockTop} photo={photo} />
+                <Cover photo={photo} />
               </div>
               <div className={css.cell}>
                 <PlayList
-                  className={css.leftBlockTop}
                   name={name}
                   songs={songs}
                   activeSong={activeSongNumber}

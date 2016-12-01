@@ -8,6 +8,7 @@
 }
 
 .cell {
+  width: 50%;
   float:left;
 }
 
