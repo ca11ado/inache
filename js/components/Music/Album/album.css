@@ -7,9 +7,15 @@
   width: 50%;
 }
 
+.rightHalf {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
 .cell {
+  float: left;
   width: 50%;
-  float:left;
 }
 
 .clearfix::after {

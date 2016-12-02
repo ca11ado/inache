@@ -34,14 +34,13 @@ let AlbumContainer = React.createClass({
     let backLink = [{ title: `Back to albums`, link: '' }];
 
     let { album } = this.props;
-    let propsSongNumber = _.get(this.props, 'activeSongNumber', 1);
-    let activeSongNumber = this.props.params.activeSongNumber || propsSongNumber;
+    let receivedSongNumber = this.props.params.activeSongNumber - 1;
 
-    let { photo, name, songs, about, urlName } = album;
+    let { photo, name, songs = [], about, urlName } = album;
+    let activeSongNumber = isExist(receivedSongNumber, songs.length)
+      ? receivedSongNumber : 0;
     let song = _.get(songs, activeSongNumber, '');
-
-    let playerLink = _.get(song, 'playerLink', false);
-    let playerIframe = playerLink ? (<iframe width="404" height="201" frameborder="0" src="//kroogi.com/player/iframe/3224424?locale=ru"></iframe>) : '';
+    let playerLink = _.get(song, 'playerLink', '');
 
     return (
       <MainBlock>
@@ -49,25 +48,32 @@ let AlbumContainer = React.createClass({
         <SubNavigation base='music' list={backLink} />
         <Content>
           <div className={css.block}>
-            <div className={css.half}>
-              <div className={css.cell}>
-                <Cover photo={photo} />
+            <div className={`${css.half} ${css.rightHalf}`}>
+              <div>
+                <div className={css.cell}>
+                  <Cover photo={photo} />
+                </div>
+                <div className={css.cell}>
+                  <PlayList
+                    name={name}
+                    songs={songs}
+                    activeSong={activeSongNumber}
+                    urlName={urlName}
+                  />
+                </div>
               </div>
-              <div className={css.cell}>
-                <PlayList
-                  name={name}
-                  songs={songs}
-                  activeSong={activeSongNumber}
-                  urlName={urlName}
-                />
-              </div>
-              <div className={`${css.cell} ${css.clearfix}`}>
+              <div>
                 <About about={about} />
               </div>
             </div>
-            <div className={css.half}>
-              <div>{playerIframe}</div>
-              <Song song={song} />
+
+            <div className={`${css.half} ${css.rightHalf}`}>
+              <div>
+                <iframe width="404" height="201" src={playerLink}></iframe>
+              </div>
+              <div>
+                <Song song={song} />
+              </div>
             </div>
           </div>
         </Content>
@@ -75,6 +81,10 @@ let AlbumContainer = React.createClass({
     );
   }
 });
+
+function isExist (number, songsCount) {
+  return (number >= 0) && (number < songsCount);
+}
 
 const mapStateToProps = ({ musicState }) => ({
   album: musicState.album,
