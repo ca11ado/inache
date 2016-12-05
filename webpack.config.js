@@ -1,6 +1,20 @@
 let webpack = require('webpack');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const PRODUCTION_PLUGINS = [
+  new webpack.DefinePlugin({
+    'process.env':{
+      'NODE_ENV': JSON.stringify('production')
+    }
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    compress:{
+      warnings: true
+    }
+  }),
+  new webpack.optimize.OccurrenceOrderPlugin()
+];
+
 module.exports = {
   entry: './js/app.js',
 
@@ -10,12 +24,10 @@ module.exports = {
     publicPath: '/'
   },
 
-  plugins: process.env.NODE_ENV === 'production' ? [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+  plugins: [
+    ...(process.env.NODE_ENV === 'production' ? PRODUCTION_PLUGINS : []),
     new ExtractTextPlugin('[name].css')
-  ] : [new ExtractTextPlugin('[name].css')],
+  ],
 
   module: {
     noParse: /node_modules\/json-schema\/lib\/validate\.js/,
