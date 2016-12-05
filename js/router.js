@@ -23,7 +23,7 @@ const galleryIndexPath = `/gallery/${currentYear}`;
 module.exports = (
   <Router history={browserHistory}>
     <Route path="/" component={MainLayout}>
-      <IndexRoute component={PageNotFound} />
+      <IndexRedirect to={newsIndexPath} />
       <Route path="press" component={Press} />
       <Route path="gallery">
         <IndexRedirect to={galleryIndexPath} />
@@ -46,6 +46,7 @@ module.exports = (
         <IndexRedirect to={newsIndexPath} />
         <Route path=":year" component={News} />
       </Route>
+      <Route path="page-not-found" component={PageNotFound} />
     </Route>
   </Router>
 );
