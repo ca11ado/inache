@@ -1,8 +1,8 @@
 let css = require('./band.css');
 let React = require('react');
-let Header = require('../main-block/Header/header');
-let MainBlock = require('../main-block/mainBlock');
-let Content = require('../main-block/content/content');
+let Header = require('../MainBlock/Header/header');
+let MainBlock = require('../MainBlock/mainBlock');
+let Content = require('../MainBlock/content/content');
 
 let BandView = () => {
 

@@ -4,9 +4,9 @@ let moment = require('moment');
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
-let Header = require('../main-block/Header/header');
-let MainBlock = require('../main-block/mainBlock');
-let Content = require('../main-block/content/content');
+let Header = require('../MainBlock/Header/header');
+let MainBlock = require('../MainBlock/mainBlock');
+let Content = require('../MainBlock/content/content');
 let MusicView = require('./MusicView');
 
 const API = require('../../api');
