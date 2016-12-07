@@ -13,9 +13,11 @@ let NewsItem = (props) => {
 
   return (
     <div className={css.newsItemWrap}>
-      <div className={css.subHeader}>{date}</div>
-      <div className={css.header}>{header}</div>
-      <div className={css.text}>{text}</div>
+      <div className={css.headerContainer}>
+        <span className={css.header}>{header}</span>
+        <span className={css.subHeader}>{date}</span>
+      </div>
+      <div className={css.article}>{text}</div>
     </div>
   );
 };

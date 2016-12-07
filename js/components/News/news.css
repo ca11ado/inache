@@ -1,14 +1,22 @@
 .newsItemWrap {
-  margin-top: 10px;
+  margin-top: 24px;
+}
+
+.headerContainer {
+  position: relative;
+  margin-bottom: 6px;
 }
 
 .header {
   composes: headerBig from '../../composes/fonts.css';
-  text-align: center;
-  padding: 2px 0;
 }
 
 .subHeader {
-  composes: headerSmall from '../../composes/fonts.css';
-  text-align: center;
+  composes: small from '../../composes/fonts.css';
+  position: absolute;
+  right: 0;
+}
+
+.article {
+  composes: normal from '../../composes/fonts.css';
 }
