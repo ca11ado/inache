@@ -2,7 +2,7 @@ let _ = require('lodash');
 let css = require('./Photo.css');
 let React = require('react');
 let Header = require('../../MainBlock/Header/header');
-let SubNavigation = require('../../sub-navigation/subNavigation');
+let SubNavigation = require('../../SubNavigation/subNavigation');
 let MainBlock = require('../../MainBlock/mainBlock');
 let Content = require('../../MainBlock/content/content');
 
