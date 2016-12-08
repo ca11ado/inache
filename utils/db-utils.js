@@ -8,6 +8,35 @@ let text = `Таким образом новая модель организац
 let tourText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus posuere efficitur purus nec facilisis.
  Aliquam a risus a mi blandit facilisis eget nec turpis. Suspendisse potenti. Duis quis metus turpis. Suspendisse venenatis tortor ac nunc varius, vel lobortis mi viverra. In rhoncus ligula lorem, at consequat est cursus ac. Nam pellentesque eleifend enim, sit amet pretium enim sollicitudin eu. Interdum et malesuada fames ac ante ipsum primis in faucibus.`;
 
+let songText = `
+  Уж как темная ночка мне матушка,
+  Да и месяц месяцович мне батюшка,
+  А меньшая сестрица полудница,
+  Уж как старшая злая молоньица.
+  Ой ты ночь, моя ночь, где твоя дочь?
+  Говори-гуляй, Москва, да за околицу не выходи,
+  Гори-пылай, Москва, высоко кружат гуси-лебеди.
+  Говори еще, Москва, о темном золоте семи холмов
+  Гори свечой, Москва, как летний дым горька твоя любовь.
+  На семи-то холмах гуси-лебеди, О семи сердцах лебедь каждая,
+  Уж как первое сердце жемчужное,
+  А седьмое-то сердце железное.
+  Ой ты ночь, моя ночь, кто твоя дочь?
+  Говори-гуляй, Москва, да за околицу не выходи,
+  Гори-пылай, Москва, высоко кружат гуси-лебеди.
+  Говори еще, Москва, о темном золоте семи холмов,
+  Гори свечой, Москва, как летний дым горька твоя любовь.
+  У меня в Москве колокола звенят –
+  Троерукие, шестикрылые,
+  Семистрельные, невечерние,
+  Да и огненные мои лебеди!
+  Ой ты ночь, моя ночь, я твоя дочь!
+  Говори-гуляй, Москва, да за околицу не выходи,
+  Гори-пылай, Москва, высоко кружат гуси-лебеди.
+  Говори еще, Москва, о темном золоте семи холмов
+  Гори свечой, Москва, как летний дым горька твоя любовь.
+  Источник: http://reproduktor.net/melnica/gori-moskva/`;
+
 const defaultScheme = {
   press: [
     {
@@ -77,8 +106,8 @@ const defaultScheme = {
       link: '/music/1464626230695',
       about: 'А тут будет текст об альбомe',
       songs: [
-        { name: 'Первая песня', text: 'Текст первой песни', playerLink: '//kroogi.com/player/iframe/3224424?locale=ru' },
-        { name: 'Вторая песня', text: 'Текст второй песни', playerLink: '//kroogi.com/player/iframe/3225805?locale=en' },
+        { name: 'Первая песня', text: songText, playerLink: '//kroogi.com/player/iframe/3224424?locale=ru' },
+        { name: 'Вторая песня', text: 'Текст второй песни5', playerLink: '//kroogi.com/player/iframe/3225805?locale=en' },
         { name: 'Третья песня', text: 'Текст третьей песни', playerLink: '//kroogi.com/player/iframe/3225804?locale=en' }
       ]
     },
