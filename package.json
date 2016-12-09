@@ -48,7 +48,7 @@
     "start:dev": "npm run update-db && (webpack --watch & node serverNode.js)",
     "start:prod": "webpack && node serverNode.js",
     "cp-files": "mkdir -p public/img && cp -R img public && cp js/index.html public",
-    "update-db": "rm db.json && cd ./utils && node ./db-utils.js && cd ..",
+    "update-db": "rm -f db.json && cd ./utils && node ./db-utils.js && cd ..",
     "test": "jest",
     "test:watch": "npm test -- --watch"
   },

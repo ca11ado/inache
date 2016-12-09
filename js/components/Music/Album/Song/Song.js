@@ -4,7 +4,7 @@ let React = require('react');
 
 let Song = (props) => {
   return (
-    <div className={css.block}>
+    <div className={css.normal}>
       <pre>{props.song.text}</pre>
     </div>
   );

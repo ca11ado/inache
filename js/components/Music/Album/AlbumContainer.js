@@ -31,7 +31,7 @@ let AlbumContainer = React.createClass({
   },
 
   render () {
-    let backLink = [{ title: `Back to albums`, link: '' }];
+    let backLink = [{ title: `Обратно к альбомам`, link: '' }];
 
     let { album } = this.props;
     let receivedSongNumber = this.props.params.activeSongNumber - 1;

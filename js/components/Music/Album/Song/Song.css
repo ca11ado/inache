@@ -1,0 +1,3 @@
+.normal {
+  composes: normal from '../../../../composes/fonts.css';
+}
