@@ -9,7 +9,7 @@ let Element = React.createClass({
 
     return (
       <div className={css.tabMenu}>
-        <NavLink activeClassName={css.active} className={css.link} to={tab.link}>
+        <NavLink to={tab.link}>
           {tab.name}
         </NavLink>
       </div>

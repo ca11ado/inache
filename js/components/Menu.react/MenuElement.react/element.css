@@ -3,12 +3,3 @@
   padding: 10px 20px;
   display: inline-block;
 }
-
-.link {
-  text-decoration: none;
-  color: black;
-}
-
-.active {
-  color: red;
-}
