@@ -19,6 +19,10 @@ let AlbumPreview = (props) => {
 
 let GalleryView = (props) => {
 
+  if (!props.isShown) {
+    return (<div></div>);
+  }
+
   return (
     <div className={css.albumsList}>
       { _.map(props.albums, ({ photo, name, link }) => {

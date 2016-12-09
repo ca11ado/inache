@@ -5,10 +5,7 @@ let moment = require('moment');
 let store = require('../../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../../actions/action-types');
-let Header = require('../../MainBlock/Header/header');
 let SubNavigation = require('../../SubNavigation/subNavigation');
-let MainBlock = require('../../MainBlock/mainBlock');
-let Content = require('../../MainBlock/content/content');
 
 let Cover = require('./Cover/Cover');
 let About = require('./About/About');
@@ -43,10 +40,8 @@ let AlbumContainer = React.createClass({
     let playerLink = _.get(song, 'playerLink', '');
 
     return (
-      <MainBlock>
-        <Header>Фотографии в альбоме</Header>
+      <div>
         <SubNavigation base='music' list={backLink} />
-        <Content>
           <div className={css.block}>
             <div className={`${css.half} ${css.rightHalf}`}>
               <div>
@@ -76,8 +71,7 @@ let AlbumContainer = React.createClass({
               </div>
             </div>
           </div>
-        </Content>
-      </MainBlock>
+      </div>
     );
   }
 });

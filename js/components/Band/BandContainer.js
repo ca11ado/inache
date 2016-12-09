@@ -1,8 +1,5 @@
 let css = require('./band.css');
 let React = require('react');
-let Header = require('../MainBlock/Header/header');
-let MainBlock = require('../MainBlock/mainBlock');
-let Content = require('../MainBlock/content/content');
 
 let BandView = () => {
 
@@ -29,12 +26,7 @@ let BandContainer = React.createClass({
   render () {
 
     return (
-      <MainBlock>
-        <Header>О группе</Header>
-        <Content>
-          <BandView />
-        </Content>
-      </MainBlock>
+      <BandView />
     );
   }
 });

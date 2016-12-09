@@ -3,10 +3,7 @@ let React = require('react');
 let store = require('../../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../../actions/action-types');
-let Header = require('../../MainBlock/Header/header');
 let SubNavigation = require('../../SubNavigation/subNavigation');
-let MainBlock = require('../../MainBlock/mainBlock');
-let Content = require('../../MainBlock/content/content');
 let AlbumView = require('./AlbumView');
 
 const API = require('../../../api');
@@ -38,14 +35,14 @@ let AlbumContainer = React.createClass({
       year
     };
 
+    let isShown = !this.props.params.photoId;
+
     return (
-      <MainBlock>
-        <Header>Фото</Header>
+      <div>
         <SubNavigation base='gallery' list={backLink} />
-        <Content>
-          <AlbumView { ...props } />
-        </Content>
-      </MainBlock>
+        <AlbumView isShown={isShown} { ...props } />
+        {this.props.children}
+      </div>
     );
   }
 });

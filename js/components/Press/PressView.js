@@ -1,8 +1,5 @@
 let _ = require('lodash');
 let css = require('./press.css');
-let MainBlock = require('../MainBlock/mainBlock');
-let Header = require('../MainBlock/Header/header');
-let Content = require('../MainBlock/content/content');
 let React = require('react');
 
 let Press = (props) => {
@@ -26,12 +23,7 @@ let Press = (props) => {
   });
 
   return (
-  <MainBlock>
-    <Header>Пресса</Header>
-    <Content>
-      {itemsByYear}
-    </Content>
-  </MainBlock>
+    <div>{itemsByYear}</div>
   );
 };
 

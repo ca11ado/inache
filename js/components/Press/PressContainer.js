@@ -1,7 +1,7 @@
 let _ = require('lodash');
 let moment = require('moment');
 let React = require('react');
-let PressView = require('./press-view');
+let PressView = require('./PressView');
 
 let api = require('../../api');
 

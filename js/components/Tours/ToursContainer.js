@@ -4,10 +4,7 @@ let moment = require('moment');
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
-let Header = require('../MainBlock/Header/header');
 let SubNavigation = require('../SubNavigation/subNavigation');
-let MainBlock = require('../MainBlock/mainBlock');
-let Content = require('../MainBlock/content/content');
 let ToursView = require('./ToursView');
 
 const API = require('../../api');
@@ -49,13 +46,10 @@ let ToursContainer = React.createClass({
     });
 
     return (
-      <MainBlock>
-        <Header>Фото</Header>
+      <div>
         <SubNavigation base='tour' list={list} />
-        <Content>
-          <ToursView tours={tours} />
-        </Content>
-      </MainBlock>
+        <ToursView tours={tours} />
+      </div>
     );
   }
 });

@@ -9,7 +9,7 @@ let Band = require('./components/Band/BandContainer');
 let Video = require('./components/Video/VideoContainer');
 let Albums = require('./components/Gallery/AlbumsContainer');
 let Album = require('./components/Gallery/Album/AlbumContainer');
-let Press = require('./components/press/press-container');
+let Press = require('./components/Press/PressContainer');
 let Photo = require('./components/Gallery/Photo/Photo');
 let PageNotFound = require('./components/PageNotFound');
 let Music = require('./components/Music/MusicContainer');
@@ -37,10 +37,11 @@ module.exports = (
         <Route path=":year" component={Tours}/>
       </Route>
       <Route path="video" component={Video} />
-      <Route path="music" component={Music} />
-      <Route path="music/:albumId">
-        <IndexRedirect to="1" />
-        <Route path=":activeSongNumber" component={MusicAlbum}/>
+      <Route path="music" component={Music}>
+        <Route path=":albumId">
+          <IndexRedirect to="1" />
+          <Route path=":activeSongNumber" component={MusicAlbum}/>
+        </Route>
       </Route>
       <Route path="news">
         <IndexRedirect to={newsIndexPath} />

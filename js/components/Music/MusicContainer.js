@@ -4,9 +4,6 @@ let moment = require('moment');
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
-let Header = require('../MainBlock/Header/header');
-let MainBlock = require('../MainBlock/mainBlock');
-let Content = require('../MainBlock/content/content');
 let MusicView = require('./MusicView');
 
 const API = require('../../api');
@@ -35,14 +32,13 @@ let MusicContainer = React.createClass({
 
   render () {
     let albums = this.props.albums;
+    let isShown = !this.props.params.albumId;
 
     return (
-      <MainBlock>
-        <Header>Музыка</Header>
-        <Content>
-          <MusicView albums={albums} />
-        </Content>
-      </MainBlock>
+      <div>
+        <MusicView isShown={isShown} albums={albums} />
+        {this.props.children}
+      </div>
     );
   }
 });

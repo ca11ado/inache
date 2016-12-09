@@ -4,10 +4,7 @@ let moment = require('moment');
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
-let Header = require('../MainBlock/Header/header');
 let SubNavigation = require('../SubNavigation/subNavigation');
-let MainBlock = require('../MainBlock/mainBlock');
-let Content = require('../MainBlock/content/content');
 let NewsView = require('./NewsView');
 
 const API = require('../../api');
@@ -54,13 +51,10 @@ let NewsContainer = React.createClass({
     let list = _.map(years, (year) => ({ title: year, link: year }));
 
     return (
-      <MainBlock>
-        <Header>Новости</Header>
+      <div>
         <SubNavigation base='news' list={list} />
-        <Content>
-          <NewsView news={news} />
-        </Content>
-      </MainBlock>
+        <NewsView news={news} />
+      </div>
     );
   }
 });

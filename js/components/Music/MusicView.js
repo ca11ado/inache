@@ -18,6 +18,8 @@ let AlbumPreview = (props) => {
 
 let MusicView = (props) => {
 
+  if (!props.isShown) return (<div></div>);
+
   return (
     <div className={css.albumsWrapper}>
       { _.map(props.albums, ({ photo: src, name, urlName }) => {

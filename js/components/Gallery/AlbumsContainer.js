@@ -4,10 +4,7 @@ let moment = require('moment');
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
-let Header = require('../MainBlock/Header/header');
 let SubNavigation = require('../SubNavigation/subNavigation');
-let MainBlock = require('../MainBlock/mainBlock');
-let Content = require('../MainBlock/content/content');
 let AlbumsView = require('./AlbumsView');
 
 const API = require('../../api');
@@ -46,15 +43,14 @@ let AlbumsContainer = React.createClass({
     let albums = this.props.albums;
     let years = this.props.years;
     let list = _.map(years, (year) => ({ title: year, link: year }));
+    let isShown = !this.props.params.albumId;
 
     return (
-      <MainBlock>
-        <Header>Фото</Header>
+      <div>
         <SubNavigation base='gallery' list={list} />
-        <Content>
-          <AlbumsView albums={albums} />
-        </Content>
-      </MainBlock>
+        <AlbumsView isShown={isShown} albums={albums} />
+        {this.props.children}
+      </div>
     );
   }
 });

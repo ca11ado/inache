@@ -1,10 +1,7 @@
 let _ = require('lodash');
 let css = require('./Photo.css');
 let React = require('react');
-let Header = require('../../MainBlock/Header/header');
 let SubNavigation = require('../../SubNavigation/subNavigation');
-let MainBlock = require('../../MainBlock/mainBlock');
-let Content = require('../../MainBlock/content/content');
 
 let { connect } = require('react-redux');
 let TYPES = require('../../../actions/action-types');
@@ -65,13 +62,10 @@ let PhotoContainer = React.createClass({
     };
 
     return (
-      <MainBlock>
-        <Header>Фото</Header>
+      <div>
         <SubNavigation base='gallery' list={backLink}/>
-        <Content>
-          <PhotoView { ...props } />
-        </Content>
-      </MainBlock>
+        <PhotoView { ...props } />
+      </div>
     );
   }
 });

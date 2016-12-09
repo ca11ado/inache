@@ -1,5 +1,7 @@
 let Logo = require('./Logo.react/logo');
 let Menu = require('./Menu.react/menu');
+let MainBlock = require('./MainBlock/mainBlock');
+let Content = require('./MainBlock/content/content');
 let React = require('react');
 
 let flexBox = {
@@ -18,7 +20,11 @@ let MainLayout = React.createClass({
       <div style={flexBox}>
         <Logo />
         <Menu />
-        {this.props.children}
+        <MainBlock>
+          <Content>
+            {this.props.children}
+          </Content>
+        </MainBlock>
       </div>
     );
   }

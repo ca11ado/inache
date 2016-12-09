@@ -31,6 +31,10 @@ let AlbumView = (props) => {
 
   let content = photos.length > 0 ? photos : <h1>Нет ни одной фотографии</h1>;
 
+  if (!props.isShown) {
+    return (<div></div>);
+  }
+
   return (
     <div className={css.block}>
       {content}
