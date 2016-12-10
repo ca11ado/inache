@@ -1,19 +1,19 @@
-let { Router, browserHistory, Route, IndexRoute, IndexRedirect } = require('react-router');
-let React = require('react');
-let moment = require('moment');
+const { Router, browserHistory, Route, IndexRedirect } = require('react-router');
+const React = require('react');
+const moment = require('moment');
 
-let MainLayout = require('./components/MainLayout');
-let News = require('./components/News/NewsContainer');
-let Tours = require('./components/Tours/ToursContainer');
-let Band = require('./components/Band/BandContainer');
-let Video = require('./components/Video/VideoContainer');
-let Albums = require('./components/Gallery/AlbumsContainer');
-let Album = require('./components/Gallery/Album/AlbumContainer');
-let Press = require('./components/Press/PressContainer');
-let Photo = require('./components/Gallery/Photo/Photo');
-let PageNotFound = require('./components/PageNotFound');
-let Music = require('./components/Music/MusicContainer');
-let MusicAlbum = require('./components/Music/Album/AlbumContainer');
+const MainLayout = require('./components/MainLayout');
+const News = require('./components/News/NewsContainer');
+const Tours = require('./components/Tours/ToursContainer');
+const Band = require('./components/Band/BandContainer');
+const Video = require('./components/Video/VideoContainer');
+const Albums = require('./components/Gallery/AlbumsContainer');
+const Album = require('./components/Gallery/Album/AlbumContainer');
+const Press = require('./components/Press/PressContainer');
+const Photo = require('./components/Gallery/Photo/Photo');
+const PageNotFound = require('./components/PageNotFound');
+const Music = require('./components/Music/MusicContainer');
+const MusicAlbum = require('./components/Music/Album/AlbumContainer');
 
 const currentYear = moment().year();
 const newsIndexPath = `/news/${currentYear}`;
@@ -34,13 +34,13 @@ module.exports = (
       <Route path="band" component={Band} />
       <Route path="tour">
         <IndexRedirect to={toursIndexPath} />
-        <Route path=":year" component={Tours}/>
+        <Route path=":year" component={Tours} />
       </Route>
       <Route path="video" component={Video} />
-      <Route path="music" component={Music}>
+      <Route path="music" component={Music} >
         <Route path=":albumId">
           <IndexRedirect to="1" />
-          <Route path=":activeSongNumber" component={MusicAlbum}/>
+          <Route path=":activeSongNumber" component={MusicAlbum} />
         </Route>
       </Route>
       <Route path="news">
