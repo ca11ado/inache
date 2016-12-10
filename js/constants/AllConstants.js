@@ -1,4 +1,4 @@
-let keyMirror = require('keymirror');
+const keyMirror = require('keymirror');
 
 module.exports = keyMirror({
   GET_NEWS: null,
