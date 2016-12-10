@@ -39,6 +39,9 @@ let PhotoView = (props) => {
 let PhotoContainer = React.createClass({
 
   componentDidMount () {
+    let mainBlock = document.getElementById('mainBlock');
+    document.body.scrollTop = mainBlock ? mainBlock.offsetTop : 0;
+
     API
       .getAlbum(this.props.params.albumId)
       .then((album) => {
@@ -46,7 +49,7 @@ let PhotoContainer = React.createClass({
           type: TYPES.GET_ALBUM,
           album
         })
-      })
+      });
   },
 
   render () {

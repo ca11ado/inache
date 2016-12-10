@@ -5,7 +5,7 @@ let React = require('react');
 let MainBlock = React.createClass({
   render () {
     return (
-      <div className={css.mainBlock}>
+      <div id="mainBlock" className={css.mainBlock}>
         {this.props.children}
       </div>
     );
