@@ -1,14 +1,14 @@
-import { combineReducers } from 'redux';
+const { combineReducers } = require('redux');
 
 // Reducers
-let pressReducer = require('./press-reducer');
-let galleryReducer = require('./GalleryReducer');
-let toursReducer = require('./ToursReducer');
-let musicReducer = require('./MusicReducer');
-let newsReducer = require('./NewsReducer');
+const pressReducer = require('./press-reducer');
+const galleryReducer = require('./GalleryReducer');
+const toursReducer = require('./ToursReducer');
+const musicReducer = require('./MusicReducer');
+const newsReducer = require('./NewsReducer');
 
 // Combine Reducers
-let reducers = combineReducers({
+const reducers = combineReducers({
   pressState: pressReducer,
   galleryState: galleryReducer,
   toursState: toursReducer,
@@ -17,3 +17,4 @@ let reducers = combineReducers({
 });
 
 module.exports = reducers;
+

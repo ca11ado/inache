@@ -7,6 +7,7 @@ module.exports = {
     ],
    "rules": {
       "comma-dangle": [2, "never"],
-      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "space-before-function-paren": [2, "always"]
     }
 };
