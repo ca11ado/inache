@@ -1,11 +1,12 @@
-let ReactDOM = require('react-dom');
-let React = require('react');
+const ReactDOM = require('react-dom');
+const React = require('react');
 
-import { Provider } from 'react-redux';
-import store from './store';
-let router = require('./router');
+const { Provider } = require('react-redux');
+const store = require('./store');
+const router = require('./router');
 
 ReactDOM.render(
   <Provider store={store}>{router}</Provider>,
+  /* global document:true */
   document.getElementById('app')
 );
