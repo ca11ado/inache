@@ -117,6 +117,37 @@ const defaultScheme = {
       links: [{ title: 'встреча в вк', url: 'https://vk.com/event129608556' }],
       shortDescription: '',
       fullDescription: 'Клуб "Дача на Покровке", выступление на концерте Юлии Тузовой'
+    },
+    {
+      date: 1471651200000,
+      pictoId: 1,
+      place: 'Москва',
+      shortDescription: '',
+      fullDescription: 'Парк "Сокольники", выступление в рамках проекта "Активное долголетие"'
+    },
+    {
+      date: 1467763200000,
+      pictoId: 0,
+      place: 'Москва',
+      links: [{ title: 'встреча в вк', url: 'https://vk.com/event123265559' }],
+      shortDescription: '',
+      fullDescription: 'Кафе-клуб "ПушкарёвЪ", участие в литературно-музыкальном вечере проекта "#РЦЫ!" '
+    },
+    {
+      date: 1466899200000,
+      pictoId: 1,
+      place: 'Москва',
+      links: [{ title: 'встреча в вк', url: 'https://vk.com/event123344885' }],
+      shortDescription: '',
+      fullDescription: 'ЦК "Гармония", выступление на закрытии концертного сезона содружества авторов поэтического рока "Даждь"  '
+    },
+    {
+      date: 1466812800000,
+      pictoId: 1,
+      place: 'Ногинск',
+      links: [{ title: 'встреча в вк', url: 'http://vk.com/zozhfest' }],
+      shortDescription: '',
+      fullDescription: 'Фестиваль Здорового Образа Жизни  '
     }
   ],
   gallery: [

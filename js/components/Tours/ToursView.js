@@ -15,7 +15,7 @@ const pictos = [<Solo/>, <Aqoustics/>, <Electricity/>];
 const TourItem = (props) => {
   const FORMAT = 'DD.MM'; // DD MMMM YYYY
 
-  const { date, fullDescription, pictoId, place, links = [] } = props;
+  const { date, fullDescription, pictoId, place, links = [], highlightedId } = props;
   const formattedDate = moment(date).format(FORMAT);
   const pictoElement = pictos[pictoId];
 
@@ -26,10 +26,11 @@ const TourItem = (props) => {
   ];
 
   const linksElement = _.map(links, (link) => (<a key={shortid.generate()} href={link.url}>{link.title}</a>));
+  const highlightedClass = highlightedId === date ? css.highlighted : '';
 
   return (
-    <div className={css.tourItemWrap}>
-      <a name={date}></a>
+    <div className={`${css.tourItemWrap} ${highlightedClass}`}>
+      <a name={date}>&nbsp;</a>
       <span title={PICTOS_ALT[pictoId]}>{pictoElement}</span>
       <span className={`${css.column} ${css.date}`}>{formattedDate}</span>
       <span className={css.column}>{place}</span>
@@ -40,10 +41,11 @@ const TourItem = (props) => {
 };
 
 const ToursView = (props) => {
+  const { highlightedId } = props;
 
   return (
     <div>
-      {_.map(props.tours, (tour) => <TourItem key={tour.date} { ...tour } />)}
+      {_.map(props.tours, (tour) => <TourItem key={tour.date} highlightedId={highlightedId} { ...tour } />)}
     </div>
   );
 };

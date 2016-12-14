@@ -42,8 +42,9 @@ const ToursContainer = React.createClass({
   },
 
   render () {
-    const { tours, years } = this.props;
+    const { tours, years, location } = this.props;
     const list = _.map(years, (year) => ({ link: year, title: year }));
+    const hash = (location.hash && Number(location.hash.substring(1)))|| false;
 
     const sortedTours = _.orderBy(tours, ['date'], ['desc']);
 
@@ -52,7 +53,7 @@ const ToursContainer = React.createClass({
         <SubNavigation base='tour' list={list} />
         <Legend/>
         <div className={css.block}>
-          <ToursView tours={sortedTours} />
+          <ToursView highlightedId={hash} tours={sortedTours} />
         </div>
       </div>
     );

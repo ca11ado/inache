@@ -4,6 +4,18 @@
   align-items: center;
 }
 
+.highlighted {
+  background-color: rgba(255, 0, 0, 1);
+  animation: fadeOut 3s;
+  animation-fill-mode: forwards;
+}
+
 .column {
   margin-left: 10px;
+}
+
+@keyframes fadeOut {
+  10% { background-color: rgba(255,0,0, 0.8)}
+  70% { background-color: rgba(255,0,0, 0.2)}
+  100% { background-color: rgba(255,0,0, 0)}
 }
