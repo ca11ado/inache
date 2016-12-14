@@ -1,11 +1,13 @@
-let _ = require('lodash');
-let React = require('react');
-let moment = require('moment');
-let store = require('../../store');
-let { connect } = require('react-redux');
-let TYPES = require('../../actions/action-types');
-let SubNavigation = require('../SubNavigation/subNavigation');
-let ToursView = require('./ToursView');
+const _ = require('lodash');
+const React = require('react');
+const css = require('./tours-container.css');
+const moment = require('moment');
+const store = require('../../store');
+const { connect } = require('react-redux');
+const TYPES = require('../../actions/action-types');
+const SubNavigation = require('../SubNavigation/subNavigation');
+const Legend = require('./Legend/LegendView');
+const ToursView = require('./ToursView');
 
 const API = require('../../api');
 
@@ -20,7 +22,7 @@ function getToursAPI (year = moment().year()) {
     });
 }
 
-let ToursContainer = React.createClass({
+const ToursContainer = React.createClass({
   componentDidMount () {
     API
       .getAvailableYears('tour')
@@ -40,15 +42,18 @@ let ToursContainer = React.createClass({
   },
 
   render () {
-    let { tours, years } = this.props;
-    let list = _.map(years, (year) => {
-      return { link: year, title: year };
-    });
+    const { tours, years } = this.props;
+    const list = _.map(years, (year) => ({ link: year, title: year }));
+
+    const sortedTours = _.orderBy(tours, ['date'], ['desc']);
 
     return (
       <div>
         <SubNavigation base='tour' list={list} />
-        <ToursView tours={tours} />
+        <Legend/>
+        <div className={css.block}>
+          <ToursView tours={sortedTours} />
+        </div>
       </div>
     );
   }

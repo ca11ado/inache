@@ -1,7 +1,7 @@
 .block {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -11,7 +11,6 @@
 }
 
 .photoPreview {
-  width: 100px;
   height: 100px;
   margin-bottom: 14px;
 }

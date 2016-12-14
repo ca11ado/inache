@@ -1,0 +1,9 @@
+.tourItemWrap {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.column {
+  margin-left: 10px;
+}

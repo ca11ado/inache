@@ -1,0 +1,11 @@
+.block {
+  text-align: center;
+  position: relative;
+}
+
+.text {
+  composes: small from '../../../composes/fonts.css';
+  position: relative;
+  top: -11px;
+  padding-left: 6px;
+}

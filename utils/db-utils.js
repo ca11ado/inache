@@ -64,12 +64,60 @@ const defaultScheme = {
     { date: 1431362229305, header: 'Новость из 2015 года', text: text }
   ],
   tours: [
-    { date: 1466370000000, header: 'Следующий концерт в июне', text: tourText },
-    { date: 1464626230695, header: 'Самый последний концерт', text: tourText },
-    { date: 1463762230000, header: 'Какой-то майский концерт', text: tourText },
-    { date: 1462898229305, header: 'Первый концерт в мае', text: tourText },
-    { date: 1431362229305, header: 'Концерт в 2015 году', text: tourText },
-    { date: 1402347600000, header: 'Концерт в 2014 году', text: tourText }
+    {
+      date: 1482624000000,
+      pictoId: 0,
+      place: 'Москва',
+      shortDescription: '',
+      fullDescription: 'Боткинская больница, участие в благотворительном концерте'
+    },
+    {
+      date: 1482105600000,
+      pictoId: 0,
+      place: 'Москва',
+      links: [{ title: 'встреча в вк', url: 'http://vk.com/podaroksterju191216' }],
+      shortDescription: '',
+      fullDescription: 'Арт-пространство "Тайный Маяк", участие в благотворительном концерте в поддержку Олега Стерха'
+    },
+    {
+      date: 1480809600000,
+      pictoId: 0,
+      place: 'Москва',
+      links: [{ title: 'встреча в вк', url: 'http://vk.com/kvartnaperovskoi' }],
+      shortDescription: '',
+      fullDescription: 'Приходской Дом на Перовской'
+    },
+    {
+      date: 1479945600000,
+      pictoId: 0,
+      place: 'Москва',
+      shortDescription: '',
+      fullDescription: 'ЦСПСиД "Диалог" филиал "Северный"'
+    },
+    {
+      date: 1478908800000,
+      pictoId: 0,
+      place: 'Москва',
+      links: [{ title: 'встреча в вк', url: 'http://vk.com/radygafest' }],
+      shortDescription: '',
+      fullDescription: 'Кафе-клуб "ПушкарёвЪ", фестиваль авторской песни "Радуга"'
+    },
+    {
+      date: 1472860800000,
+      pictoId: 1,
+      place: 'Курс',
+      links: [{ title: 'встреча в вк', url: 'https://vk.com/club118124081' }],
+      shortDescription: '',
+      fullDescription: 'Парк "Боева дача", фестиваль "Антифон"'
+    },
+    {
+      date: 1475884800000,
+      pictoId: 0,
+      place: 'Москва',
+      links: [{ title: 'встреча в вк', url: 'https://vk.com/event129608556' }],
+      shortDescription: '',
+      fullDescription: 'Клуб "Дача на Покровке", выступление на концерте Юлии Тузовой'
+    }
   ],
   gallery: [
     {
