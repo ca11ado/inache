@@ -14,6 +14,7 @@ let Photo = require('./components/Gallery/Photo/Photo');
 let PageNotFound = require('./components/PageNotFound');
 let Music = require('./components/Music/MusicContainer');
 let MusicAlbum = require('./components/Music/Album/AlbumContainer');
+let MainPage = require('./components/MainPage/MainPageView');
 
 const currentYear = moment().year();
 const newsIndexPath = `/news/${currentYear}`;
@@ -49,5 +50,6 @@ module.exports = (
       </Route>
       <Route path="page-not-found" component={PageNotFound} />
     </Route>
+    <Route path="/main" component={MainPage} />
   </Router>
 );

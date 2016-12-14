@@ -1,0 +1,16 @@
+.block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftBlock, .rightBlock {
+  width: 20%;
+}
+
+.centerBlock {
+  width: 50%;
+}
+
+.block * {
+  background-color: rgba(0,0,0,0.1);
+}
