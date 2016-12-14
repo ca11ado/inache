@@ -14,9 +14,10 @@ let Photo = require('./components/Gallery/Photo/Photo');
 let PageNotFound = require('./components/PageNotFound');
 let Music = require('./components/Music/MusicContainer');
 let MusicAlbum = require('./components/Music/Album/AlbumContainer');
-let MainPage = require('./components/MainPage/MainPageView');
+let MainPage = require('./components/MainPage/MainPageContainer');
 
 const currentYear = moment().year();
+const mainPagePath = '/main';
 const newsIndexPath = `/news/${currentYear}`;
 const toursIndexPath = `/tour/${currentYear}`;
 const galleryIndexPath = `/gallery/${currentYear}`;
@@ -24,7 +25,7 @@ const galleryIndexPath = `/gallery/${currentYear}`;
 module.exports = (
   <Router history={browserHistory}>
     <Route path="/" component={MainLayout}>
-      <IndexRedirect to={newsIndexPath} />
+      <IndexRedirect to={mainPagePath} />
       <Route path="press" component={Press} />
       <Route path="gallery">
         <IndexRedirect to={galleryIndexPath} />

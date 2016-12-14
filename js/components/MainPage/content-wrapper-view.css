@@ -1,0 +1,12 @@
+.block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left, .right {
+  width: 20%;
+}
+
+.center {
+  width: 40%;
+}
