@@ -1,0 +1,8 @@
+.anchorNavigation {
+  text-align: center;
+}
+
+.anchor {
+  margin-right: 10px;
+  composes: links from '../../composes/links.css';
+}
