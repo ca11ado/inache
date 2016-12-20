@@ -4,7 +4,11 @@ const css = require('./pictos.css');
 const Electricity = () => {
 
   return (
-    <div className={`${css.pictos} ${css.electricity}`}></div>
+    <div
+      className={`${css.pictos} ${css.electricity}`}
+      title="группа ИНАЧЕ в электричестве"
+    >
+    </div>
   );
 };
 

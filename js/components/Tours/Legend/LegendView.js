@@ -9,11 +9,11 @@ const Legend = () => {
 
   return (
     <div className={css.block}>
-      <Solo/>
+      <span className={css.picto}><Solo/></span>
       <span className={css.text}>сольное выступление Н. Подорольского</span>
-      <Electricity/>
+      <span className={css.picto}><Electricity/></span>
       <span className={css.text}>группа ИНАЧЕ в электричестве</span>
-      <Aqoustics/>
+      <span className={css.picto}><Aqoustics/></span>
       <span className={css.text}>группа ИНАЧЕ в акустике</span>
     </div>
   );

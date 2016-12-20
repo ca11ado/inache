@@ -1,8 +1,8 @@
 const React = require('react');
 const css = require('./content-wrapper-view.css');
-const CenterBlock = require('./CenterBlockView');
-const LeftBlock = require('./LeftBlockView');
-const RightBlock = require('./RightBlockView');
+const CenterBlock = require('./Blocks/CenterBlockView');
+const LeftBlock = require('./Blocks/LeftBlockView');
+const RightBlock = require('./Blocks/RightBlockView');
 
 const CenterBlockView = (props) => {
 

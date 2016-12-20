@@ -1,0 +1,44 @@
+.block {
+  padding: 10px;
+}
+
+.header {
+  composes: headerMedium from '../../../composes/fonts.css';
+  margin-bottom: 10px;
+}
+
+.pictosUl {
+  padding: 0;
+}
+
+.pictosLi {
+  list-style: none;
+  position: relative;
+}
+
+.pictoTitle {
+  composes: normal from '../../../composes/fonts.css';
+  position: absolute;
+  top: 6px;
+  left: 34px;
+}
+
+.newsItem:not(:first-child) {
+  margin-top: 8px;
+}
+
+.date {
+  composes: normal from '../../../composes/fonts.css';
+  font-weight: bold;
+  position: relative;
+}
+
+.dateText {
+  position: absolute;
+  top: 6px;
+  left: 34px;
+}
+
+.newsDescription {
+  composes: normal from '../../../composes/fonts.css';
+}

@@ -6,7 +6,7 @@ const RightBlockView = (props) => {
 
   return (
     <div className={css.block}>
-        <div className={css.header}>Главное событие</div>
+        <div className={css.header}>Главное событие:</div>
     </div>
   );
 };

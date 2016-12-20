@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.picto {
+  margin-left: 30px;
+}
+
 .text {
   composes: small from '../../../composes/fonts.css';
   position: relative;
