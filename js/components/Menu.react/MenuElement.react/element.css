@@ -5,11 +5,3 @@
   font-weight: bold;
 }
 
-.tabMenu:hover::first-letter {
-  font-size: 24pt;
-  color: red;
-}
-
-.tabMenu:hover {
-  padding: 0 17px;
-}

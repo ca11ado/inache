@@ -9,8 +9,10 @@ let Press = (props) => {
   let itemsByYear = _.map(items, ({ year, presses }) => {
     return (
       <div key={year}>
-        <p>{year}</p>
-        <a name={year}>&nbsp;</a>
+        <div>
+					{year}
+					<a name={year}>&nbsp;</a>
+				</div>
         <ul>
         { _.map(presses, ({ header, link, author }, index) => {
           return (
