@@ -1,0 +1,7 @@
+.flexBox {
+	composes: mainWrapper from '../../composes/blocks.css';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+

@@ -54,7 +54,7 @@ const MainPageContainer = React.createClass({
     };
 
     return (
-      <div>
+      <div className={css.mainWrapper}>
         <Logo />
         <Menu />
         <MainBlock>

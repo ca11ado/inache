@@ -1,3 +1,8 @@
+.mainWrapper {
+	width: 960px;
+	margin: 0 auto;
+}
+
 .blockHeader {
   composes: headerBig from './fonts.css';
   padding: 10px 0 5px;

@@ -1,20 +1,20 @@
-let { Router, browserHistory, Route, IndexRoute, IndexRedirect } = require('react-router');
-let React = require('react');
-let moment = require('moment');
+const { Router, browserHistory, Route, IndexRoute, IndexRedirect } = require('react-router');
+const React = require('react');
+const moment = require('moment');
 
-let MainLayout = require('./components/MainLayout');
-let News = require('./components/News/NewsContainer');
-let Tours = require('./components/Tours/ToursContainer');
-let Band = require('./components/Band/BandContainer');
-let Video = require('./components/Video/VideoContainer');
-let Albums = require('./components/Gallery/AlbumsContainer');
-let Album = require('./components/Gallery/Album/AlbumContainer');
-let Press = require('./components/Press/PressContainer');
-let Photo = require('./components/Gallery/Photo/Photo');
-let PageNotFound = require('./components/PageNotFound');
-let Music = require('./components/Music/MusicContainer');
-let MusicAlbum = require('./components/Music/Album/AlbumContainer');
-let MainPage = require('./components/MainPage/MainPageContainer');
+const MainLayout = require('./components/MainLayout/MainLayout.js');
+const News = require('./components/News/NewsContainer');
+const Tours = require('./components/Tours/ToursContainer');
+const Band = require('./components/Band/BandContainer');
+const Video = require('./components/Video/VideoContainer');
+const Albums = require('./components/Gallery/AlbumsContainer');
+const Album = require('./components/Gallery/Album/AlbumContainer');
+const Press = require('./components/Press/PressContainer');
+const Photo = require('./components/Gallery/Photo/Photo');
+const PageNotFound = require('./components/PageNotFound');
+const Music = require('./components/Music/MusicContainer');
+const MusicAlbum = require('./components/Music/Album/AlbumContainer');
+const MainPage = require('./components/MainPage/MainPageContainer');
 
 const currentYear = moment().year();
 const mainPagePath = '/main';
