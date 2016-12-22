@@ -1,19 +1,21 @@
 import { combineReducers } from 'redux';
 
 // Reducers
-let pressReducer = require('./press-reducer');
-let galleryReducer = require('./GalleryReducer');
-let toursReducer = require('./ToursReducer');
-let musicReducer = require('./MusicReducer');
-let newsReducer = require('./NewsReducer');
+const pressReducer = require('./press-reducer');
+const galleryReducer = require('./GalleryReducer');
+const toursReducer = require('./ToursReducer');
+const musicReducer = require('./MusicReducer');
+const newsReducer = require('./NewsReducer');
+const modalReducer = require('./ModalReducer');
 
 // Combine Reducers
-let reducers = combineReducers({
+const reducers = combineReducers({
   pressState: pressReducer,
   galleryState: galleryReducer,
   toursState: toursReducer,
   musicState: musicReducer,
-  newsState: newsReducer
+  newsState: newsReducer,
+  modalState: modalReducer
 });
 
 module.exports = reducers;
