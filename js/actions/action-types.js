@@ -20,5 +20,11 @@ module.exports = keyMirror({
   // MUSIC PAGE
   GET_MUSIC_ALBUMS: null,
   GET_MUSIC_ALBUM: null,
-  SET_ACTIVE_SONG_NUMBER: null
+  SET_ACTIVE_SONG_NUMBER: null,
+
+  // MODALS
+	SET_MODAL_TEXT: null,
+	SET_MODAL_IMAGE: null,
+	SET_MODAL_OPEN: null,
+	SET_MODAL_CLOSE: null
 });

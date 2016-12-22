@@ -1,13 +1,31 @@
-let _ = require('lodash');
-let css = require('./Cover.css');
-let React = require('react');
+const _ = require('lodash');
+const css = require('./Cover.css');
+const React = require('react');
+const store = require('../../../../store');
+const TYPES = require('../../../../actions/action-types');
 
-let Cover = (props) => {
-  return (
-    <div className={css.block}>
-      <a href={props.photo} target="_blank"><img className={css.coverImage} src={props.photo} /></a>
-    </div>
-  );
-};
+const Cover = React.createClass({
+	render () {
+
+		return (
+			<div className={css.block}>
+				<img
+					className={css.coverImage} 
+					src={this.props.photo} 
+					onClick={this._onImageClick}
+				/>
+			</div>
+		);
+	},
+
+	_onImageClick () {
+		store.dispatch({
+			type: TYPES.SET_MODAL_OPEN,
+			image: {
+				src: this.props.photo
+			}
+		});
+	}
+});
 
 module.exports = Cover;

@@ -1,22 +1,26 @@
-let _ = require('lodash');
-let css = require('./music.css');
-let React = require('react');
-let NavLink = require('../framework/NavLink.react/navlink');
+const _ = require('lodash');
+const css = require('./music.css');
+const React = require('react');
+const NavLink = require('../framework/NavLink.react/navlink');
 
-let AlbumPreview = (props) => {
-  let { src, name, urlName } = props;
+function openModal () {
+	console.log('Open modal window')
+}
+
+const AlbumPreview = (props) => {
+  const { src, name, urlName } = props;
 
   return (
     <div className={css.coverWrap}>
       <NavLink to={`/music/${urlName}`}>
-        <img className={css.albumCover} src={src} />
+        <img onClick={openModal} className={css.albumCover} src={src} />
         <div className={css.description}>{name}</div>
       </NavLink>
     </div>
   );
 };
 
-let MusicView = (props) => {
+const MusicView = (props) => {
 
   if (!props.isShown) return (<div></div>);
 

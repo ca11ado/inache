@@ -1,4 +1,4 @@
-const TYPES = require('../constants/AllConstants');
+const TYPES = require('../actions/action-types');
 
 const DEFAULT_STATE = { album: {}, albums: [], years: [] };
 
