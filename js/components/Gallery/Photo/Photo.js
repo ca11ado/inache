@@ -12,28 +12,59 @@ let Gallery = require('react-image-gallery').default;
 
 require('style!css!sass!react-image-gallery/styles/scss/image-gallery.scss');
 
-let PhotoView = (props) => {
-  let photos = _.get(props.album, 'photos', []);
-  let photoNumber = Number(props.photoId);
-  let startIndex = photoNumber > photos.length ? 0 : photoNumber;
+let PhotoView = React.createClass ({
+	render () {
+		let photos = _.get(this.props.album, 'photos', []);
+		let photoNumber = Number(this.props.photoId);
+		let startIndex = photoNumber > photos.length ? 0 : photoNumber;
 
-  let GalleryProps = {
-    items: photos,
-    startIndex,
-    slideInterval: 2000,
-    onImageLoad: props.handleImageLoad,
-    showIndex: true
-  };
-  let Gall = photos.length > 0
-    ? React.createElement(Gallery, GalleryProps)
-    : '';
+		let GalleryProps = {
+			items: photos,
+			startIndex,
+			slideInterval: 2000,
+			onImageLoad: this.props.handleImageLoad,
+			showIndex: true,
+			renderItem: this._renderItem
+		};
+		let Gall = photos.length > 0
+			? React.createElement(Gallery, GalleryProps)
+			: '';
 
-  return (
-    <div>
-      {Gall}
-    </div>
-  );
-};
+		return (
+			<div>
+				{Gall}
+			</div>
+		);
+	},
+
+	_renderItem (item) {
+		const imageWrapper = {
+			textAlign: 'center'
+		};
+		const imageGallery = {
+			width: 'auto',
+			height: '450px'
+		};
+
+		return (
+			<div style={imageWrapper} className='image-gallery-image'>
+				<img
+					style={imageGallery}
+					src={item.original}
+					alt={item.originalAlt}
+					srcSet={item.srcSet}
+					sizes={item.sizes}
+				/>
+				{
+					item.description &&
+						<span className='image-gallery-description'>
+							{item.description}
+						</span>
+				}
+			</div>
+		);
+	}
+});
 
 
 let PhotoContainer = React.createClass({
