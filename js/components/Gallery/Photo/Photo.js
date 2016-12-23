@@ -1,30 +1,30 @@
-let _ = require('lodash');
-let css = require('./Photo.css');
-let React = require('react');
-let SubNavigation = require('../../SubNavigation/subNavigation');
+const _ = require('lodash');
+const css = require('./Photo.css');
+const React = require('react');
+const SubNavigation = require('../../SubNavigation/subNavigation');
 
-let { connect } = require('react-redux');
-let TYPES = require('../../../actions/action-types');
-let store = require('../../../store');
+const { connect } = require('react-redux');
+const TYPES = require('../../../actions/action-types');
+const store = require('../../../store');
 const API = require('../../../api');
 
-let Gallery = require('react-image-gallery').default;
+const Gallery = require('react-image-gallery').default;
 
 require('style!css!sass!react-image-gallery/styles/scss/image-gallery.scss');
 
-let PhotoView = (props) => {
-  let photos = _.get(props.album, 'photos', []);
-  let photoNumber = Number(props.photoId);
-  let startIndex = photoNumber > photos.length ? 0 : photoNumber;
+const PhotoView = (props) => {
+  const photos = _.get(props.album, 'photos', []);
+  const photoNumber = Number(props.photoId);
+  const startIndex = photoNumber > photos.length ? 0 : photoNumber;
 
-  let GalleryProps = {
+  const GalleryProps = {
     items: photos,
     startIndex,
     slideInterval: 2000,
     onImageLoad: props.handleImageLoad,
     showIndex: true
   };
-  let Gall = photos.length > 0
+  const Gall = photos.length > 0
     ? React.createElement(Gallery, GalleryProps)
     : '';
 
@@ -36,11 +36,16 @@ let PhotoView = (props) => {
 };
 
 
-let PhotoContainer = React.createClass({
+const PhotoContainer = React.createClass({
 
   componentDidMount () {
-    let mainBlock = document.getElementById('mainBlock');
-    document.body.scrollTop = mainBlock ? mainBlock.offsetTop : 0;
+    const mainBlock = document.getElementById('mainBlock');
+		const windowHeight = document.documentElement.clientHeight;
+		mainBlock.style.height = windowHeight + 'px';
+
+		mainBlock.scrollIntoView(true);
+		setTimeout(() => {
+		}, 0);
 
     API
       .getAlbum(this.props.params.albumId)
@@ -53,19 +58,19 @@ let PhotoContainer = React.createClass({
   },
 
   render () {
-    let { year, albumId, photoId } = this.props.params;
-    let backLink = [
+    const { year, albumId, photoId } = this.props.params;
+    const backLink = [
       { title: `Обратно в ${year}`, link: `${year}` },
       { title: `Обратно к альбому`, link: `${year}/${albumId}` }
     ];
-    let props = {
+    const props = {
       album: this.props.album,
       photoId,
       handleImageLoad: (event) => (event.target)
     };
 
     return (
-      <div>
+      <div className={css.block}>
         <SubNavigation base='gallery' list={backLink}/>
         <PhotoView { ...props } />
       </div>
