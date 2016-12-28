@@ -47,8 +47,7 @@ const PhotoContainer = React.createClass({
   render () {
     const { year, albumId, photoId } = this.props.params;
     const backLink = [
-      { title: `Обратно в ${year}`, link: `${year}` },
-      { title: `Обратно к альбому`, link: `${year}/${albumId}` }
+      { title: `Вернуться к альбомам`, link: `${year}` }
     ];
     const props = {
       album: this.props.album,

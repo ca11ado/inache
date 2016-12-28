@@ -21,6 +21,7 @@ const mainPagePath = '/main';
 const newsIndexPath = `/news/${currentYear}`;
 const toursIndexPath = `/tour/${currentYear}`;
 const galleryIndexPath = `/gallery/${currentYear}`;
+/*<Route path=":year/:albumId/:photoId" component={Photo} />*/
 
 module.exports = (
   <Router history={browserHistory}>
@@ -30,8 +31,7 @@ module.exports = (
       <Route path="gallery">
         <IndexRedirect to={galleryIndexPath} />
         <Route path=":year" component={Albums} />
-        <Route path=":year/:albumId" component={Album} />
-        <Route path=":year/:albumId/:photoId" component={Photo} />
+        <Route path=":year/:albumId" component={Photo} />
       </Route>
       <Route path="band" component={Band} />
       <Route path="tour">
