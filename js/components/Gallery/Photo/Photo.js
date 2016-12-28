@@ -2,39 +2,26 @@ const _ = require('lodash');
 const css = require('./Photo.css');
 const React = require('react');
 const SubNavigation = require('../../SubNavigation/subNavigation');
+const Gallery = require('./Lightbox');
 
 const { connect } = require('react-redux');
 const TYPES = require('../../../actions/action-types');
 const store = require('../../../store');
 const API = require('../../../api');
 
-const Gallery = require('react-image-gallery').default;
+const PhotoView = React.createClass({
+	render () {
+		const photos = this.props.album.photos || [];
 
-require('style!css!sass!react-image-gallery/styles/scss/image-gallery.scss');
-
-const PhotoView = (props) => {
-  const photos = _.get(props.album, 'photos', []);
-  const photoNumber = Number(props.photoId);
-  const startIndex = photoNumber > photos.length ? 0 : photoNumber;
-
-  const GalleryProps = {
-    items: photos,
-    startIndex,
-    slideInterval: 2000,
-    onImageLoad: props.handleImageLoad,
-    showIndex: true
-  };
-  const Gall = photos.length > 0
-    ? React.createElement(Gallery, GalleryProps)
-    : '';
-
-  return (
-    <div>
-      {Gall}
-    </div>
-  );
-};
-
+		return (
+			<div>
+				<Gallery images={photos.map(({ original }) => ({
+					src: original
+				}))} />
+			</div>
+		);
+	}
+});
 
 const PhotoContainer = React.createClass({
 
