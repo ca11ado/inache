@@ -4,10 +4,15 @@ var path = require('path');
 var compression = require('compression');
 let bodyParser = require('body-parser');
 let api = require('./api-middleware');
+const cors = require('./cors-middleware');
 
 var app = express();
 
 app.use(compression());
+
+// Add headers
+app.use(cors);
+
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
