@@ -27,11 +27,11 @@ const MainPageContainer = React.createClass({
       });
 
     API
-      .getSectionItemsForYear('news', currentYear)
+      .getSectionItems('news')
       .then((news) => {
         store.dispatch({
           type: TYPES.GET_NEWS,
-          news
+          news: _.take(news, 3)
         });
       });
   },

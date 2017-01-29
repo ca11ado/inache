@@ -61,7 +61,8 @@ const defaultScheme = {
     { date: 1464626230695, header: 'Самая последняя новость', text: text },
     { date: 1463762230000, header: 'Какая-то майская новость', text: text },
     { date: 1462898229305, header: 'Первая новость в мае', text: text },
-    { date: 1431362229305, header: 'Новость из 2015 года', text: text }
+    { date: 1431362229305, header: 'Новость из 2015 года', text: text },
+    { date: 1485699198082, header: 'Новость из 2017 года', text: text }
   ],
   tours: [
     {
