@@ -4,6 +4,7 @@ let React = require('react');
 let NavLink = require('../framework/NavLink.react/navlink');
 let moment = require('moment');
 moment.locale('ru');
+let Smile = require('../framework/Animations/Smile');
 
 let NewsItem = (props) => {
   const FORMAT = 'DD MMMM YYYY';
@@ -30,6 +31,9 @@ let NewsView = (props) => {
         let props = { key: date, date, text, header };
         return <NewsItem { ...props } />;
       })}
+      <div>
+        <Smile />
+      </div>
     </div>
   );
 };
