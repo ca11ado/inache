@@ -7,3 +7,4 @@ env.local.js
 nohup.out
 .DS_Store
 .tern-project
+**.swp
