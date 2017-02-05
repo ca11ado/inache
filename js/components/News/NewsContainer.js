@@ -62,3 +62,4 @@ let NewsContainer = React.createClass({
 const mapStateToProps = ({ newsState }) => ({ news: newsState.news, years: newsState.years });
 
 module.exports = connect(mapStateToProps)(NewsContainer);
+
