@@ -1,4 +1,11 @@
 .block {
   margin-top: 30px;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.emptyToursPage {
+  margin-top: 100px;
+  text-align: center;
 }

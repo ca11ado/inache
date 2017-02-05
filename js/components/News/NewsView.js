@@ -35,3 +35,4 @@ let NewsView = (props) => {
 };
 
 module.exports = NewsView;
+

@@ -25,7 +25,8 @@
     "react-router": "^2.4.1",
     "redux": "^3.6.0",
     "request": "^2.74.0",
-    "shortid": "^2.2.6"
+    "shortid": "^2.2.6",
+    "t0s-components": "git+https://github.com/ca11ado/t0s-components.git#master"
   },
   "devDependencies": {
     "babel-core": "^6.9.0",

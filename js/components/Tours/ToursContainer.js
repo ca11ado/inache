@@ -8,6 +8,7 @@ const TYPES = require('../../actions/action-types');
 const SubNavigation = require('../SubNavigation/subNavigation');
 const Legend = require('./Legend/LegendView');
 const ToursView = require('./ToursView');
+const Smile = require('t0s-components').Smile;
 
 const API = require('../../api');
 
@@ -48,12 +49,21 @@ const ToursContainer = React.createClass({
 
     const sortedTours = _.orderBy(tours, ['date'], ['desc']);
 
+    const Content = sortedTours.length > 0 
+      ? (<ToursView highlightedId={hash} tours={sortedTours} />)
+      : (
+        <div className={css.emptyToursPage}>
+          <h2>Нет записей за этот год</h2>
+          <Smile bold='4' baseSize='30' />
+        </div>
+        );
+
     return (
       <div>
         <SubNavigation base='tour' list={list} />
         <Legend/>
         <div className={css.block}>
-          <ToursView highlightedId={hash} tours={sortedTours} />
+          {Content}
         </div>
       </div>
     );
@@ -63,3 +73,4 @@ const ToursContainer = React.createClass({
 const mapStateToProps = ({ toursState }) => ({ tours: toursState.tours, years: toursState.years });
 
 module.exports = connect(mapStateToProps)(ToursContainer);
+
