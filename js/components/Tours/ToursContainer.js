@@ -26,7 +26,7 @@ function getToursAPI (year = moment().year()) {
 const ToursContainer = React.createClass({
   componentDidMount () {
     API
-      .getAvailableYears('tour')
+      .getAvailableYears('tours')
       .then((years) => {
         store.dispatch({
           type: TYPES.GET_TOURS_YEARS,
