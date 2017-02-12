@@ -50,7 +50,8 @@
     "cp-files": "mkdir -p public/img && cp -R img public && cp js/index.html public",
     "update-db": "rm -f db.json && cd ./utils && node ./db-utils.js && cd ..",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "build": "webpack"
   },
   "author": "Khimtsov Anton"
 }
