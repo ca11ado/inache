@@ -1,9 +1,16 @@
-let _ = require('lodash');
-let css = require('./AlbumsView.css');
-let React = require('react');
-let NavLink = require('../framework/NavLink.react/navlink');
+import styled from 'styled-components';
+const _ = require('lodash');
+const css = require('./AlbumsView.css');
+const React = require('react');
+const NavLink = require('../framework/NavLink.react/navlink');
+const Smile = require('t0s-components').Smile;
 
-let AlbumPreview = (props) => {
+const NothingWrapper = styled.div`
+  text-align: center;
+  margin: 0 auto;
+`;
+
+const AlbumPreview = (props) => {
 
   return (
     <div className={css.albumWrapper}>
@@ -23,12 +30,21 @@ let GalleryView = (props) => {
     return (<div></div>);
   }
 
+  const albums = _.map(props.albums, ({ photo, name, link }) => {
+    let props = { key: name, name, photo, link };
+    return <AlbumPreview { ...props } />;
+  });
+
+  const nothingToShow = (
+    <NothingWrapper>
+      <h2>За этот год нет ни одного альбома</h2>
+      <Smile bold='4' baseSize='30' />
+    </NothingWrapper>
+  );
+
   return (
     <div className={css.albumsList}>
-      { _.map(props.albums, ({ photo, name, link }) => {
-        let props = { key: name, name, photo, link };
-        return <AlbumPreview { ...props } />;
-      })}
+      { albums.length ? albums : nothingToShow }
     </div>
   );
 };

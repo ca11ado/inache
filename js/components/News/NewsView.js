@@ -1,9 +1,16 @@
+import styled from 'styled-components';
 let _ = require('lodash');
 let css = require('./news.css');
 let React = require('react');
 let NavLink = require('../framework/NavLink.react/navlink');
 let moment = require('moment');
+const Smile = require('t0s-components').Smile;
 moment.locale('ru');
+
+const NothingWrapper = styled.div`
+  text-align: center;
+  margin: 0 auto;
+`;
 
 let NewsItem = (props) => {
   const FORMAT = 'DD MMMM YYYY';
@@ -23,13 +30,21 @@ let NewsItem = (props) => {
 };
 
 let NewsView = (props) => {
+  const news =  _.map(props.news, ({ text, date, header }) => {
+    const props = { key: date, date, text, header };
+    return <NewsItem { ...props } />;
+  });
+
+  const nothingToShow = (
+    <NothingWrapper>
+      <h2>За этот год нет ни одной новости</h2>
+      <Smile bold='4' baseSize='30' />
+    </NothingWrapper>
+  );
 
   return (
     <div>
-      { _.map(props.news, ({ text, date, header }) => {
-        let props = { key: date, date, text, header };
-        return <NewsItem { ...props } />;
-      })}
+      { news.length ? news : nothingToShow }
     </div>
   );
 };
