@@ -9,27 +9,25 @@ describe('tours reducers', () => {
 
   beforeEach(() => {
     initialState = {
-      tours: [], years: []
+      tours: [], years: [], loader: true
     };
   });
 
   it('should return initial state', () => {
-    expect(
-      reducer(undefined, {})
-    ).toEqual(initialState);
+    expect(reducer(undefined, {})).toEqual(initialState);
   });
 
   it('should return state with tours items', () => {
     let tours = [{ tour: 1 }, { tour: 2 }];
     expect(
       reducer(initialState, { tours, type: GET_TOURS })
-    ).toEqual({ tours, years: [] });
+    ).toEqual({ loader: true, tours, years: [] });
   });
 
   it('should return state with tours years', () => {
     let years = [2015, 2016];
     expect(
       reducer(initialState, { years, type: GET_TOURS_YEARS })
-    ).toEqual({ years, tours: [] });
+    ).toEqual({ loader: true, years, tours: [] });
   });
 });
