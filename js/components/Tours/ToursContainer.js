@@ -8,11 +8,19 @@ const TYPES = require('../../actions/action-types');
 const SubNavigation = require('../SubNavigation/subNavigation');
 const Legend = require('./Legend/LegendView');
 const ToursView = require('./ToursView');
-const Smile = require('t0s-components').Smile;
+const { Smile, Loader } = require('t0s-components');
+const MIN_LOADER_TIME = 700;
 
 const API = require('../../api');
 
-function getToursAPI (year = moment().year()) {
+const minLoaderTime = () =>
+  new Promise(resolve => setTimeout(() => resolve(), MIN_LOADER_TIME));
+
+function getTours (year = moment().year()) {
+
+  const canHideLoader = minLoaderTime();
+  store.dispatch({ type: TYPES.SET_LOADER });
+
   API
     .getSectionItemsForYear('tours', year)
     .then((tours) => {
@@ -20,6 +28,7 @@ function getToursAPI (year = moment().year()) {
         type: TYPES.GET_TOURS,
         tours
       });
+      canHideLoader.then(() => store.dispatch({ type: TYPES.UNSET_LOADER }));
     });
 }
 
@@ -31,25 +40,26 @@ const ToursContainer = React.createClass({
         store.dispatch({
           type: TYPES.GET_TOURS_YEARS,
           years
-        })
+        });
       });
-    getToursAPI(this.props.params.year);
+    getTours(this.props.params.year);
   },
 
   componentWillReceiveProps: function (nextProps) {
     if (nextProps.params.year !== this.props.params.year) {
-      getToursAPI(nextProps.params.year);
+      getTours(nextProps.params.year);
     }
   },
 
   render () {
-    const { tours, years, location } = this.props;
+    const { tours, years, location, loader = true } = this.props;
     const list = _.map(years, (year) => ({ link: year, title: year }));
     const hash = (location.hash && Number(location.hash.substring(1)))|| false;
 
     const sortedTours = _.orderBy(tours, ['date'], ['desc']);
 
-    const Content = sortedTours.length > 0 
+
+    const Content = sortedTours.length > 0
       ? (<ToursView highlightedId={hash} tours={sortedTours} />)
       : (
         <div className={css.emptyToursPage}>
@@ -63,14 +73,18 @@ const ToursContainer = React.createClass({
         <SubNavigation base='tour' list={list} />
         <Legend/>
         <div className={css.block}>
-          {Content}
+          { loader ? (<div className={css.loader}><Loader /></div>) : Content }
         </div>
       </div>
     );
   }
 });
 
-const mapStateToProps = ({ toursState }) => ({ tours: toursState.tours, years: toursState.years });
+const mapStateToProps = ({ toursState }) => ({
+  tours: toursState.tours,
+  years: toursState.years,
+  loader: toursState.loader
+});
 
 module.exports = connect(mapStateToProps)(ToursContainer);
 

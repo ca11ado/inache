@@ -23,8 +23,12 @@ module.exports = keyMirror({
   SET_ACTIVE_SONG_NUMBER: null,
 
   // MODALS
-	SET_MODAL_TEXT: null,
-	SET_MODAL_IMAGE: null,
-	SET_MODAL_OPEN: null,
-	SET_MODAL_CLOSE: null
+  SET_MODAL_TEXT: null,
+  SET_MODAL_IMAGE: null,
+  SET_MODAL_OPEN: null,
+  SET_MODAL_CLOSE: null,
+
+  // LOADER
+  SET_LOADER: null,
+  UNSET_LOADER: null
 });
