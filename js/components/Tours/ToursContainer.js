@@ -8,7 +8,8 @@ const TYPES = require('../../actions/action-types');
 const SubNavigation = require('../SubNavigation/subNavigation');
 const Legend = require('./Legend/LegendView');
 const ToursView = require('./ToursView');
-const { Smile, Loader } = require('t0s-components');
+const { Smile, ThreeBallsLoader } = require('t0s-components');
+const { alt } = require('./../../composes/colors-scheme');
 const MIN_LOADER_TIME = 700;
 
 const API = require('../../api');
@@ -73,7 +74,10 @@ const ToursContainer = React.createClass({
         <SubNavigation base='tour' list={list} />
         <Legend/>
         <div className={css.block}>
-          { loader ? (<div className={css.loader}><Loader /></div>) : Content }
+          { loader
+            ? (<div className={css.loader}><ThreeBallsLoader theme={alt} /></div>)
+            : Content
+          }
         </div>
       </div>
     );
