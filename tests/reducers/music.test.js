@@ -1,4 +1,4 @@
-let reducer = require('../../js/reducers/MusicReducer');
+let reducer = require('../../js/reducers/Music');
 let {
   GET_MUSIC_ALBUMS,
   GET_MUSIC_ALBUM,

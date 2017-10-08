@@ -17,7 +17,7 @@ const API = require('../../api');
 function getTours (year = moment().year()) {
 
   loaderUtil.start();
-  store.dispatch({ type: TYPES.SET_LOADER });
+  store.dispatch({ type: TYPES.SET_TOURS_LOADER });
 
   API
     .getSectionItemsForYear('tours', year)
@@ -28,7 +28,7 @@ function getTours (year = moment().year()) {
       });
       loaderUtil
         .complete()
-        .then(() => store.dispatch({ type: TYPES.UNSET_LOADER }));
+        .then(() => store.dispatch({ type: TYPES.UNSET_TOURS_LOADER }));
     });
 }
 

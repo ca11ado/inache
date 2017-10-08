@@ -8,9 +8,9 @@ let ToursReducer = (state = DEFAULT_STATE, action) => {
       return Object.assign({}, state, { tours: action.tours });
     case TYPES.GET_TOURS_YEARS:
       return Object.assign({}, state, { years: action.years });
-    case TYPES.SET_LOADER:
+    case TYPES.SET_TOURS_LOADER:
       return Object.assign({}, state, { loader: true });
-    case TYPES.UNSET_LOADER:
+    case TYPES.UNSET_TOURS_LOADER:
       return Object.assign({}, state, { loader: false });
   }
 

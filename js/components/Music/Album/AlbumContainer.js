@@ -1,21 +1,34 @@
+import styled from 'styled-components';
+import { ThreeBallsLoader } from 't0s-components';
+import { loaderUtil } from "../../../utils";
+import AlbumView from './AlbumView';
+import { alt } from './../../../composes/colors-scheme';
+
 let _ = require('lodash');
-let css = require('./album.css');
 let React = require('react');
-let moment = require('moment');
 let store = require('../../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../../actions/action-types');
 let SubNavigation = require('../../SubNavigation/subNavigation');
 
-let Cover = require('./Cover/Cover');
-let About = require('./About/About');
-let PlayList = require('./PlayList/PlayList');
-let Song = require('./Song/Song');
-
 const API = require('../../../api');
+
+const LoaderWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 let AlbumContainer = React.createClass({
   componentDidMount () {
+    loaderUtil.start();
+    store.dispatch({ type: TYPES.SET_ALBUM_LOADER });
+
     const albumId = this.props.params.albumId;
     API
       .getMusicAlbum(albumId)
@@ -24,53 +37,33 @@ let AlbumContainer = React.createClass({
           type: TYPES.GET_MUSIC_ALBUM,
           album
         });
+        loaderUtil
+          .complete()
+          .then(() => store.dispatch({ type: TYPES.UNSET_ALBUM_LOADER }));
       });
   },
 
   render () {
     let backLink = [{ title: `Обратно к альбомам`, link: '' }];
 
-    let { album } = this.props;
+    let { album, loader:isLoader } = this.props;
     let receivedSongNumber = this.props.params.activeSongNumber - 1;
 
-    let { photo, name, songs = [], about, urlName } = album;
+    const songs = _.get(album, 'songs', []);
     let activeSongNumber = isExist(receivedSongNumber, songs.length)
       ? receivedSongNumber : 0;
-    let song = _.get(songs, activeSongNumber, '');
+    let song = _.get(songs, ['songs', activeSongNumber], '');
     let playerLink = _.get(song, 'playerLink', '');
+
+    const props = _.assign({}, album, { activeSongNumber, playerLink, song });
 
     return (
       <div>
-        <SubNavigation base='music' list={backLink} />
-          <div className={css.block}>
-            <div className={`${css.half} ${css.rightHalf}`}>
-              <div>
-                <div className={css.cell}>
-                  <Cover photo={photo} />
-                </div>
-                <div className={css.cell}>
-                  <PlayList
-                    name={name}
-                    songs={songs}
-                    activeSong={activeSongNumber}
-                    urlName={urlName}
-                  />
-                </div>
-              </div>
-              <div>
-                <About about={about} />
-              </div>
-            </div>
-
-            <div className={`${css.half} ${css.rightHalf}`}>
-              <div>
-                <iframe width="404" height="201" src={playerLink}></iframe>
-              </div>
-              <div>
-                <Song song={song} />
-              </div>
-            </div>
-          </div>
+        <SubNavigation base='music' list={backLink}/>
+        { isLoader
+            ? <LoaderWrapper><ThreeBallsLoader theme={alt} /></LoaderWrapper>
+            : <AlbumView {...props}/>
+        }
       </div>
     );
   }
@@ -80,9 +73,10 @@ function isExist (number, songsCount) {
   return (number >= 0) && (number < songsCount);
 }
 
-const mapStateToProps = ({ musicState }) => ({
-  album: musicState.album,
-  activeSongNumber: musicState.activeSongNumber
+const mapStateToProps = ({ albumState }) => ({
+  album: albumState.album,
+  loader: albumState.loader,
+  activeSongNumber: albumState.activeSongNumber
 });
 
 module.exports = connect(mapStateToProps)(AlbumContainer);
