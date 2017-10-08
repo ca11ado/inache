@@ -8,6 +8,7 @@ let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
 let MusicView = require('./MusicView');
 const { ThreeBallsLoader } = require('t0s-components');
+const { alt } = require('./../../composes/colors-scheme');
 
 const API = require('../../api');
 
@@ -38,6 +39,16 @@ const LoaderWrapper = styled.div`
   align-items: center;
 `;
 
+const BlockWrapper = styled.div`
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+`;
+
 let MusicContainer = React.createClass({
   componentDidMount () {
     getMusic(this.props.params.year);
@@ -60,13 +71,13 @@ let MusicContainer = React.createClass({
     ;
 
     return (
-      <div>
+      <BlockWrapper>
         {
           isLoader
-          ? (<LoaderWrapper><ThreeBallsLoader/></LoaderWrapper>)
+          ? (<LoaderWrapper><ThreeBallsLoader theme={alt}/></LoaderWrapper>)
           : Content
         }
-      </div>
+      </BlockWrapper>
     );
   }
 });
