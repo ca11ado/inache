@@ -1,25 +1,22 @@
 const _ = require('lodash');
 const React = require('react');
-const css = require('./tours-container.css');
 const moment = require('moment');
-const store = require('../../store');
 const { connect } = require('react-redux');
+const { Smile, ThreeBallsLoader } = require('t0s-components');
+const css = require('./tours-container.css');
+const store = require('../../store');
 const TYPES = require('../../actions/action-types');
 const SubNavigation = require('../SubNavigation/subNavigation');
 const Legend = require('./Legend/LegendView');
 const ToursView = require('./ToursView');
-const { Smile, ThreeBallsLoader } = require('t0s-components');
 const { alt } = require('./../../composes/colors-scheme');
-const MIN_LOADER_TIME = 700;
+import { loaderUtil } from "../../utils";
 
 const API = require('../../api');
 
-const minLoaderTime = () =>
-  new Promise(resolve => setTimeout(() => resolve(), MIN_LOADER_TIME));
-
 function getTours (year = moment().year()) {
 
-  const canHideLoader = minLoaderTime();
+  loaderUtil.start();
   store.dispatch({ type: TYPES.SET_LOADER });
 
   API
@@ -29,7 +26,9 @@ function getTours (year = moment().year()) {
         type: TYPES.GET_TOURS,
         tours
       });
-      canHideLoader.then(() => store.dispatch({ type: TYPES.UNSET_LOADER }));
+      loaderUtil
+        .complete()
+        .then(() => store.dispatch({ type: TYPES.UNSET_LOADER }));
     });
 }
 

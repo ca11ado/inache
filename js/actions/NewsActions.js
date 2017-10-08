@@ -1,7 +1,7 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var AllConstants = require('../constants/AllConstants');
+const AppDispatcher = require('../dispatcher/AppDispatcher');
+const AllConstants = require('../constants/AllConstants');
 
-var NewsActions = {
+const NewsActions = {
 
   getNewsForYear: function(year) {
     AppDispatcher.dispatch({
