@@ -15,6 +15,7 @@ const API = require('../../api');
 function getMusic (year = moment().year()) {
   loaderUtil.start();
   store.dispatch({ type: TYPES.SET_LOADER });
+
   API
     .getSectionItems('music')
     .then((albums) => {
