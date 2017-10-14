@@ -10,7 +10,7 @@ describe('music reducers', () => {
 
   beforeEach(() => {
     initialState = {
-      album: {}, albums: [], activeSongNumber: 1
+      album: {}, albums: [], activeSongNumber: 1, loader: true
     };
   });
 
@@ -24,20 +24,20 @@ describe('music reducers', () => {
     let albums = [{ album: 1 }, { album: 2 }];
     expect(
       reducer(initialState, { albums, type: GET_MUSIC_ALBUMS })
-    ).toEqual({ album: {}, albums, activeSongNumber: 1 });
+    ).toEqual({ album: {}, albums, activeSongNumber: 1, loader: true });
   });
 
   it('should return state with album', () => {
     let album = { name: 1 };
     expect(
       reducer(initialState, { album, type: GET_MUSIC_ALBUM })
-    ).toEqual({ album, albums: [], activeSongNumber: 1 });
+    ).toEqual({ album, albums: [], activeSongNumber: 1, loader: true });
   });
 
   it('should return state with active song with number 2', () => {
     let activeSongNumber = 2;
     expect(
       reducer(initialState, { activeSongNumber, type: SET_ACTIVE_SONG_NUMBER })
-    ).toEqual({ albums: [], album: {}, activeSongNumber });
+    ).toEqual({ albums: [], album: {}, activeSongNumber, loader: true });
   });
 });

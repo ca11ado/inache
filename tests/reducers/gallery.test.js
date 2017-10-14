@@ -10,7 +10,7 @@ describe('gallery reducers', () => {
 
   beforeEach(() => {
     initialState = {
-      album: {}, albums: [], years: []
+      album: {}, albums: [], years: [], loader: true
     };
   });
 
@@ -24,20 +24,20 @@ describe('gallery reducers', () => {
     let albums = [{ album: 1 }, { album: 2 }];
     expect(
       reducer(initialState, { albums, type: GET_ALBUMS })
-    ).toEqual({ album: {}, years: [], albums });
+    ).toEqual({ album: {}, years: [], albums, loader: true });
   });
 
   it('should return state with years', () => {
     let years = [2015, 2016];
     expect(
       reducer(initialState, { years, type: GET_ALBUMS_YEARS })
-    ).toEqual({ album: {}, years, albums: [] });
+    ).toEqual({ album: {}, years, albums: [], loader: true });
   });
 
   it('should return state with album', () => {
     let album = { name: 1 };
     expect(
       reducer(initialState, { album, type: GET_ALBUM })
-    ).toEqual({ albums: [], years: [], album });
+    ).toEqual({ albums: [], years: [], album, loader: true });
   });
 });

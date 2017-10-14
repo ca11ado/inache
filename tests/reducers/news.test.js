@@ -9,7 +9,7 @@ describe('news reducers', () => {
 
   beforeEach(() => {
     initialState = {
-      news: [], years: []
+      news: [], years: [], loader: true
     };
   });
 
@@ -23,13 +23,13 @@ describe('news reducers', () => {
     let years = [2015, 2016];
     expect(
       reducer(initialState, { years, type: GET_NEWS_YEARS })
-    ).toEqual({ years, news: [] });
+    ).toEqual({ years, news: [], loader: true });
   });
 
   it('should return state with news', () => {
     let news = [{ entity: 1 }, { entity: 2 }];
     expect(
       reducer(initialState, { news, type: GET_NEWS })
-    ).toEqual({ news, years: [] });
+    ).toEqual({ news, years: [], loader: true });
   });
 });
