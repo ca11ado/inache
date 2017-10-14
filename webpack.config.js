@@ -32,7 +32,7 @@ module.exports = {
   module: {
     noParse: /node_modules\/json-schema\/lib\/validate\.js/,
     loaders: [
-      { test: /\.js$/, exclude: /node_modules\/(?!(t0s-components)\/).*/, loader: 'babel-loader?presets[]=es2015&presets[]=react' },
+      { test: /\.js$/, exclude: /node_modules\/(?!(t0s-components)\/).*/, loader: 'babel-loader?presets[]=env&presets[]=react' },
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')},
       { test: /\.json$/, loader: 'json-loader' }
     ]
