@@ -15,9 +15,9 @@ let GalleryReducer = (state = DEFAULT_STATE, action) => {
       return Object.assign({}, state, { years: action.years });
     case TYPES.GET_ALBUM:
       return Object.assign({}, state, { album: action.album });
-    case TYPES.SET_LOADER:
+    case TYPES.SET_GALLERY_LOADER:
       return Object.assign({}, state, { loader: true });
-    case TYPES.UNSET_LOADER:
+    case TYPES.UNSET_GALLERY_LOADER:
       return Object.assign({}, state, { loader: false });
   }
 

@@ -1,5 +1,6 @@
 import { loaderUtil } from "../../utils";
 import styled from 'styled-components';
+import AlbumsView from './AlbumsView';
 let _ = require('lodash');
 let React = require('react');
 let moment = require('moment');
@@ -7,7 +8,6 @@ let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
 let SubNavigation = require('../SubNavigation/subNavigation');
-let AlbumsView = require('./AlbumsView');
 const { alt } = require('./../../composes/colors-scheme');
 const { ThreeBallsLoader } = require('t0s-components');
 
@@ -15,7 +15,7 @@ const API = require('../../api');
 
 function getAlbumsAPI (year = moment().year()) {
   loaderUtil.start();
-  store.dispatch({ type: TYPES.SET_LOADER });
+  store.dispatch({ type: TYPES.SET_GALLERY_LOADER });
   API
     .getSectionItemsForYear('gallery', year)
     .then((albums) => {
@@ -25,7 +25,7 @@ function getAlbumsAPI (year = moment().year()) {
       });
       loaderUtil
         .complete()
-        .then(() => store.dispatch({ type: TYPES.UNSET_LOADER }));
+        .then(() => store.dispatch({ type: TYPES.UNSET_GALLERY_LOADER }));
     });
 }
 

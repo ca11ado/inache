@@ -1,4 +1,4 @@
-const TYPES = require('../actions/action-types');
+const TYPES = require('../../actions/action-types');
 
 const DEFAULT_STATE = {
   albums: [],
@@ -15,9 +15,9 @@ let MusicReducer = (state = DEFAULT_STATE, action) => {
       return Object.assign({}, state, { album: action.album });
     case TYPES.SET_ACTIVE_SONG_NUMBER:
       return Object.assign({}, state, { activeSongNumber: action.activeSongNumber });
-    case TYPES.SET_LOADER:
+    case TYPES.SET_MUSIC_LOADER:
       return Object.assign({}, state, { loader: true });
-    case TYPES.UNSET_LOADER:
+    case TYPES.UNSET_MUSIC_LOADER:
       return Object.assign({}, state, { loader: false });
   }
 

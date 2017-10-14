@@ -8,9 +8,9 @@ let NewsReducer = (state = DEFAULT_STATE, action) => {
       return Object.assign({}, state, { news: action.news });
     case TYPES.GET_NEWS_YEARS:
       return Object.assign({}, state, { years: action.years });
-    case TYPES.SET_LOADER:
+    case TYPES.SET_NEWS_LOADER:
       return Object.assign({}, state, { loader: true });
-    case TYPES.UNSET_LOADER:
+    case TYPES.UNSET_NEWS_LOADER:
       return Object.assign({}, state, { loader: false });
   }
 

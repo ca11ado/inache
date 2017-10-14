@@ -15,7 +15,7 @@ const API = require('../../api');
 
 function getNews (year = moment().year()) {
   loaderUtil.start();
-  store.dispatch({ type: TYPES.SET_LOADER });
+  store.dispatch({ type: TYPES.SET_NEWS_LOADER });
   API
     .getSectionItemsForYear('news', year)
     .then((news) => {
@@ -25,7 +25,7 @@ function getNews (year = moment().year()) {
       });
       loaderUtil
         .complete()
-        .then(() => store.dispatch({ type: TYPES.UNSET_LOADER }));
+        .then(() => store.dispatch({ type: TYPES.UNSET_NEWS_LOADER }));
     });
 }
 
