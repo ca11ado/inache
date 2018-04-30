@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Группа ВО ВРЕМЕНИ</title>
+</head>
+<body>
+<style>
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    background-color: #1b1c1e;
+    height: 100%;
+  }
+
+  #wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #logo {
+    width: 450px;
+    height: 163px;
+    background: url(logo.png);
+  }
+
+  #icons {
+    display: flex;
+    margin-top: 100px;
+  }
+
+  .icon {
+    width: 150px;
+    height: 50px;
+    text-decoration: none;
+  }
+
+  .icon_vk {
+    background: url(vk.png) left/contain no-repeat;
+  }
+
+  .icon_vk:hover {
+    background-image: url(vk-click.png);
+  }
+
+  .icon_facebook {
+    background: url(f.png) center/contain no-repeat;
+  }
+
+  .icon_facebook:hover {
+    background-image: url(f-click.png);
+  }
+
+  .icon_instagram {
+    background: url(i.png) right/contain no-repeat;
+  }
+
+  .icon_instagram:hover {
+    background-image: url(i-click.png);
+  }
+</style>
+<div id="wrapper">
+  <div id="logo" title="Сайт находится в разработке"></div>
+  <div id="icons">
+    <a  title="ВКонтакте"
+        href="https://vk.com/vovremeni.band"
+        class="icon icon_vk">&nbsp;</a>
+    <a  title="Facebook"
+        href="https://www.facebook.com/vovremeni.band"
+        class="icon icon_facebook">&nbsp;</a>
+    <a  title="Instagram"
+        href="https://www.instagram.com/vovremeni.band"
+        class="icon icon_instagram">&nbsp;</a>
+  </div>
+</div>
+</body>
+</html>
