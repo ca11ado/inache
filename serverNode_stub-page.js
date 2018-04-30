@@ -12,7 +12,7 @@ app.use('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'stub-page.html'));
 });
 
-var PORT = process.env.PORT || 3009;
+var PORT = process.env.PORT || 3010;
 app.listen(PORT, function() {
   console.log('Express server running at localhost:' + PORT);
 });
