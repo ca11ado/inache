@@ -14,6 +14,8 @@
   body {
     background-color: #1b1c1e;
     height: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   #wrapper {
@@ -22,21 +24,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 40%;
-  }
-
-  @media screen
-  and (min-device-width: 500px) {
-    #wrapper {
-      padding-top: 30%;
-    }
-  }
-
-  @media screen
-  and (min-device-width: 800px) {
-    #wrapper {
-      padding-top: 15%;
-    }
   }
 
   #logo {
@@ -81,6 +68,7 @@
   }
 </style>
 <div id="wrapper">
+  <div id="margin"></div>
   <div id="logo" title="Сайт находится в разработке"></div>
   <div id="icons">
     <a  title="ВКонтакте"
