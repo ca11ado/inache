@@ -51,8 +51,7 @@
     "update-db": "rm -f db.json && cd ./utils && node ./db-utils.js && cd ..",
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "build": "npm run cp-files && webpack",
-    "stub-page": "cp stub-page.html ./public/ && cp -r ./img/stub-page ./public/img/"
+    "build": "npm run cp-files && webpack"
   },
   "author": "Khimtsov Anton"
 }
