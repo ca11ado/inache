@@ -26,7 +26,7 @@ const toursIndexPath = `/tour/${currentYear}`;
 const galleryIndexPath = `/gallery/${currentYear}`;
 /*<Route path=":year/:albumId/:photoId" component={Photo} />*/
 
-const isProdDomain = includes(location.hostname, '127');
+const isProdDomain = includes(location.hostname, 'vovremeni');
 
 module.exports = isProdDomain
     ? (
