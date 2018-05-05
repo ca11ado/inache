@@ -26,13 +26,14 @@ const toursIndexPath = `/tour/${currentYear}`;
 const galleryIndexPath = `/gallery/${currentYear}`;
 /*<Route path=":year/:albumId/:photoId" component={Photo} />*/
 
-const isProdDomain = includes(location.hostname, 'vovremeni');
+const isProdDomain = includes(location.hostname, '127');
 
 module.exports = isProdDomain
     ? (
       <Router history={browserHistory}>
         <Route path="/entry" component={EntryPage} />
         <Route path="/">
+          <IndexRedirect to={entryPagePath} />
           <Redirect from='*' to={entryPagePath} />
         </Route>
       </Router>
