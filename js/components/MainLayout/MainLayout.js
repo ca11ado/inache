@@ -11,7 +11,7 @@ const MainLayout = React.createClass({
   render: function() {
     return (
       <div className={css.flexBox}>
-				<ModalWindow />				
+        <ModalWindow></ModalWindow>
         <Logo />
         <Menu />
         <MainBlock>

@@ -1,0 +1,83 @@
+html, body, :global(#app) {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  height: 100%;
+  background-color: #1b1c1e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.fake-margin {
+  height: 22%;
+}
+
+.logo {
+  width: 450px;
+  height: 163px;
+  background: url(/img/entry-page/logo.png);
+}
+
+.logo__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.icons {
+  display: flex;
+  margin-top: 60px;
+}
+
+.icon {
+  width: 150px;
+  height: 50px;
+  text-decoration: none;
+}
+
+.icon_vk {
+  background: url(/img/entry-page/vk.png) right/contain no-repeat;
+}
+
+.icon_vk:hover {
+  background-image: url(/img/entry-page/vk-click.png);
+}
+
+.icon_facebook {
+  background: url(/img/entry-page/f.png) center/contain no-repeat;
+}
+
+.icon_facebook:hover {
+  background-image: url(/img/entry-page/f-click.png);
+}
+
+.icon_instagram {
+  background: url(/img/entry-page/i.png) left/contain no-repeat;
+}
+
+.icon_instagram:hover {
+  background-image: url(/img/entry-page/i-click.png);
+}
+
+.title {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.title_main {
+  text-transform: uppercase;
+}
+
+.title_sub {
+  font-size: 13px;
+}
+
+.title_sub, .title_main {
+  font-family: Candara, Verdana, sans-serif;
+  color: #D1B47A;
+}
