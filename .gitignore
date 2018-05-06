@@ -6,5 +6,7 @@ npm-debug.log
 env.local.js
 nohup.out
 .DS_Store
+img/.DS_Store
+
 .tern-project
 **.swp
