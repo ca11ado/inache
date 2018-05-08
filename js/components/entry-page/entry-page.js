@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import css from './entry-page.css';
+import Youtube from '../youtube/youtube';
 
 export default () => (
     <div className={css.wrapper}>
@@ -25,6 +26,9 @@ export default () => (
            href="https://www.instagram.com/vovremeni.band"
            className={`${css.icon} ${css.icon_instagram}`}
            target="_blank">&nbsp;</a>
+      </div>
+      <div className={css.playerWrapper}>
+        <Youtube />
       </div>
     </div>
 );
