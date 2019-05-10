@@ -1,15 +1,12 @@
 let webpack = require('webpack');
+let path = require('path');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
+let MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const PRODUCTION_PLUGINS = [
   new webpack.DefinePlugin({
     'process.env':{
       'NODE_ENV': JSON.stringify('production')
-    }
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-    compress:{
-      warnings: true
     }
   }),
   new webpack.optimize.OccurrenceOrderPlugin()
@@ -19,21 +16,23 @@ module.exports = {
   entry: './js/app.js',
 
   output: {
-    path: 'public',
+    path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
     publicPath: '/'
   },
 
   plugins: [
     ...(process.env.NODE_ENV === 'production' ? PRODUCTION_PLUGINS : []),
-    new ExtractTextPlugin('[name].css')
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    })
   ],
 
   module: {
     noParse: /node_modules\/json-schema\/lib\/validate\.js/,
-    loaders: [
+    rules: [
       { test: /\.js$/, exclude: /node_modules\/(?!(t0s-components)\/).*/, loader: 'babel-loader?presets[]=env&presets[]=react' },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')},
+      { test: /\.css$/, use: [ MiniCssExtractPlugin.loader, 'css-loader' ]},
       { test: /\.json$/, loader: 'json-loader' }
     ]
   },
@@ -43,6 +42,6 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty'
-  }
+  },
 };
 
