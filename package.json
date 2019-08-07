@@ -1,20 +1,30 @@
 {
   "name": "inache",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "description": "My webpack project",
   "main": "serverNode.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
     "jest": "^24.8.0",
     "keymirror": "^0.1.1",
-    "webpack": "^4.39.1"
+    "mini-css-extract-plugin": "^0.8.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
   },
   "scripts": {
     "start": "npm run cp-files && if test \"$NODE_ENV\" != \"production\" ; then npm run start:dev; else npm run start:prod; fi",
     "start:dev": "npm run update-db && (webpack --watch & node serverNode.js)",
-    "start:prod": "webpack && node serverNode.js",
-    "cp-files": "mkdir -p public/img && cp -R img public && cp js/index.html public",
+    "start:prod": "webpack --mode=production && node serverNode.js",
+    "cp-files": "mkdir -p public/img && cp -R img public",
     "update-db": "rm -f db.json && cd ./utils && node ./db-utils.js && cd ..",
     "test": "jest",
     "test:watch": "npm test -- --watch",

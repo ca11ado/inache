@@ -9,8 +9,8 @@ const News = require('./components/News/NewsContainer');
 const Tours = require('./components/Tours/ToursContainer');
 const Band = require('./components/Band/BandContainer');
 const Video = require('./components/Video/VideoContainer');
-const Albums = require('./components/Gallery/AlbumsContainer');
-const Album = require('./components/Gallery/Album/AlbumContainer');
+//const Albums = require('./components/Gallery/AlbumsContainer');
+//const Album = require('./components/Gallery/Album/AlbumContainer');
 const Press = require('./components/Press/PressContainer');
 const Photo = require('./components/Gallery/Photo/Photo');
 const PageNotFound = require('./components/PageNotFound');
@@ -43,11 +43,13 @@ module.exports = isProdDomain
         <Route path="/" component={MainLayout}>
           <IndexRedirect to={entryPagePath} />
           <Route path="press" component={Press} />
+          /*
           <Route path="gallery">
             <IndexRedirect to={galleryIndexPath} />
             <Route path=":year" component={Albums} />
             <Route path=":year/:albumId" component={Photo} />
           </Route>
+          */
           <Route path="band" component={Band} />
           <Route path="tour">
             <IndexRedirect to={toursIndexPath} />

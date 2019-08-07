@@ -1,48 +1,81 @@
-let webpack = require('webpack');
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
 
-const PRODUCTION_PLUGINS = [
-  new webpack.DefinePlugin({
-    'process.env':{
-      'NODE_ENV': JSON.stringify('production')
-    }
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-    compress:{
-      warnings: true
-    }
-  }),
-  new webpack.optimize.OccurrenceOrderPlugin()
-];
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const configHtmlWebpackPlugin = { template: "src/index.html" };
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './js/app.js',
+	mode: 'development',
+	entry: './js/app.js',
 
-  output: {
-    path: 'public',
-    filename: 'bundle.js',
-    publicPath: '/'
-  },
+	output: {
+		filename: '[name].[chunkhash].js',
+		path: path.resolve(__dirname, 'public')
+	},
 
-  plugins: [
-    ...(process.env.NODE_ENV === 'production' ? PRODUCTION_PLUGINS : []),
-    new ExtractTextPlugin('[name].css')
+	plugins: [
+    new webpack.ProgressPlugin(),
+    new HtmlWebpackPlugin(configHtmlWebpackPlugin),
+    new MiniCssExtractPlugin()
   ],
 
-  module: {
-    noParse: /node_modules\/json-schema\/lib\/validate\.js/,
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules\/(?!(t0s-components)\/).*/, loader: 'babel-loader?presets[]=env&presets[]=react' },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')},
-      { test: /\.json$/, loader: 'json-loader' }
-    ]
-  },
+	module: {
+		rules: [
+			{
+				test: /.(js|jsx)$/,
+				include: [path.resolve(__dirname, 'js')],
+				loader: 'babel-loader',
 
-  node: {
-    console: true,
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
-  }
+				options: {
+					plugins: ['syntax-dynamic-import'],
+
+					presets: [
+						[
+							'@babel/preset-env',
+							{
+								modules: false
+							}
+						],
+            ['@babel/preset-react']
+					]
+				}
+			}, {
+        test: /\.css$/i,
+        use: [
+          //'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader
+          }, {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          }
+        ],
+      }
+
+		]
+	},
+
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				vendors: {
+					priority: -10,
+					test: /[\\/]node_modules[\\/]/
+				}
+			},
+
+			chunks: 'async',
+			minChunks: 1,
+			minSize: 30000,
+			name: true
+		}
+	},
+
+	devServer: {
+		open: true
+	}
 };
-
