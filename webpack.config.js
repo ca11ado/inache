@@ -26,19 +26,14 @@ module.exports = {
 			{
 				test: /.(js|jsx)$/,
 				include: [path.resolve(__dirname, 'js')],
-				loader: 'babel-loader',
+        loader: 'babel-loader',
 
 				options: {
 					plugins: ['syntax-dynamic-import'],
 
 					presets: [
-						[
-							'@babel/preset-env',
-							{
-								modules: false
-							}
-						],
-            ['@babel/preset-react']
+            ['@babel/preset-react'],
+						['@babel/preset-env', { modules: false }]
 					]
 				}
 			}, {
@@ -77,5 +72,14 @@ module.exports = {
 
 	devServer: {
 		open: true
-	}
+	},
+
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
+
+  stats: 'errors-only'
 };
