@@ -81,5 +81,5 @@ module.exports = {
     tls: 'empty'
   },
 
-  stats: 'errors-only'
+  //stats: 'errors-only'
 };

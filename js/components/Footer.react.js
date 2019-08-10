@@ -2,16 +2,18 @@ var React = require('react');
 var ReactPropTypes = React.PropTypes;
 var TodoActions = require('../actions/TodoActions');
 
-var Footer = React.createClass({
+class Footer extends React.Component {
 
+  /*
   propTypes: {
     allTodos: ReactPropTypes.object.isRequired
   },
+    */
 
   /**
    * @return {object}
    */
-  render: function() {
+  render() {
     var allTodos = this.props.allTodos;
     var total = Object.keys(allTodos).length;
 
@@ -52,15 +54,15 @@ var Footer = React.createClass({
         {clearCompletedButton}
       </footer>
     );
-  },
+  }
 
   /**
    * Event handler to delete all completed TODOs
    */
-  _onClearCompletedClick: function() {
+  _onClearCompletedClick() {
     TodoActions.destroyCompleted();
   }
 
-});
+}
 
 module.exports = Footer;

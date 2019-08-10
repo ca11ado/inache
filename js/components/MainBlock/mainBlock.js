@@ -2,7 +2,7 @@ let _ = require('lodash');
 let css = require('./mainBlock.css');
 let React = require('react');
 
-let MainBlock = React.createClass({
+class MainBlock extends React.Component {
   render () {
     return (
       <div id="mainBlock" className={css.mainBlock}>
@@ -10,6 +10,6 @@ let MainBlock = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = MainBlock;

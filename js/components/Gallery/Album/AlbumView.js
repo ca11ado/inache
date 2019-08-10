@@ -3,7 +3,7 @@ let css = require('./AlbumView.css');
 let React = require('react');
 let NavLink = require('../../framework/NavLink.react/navlink');
 
-let PhotoPreview = React.createClass({
+class PhotoPreview extends React.Component {
   render () {
     let { src, link } = this.props.photo;
 
@@ -15,7 +15,7 @@ let PhotoPreview = React.createClass({
       </div>
     );
   }
-});
+}
 
 let AlbumView = (props) => {
   let photos = _.map(props.images, ({ original }, index) => {

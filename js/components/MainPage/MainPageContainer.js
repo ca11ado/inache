@@ -14,7 +14,7 @@ let MainBlock = require('../MainBlock/mainBlock');
 
 const NEWS_COUNT = 5;
 
-const MainPageContainer = React.createClass({
+class MainPageContainer extends React.Component {
   componentDidMount () {
     const currentYear = moment().year();
     API
@@ -34,12 +34,12 @@ const MainPageContainer = React.createClass({
           news: _.take(news, 3)
         });
       });
-  },
+  }
 
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.params.year !== this.props.params.year) {
     }
-  },
+  }
 
   render () {
     const props = {
@@ -63,7 +63,7 @@ const MainPageContainer = React.createClass({
       </div>
     );
   }
-});
+}
 
 const mapStateToProps = ({ toursState, newsState }) => ({ tours: toursState.tours, news: newsState.news });
 

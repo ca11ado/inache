@@ -9,7 +9,7 @@ const TYPES = require('../../../actions/action-types');
 const store = require('../../../store');
 const API = require('../../../api');
 
-const PhotoView = React.createClass({
+class PhotoView extends React.Component {
 	render () {
 		const photos = this.props.album.photos || [];
 
@@ -21,9 +21,9 @@ const PhotoView = React.createClass({
 			</div>
 		);
 	}
-});
+}
 
-const PhotoContainer = React.createClass({
+class PhotoContainer extends React.Component {
 
   componentDidMount () {
     const mainBlock = document.getElementById('mainBlock');
@@ -42,7 +42,7 @@ const PhotoContainer = React.createClass({
           album
         })
       });
-  },
+  }
 
   render () {
     const { year, albumId, photoId } = this.props.params;
@@ -62,7 +62,7 @@ const PhotoContainer = React.createClass({
       </div>
     );
   }
-});
+}
 
 const mapStateToProps = ({ galleryState }) => ({ album: galleryState.album });
 

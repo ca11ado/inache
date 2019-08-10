@@ -50,7 +50,7 @@ const BlockWrapper = styled.div`
   min-height: 400px;
 `;
 
-let AlbumsContainer = React.createClass({
+class AlbumsContainer extends React.Component {
   componentDidMount () {
     API
       .getAvailableYears('gallery')
@@ -61,13 +61,13 @@ let AlbumsContainer = React.createClass({
         })
       });
     getAlbumsAPI(this.props.params.year);
-  },
+  }
 
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.params.year !== this.props.params.year) {
       getAlbumsAPI(nextProps.params.year);
     }
-  },
+  }
 
   render () {
     const { loader:isLoader, albums, years } = this.props;
@@ -90,7 +90,7 @@ let AlbumsContainer = React.createClass({
       </BlockWrapper>
     );
   }
-});
+}
 
 const mapStateToProps = ({ galleryState }) => ({
   albums: galleryState.albums,

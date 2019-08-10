@@ -21,7 +21,7 @@ let BandView = () => {
 };
 
 
-let BandContainer = React.createClass({
+class BandContainer extends React.Component {
 
   render () {
 
@@ -29,6 +29,6 @@ let BandContainer = React.createClass({
       <BandView />
     );
   }
-});
+}
 
 module.exports = BandContainer;

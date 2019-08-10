@@ -1,5 +1,7 @@
 const low = require('lowdb');
-let db = low('./db.json');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('./db.json');
+let db = low(adapter);
 const moment = require('moment');
 let _ = require('lodash');
 

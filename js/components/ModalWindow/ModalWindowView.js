@@ -5,7 +5,7 @@ const { connect } = require('react-redux');
 const store = require('../../store');
 const TYPES = require('../../actions/action-types');
 
-const ModalWindow = React.createClass({
+class ModalWindow extends React.Component {
 	render () {
 		const { text, image, isOpen } = this.props;
 
@@ -29,14 +29,14 @@ const ModalWindow = React.createClass({
 				</div>
 			</div>	
 		);
-	},
+	}
 
 	_closeWindow () {
 		store.dispatch({
 			type: TYPES.SET_MODAL_CLOSE
 		});	
 	}
-});
+}
 
 const mapStateToProps = ({ modalState }) => ({ 
 	text: modalState.text,

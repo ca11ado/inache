@@ -4,7 +4,7 @@ const React = require('react');
 const store = require('../../../../store');
 const TYPES = require('../../../../actions/action-types');
 
-const Cover = React.createClass({
+class Cover extends React.Component {
 	render () {
 
 		return (
@@ -16,7 +16,7 @@ const Cover = React.createClass({
 				/>
 			</div>
 		);
-	},
+	}
 
 	_onImageClick () {
 		store.dispatch({
@@ -26,6 +26,6 @@ const Cover = React.createClass({
 			}
 		});
 	}
-});
+}
 
 module.exports = Cover;

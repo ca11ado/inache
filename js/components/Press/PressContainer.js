@@ -9,7 +9,7 @@ let { connect } = require('react-redux');
 let store = require('../../store');
 let TYPES = require('../../actions/action-types');
 
-let Press = React.createClass({
+class Press extends React.Component {
   componentDidMount () {
     api
       .getPressItems()
@@ -19,7 +19,7 @@ let Press = React.createClass({
           pressItems: items
         });
       });
-  },
+  }
 
   render () {
     let pressItems = this.props.pressItems;
@@ -32,7 +32,7 @@ let Press = React.createClass({
       <PressView items={items} />
     );
   }
-});
+}
 
 const mapStateToProps = (store) => ({ pressItems: store.pressState.pressItems });
 

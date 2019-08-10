@@ -2,8 +2,8 @@ let React = require('react');
 let css = require('./logo.css');
 let NavLink = require('../framework/NavLink.react/navlink');
 
-let Logo = React.createClass({
-  render: function () {
+class Logo extends React.Component {
+  render() {
     return (
       <div id="logo" className={css.block}>
         <NavLink to="/">
@@ -27,6 +27,6 @@ let Logo = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = Logo;

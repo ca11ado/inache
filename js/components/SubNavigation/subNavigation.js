@@ -4,7 +4,7 @@ let React = require('react');
 let moment = require('moment');
 let NavLink = require('../framework/NavLink.react/navlink');
 
-let SubNavigation = React.createClass({
+class SubNavigation extends React.Component {
   render () {
     let list = this.props.list;
     let base = this.props.base;
@@ -24,6 +24,6 @@ let SubNavigation = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = SubNavigation;

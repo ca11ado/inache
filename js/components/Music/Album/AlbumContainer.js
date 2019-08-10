@@ -24,7 +24,7 @@ const LoaderWrapper = styled.div`
   align-items: center;
 `;
 
-let AlbumContainer = React.createClass({
+class AlbumContainer extends React.Component {
   componentDidMount () {
     loaderUtil.start();
     store.dispatch({ type: TYPES.SET_ALBUM_LOADER });
@@ -41,7 +41,7 @@ let AlbumContainer = React.createClass({
           .complete()
           .then(() => store.dispatch({ type: TYPES.UNSET_ALBUM_LOADER }));
       });
-  },
+  }
 
   render () {
     let backLink = [{ title: `Обратно к альбомам`, link: '' }];
@@ -67,7 +67,7 @@ let AlbumContainer = React.createClass({
       </div>
     );
   }
-});
+}
 
 function isExist (number, songsCount) {
   return (number >= 0) && (number < songsCount);

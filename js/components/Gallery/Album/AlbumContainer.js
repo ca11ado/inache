@@ -8,7 +8,7 @@ let AlbumView = require('./AlbumView');
 
 const API = require('../../../api');
 
-let AlbumContainer = React.createClass({
+class AlbumContainer extends React.Component {
   componentDidMount () {
     API
       .getAlbum(this.props.params.albumId)
@@ -18,10 +18,10 @@ let AlbumContainer = React.createClass({
           album
         })
       })
-  },
+  }
 
-  componentWillReceiveProps: function (nextProps) {
-  },
+  componentWillReceiveProps(nextProps) {
+  }
 
   render () {
     let year = this.props.params.year;
@@ -45,7 +45,7 @@ let AlbumContainer = React.createClass({
       </div>
     );
   }
-});
+}
 
 const mapStateToProps = ({ galleryState }) => ({ album: galleryState.album });
 

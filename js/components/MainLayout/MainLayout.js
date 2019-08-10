@@ -6,9 +6,9 @@ const React = require('react');
 const css = require('./main-layout.css');
 const ModalWindow = require('../ModalWindow/ModalWindowView.js');
 
-const MainLayout = React.createClass({
+class MainLayout extends React.Component {
 
-  render: function() {
+  render() {
     return (
       <div className={css.flexBox}>
         <ModalWindow></ModalWindow>
@@ -22,6 +22,6 @@ const MainLayout = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = MainLayout;

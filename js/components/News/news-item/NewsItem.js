@@ -6,12 +6,12 @@ moment.locale('ru');
 
 const FORMAT = 'DD MMMM YYYY';
 
-let NewsItem = React.createClass({
+class NewsItem extends React.Component {
 
   /**
    * @return {object}
    */
-  render: function() {
+  render() {
     let date = moment(this.props.date).format(FORMAT);
     let text = this.props.text;
     let header = this.props.header || '';
@@ -25,6 +25,6 @@ let NewsItem = React.createClass({
     );
   }
 
-});
+}
 
 module.exports = NewsItem;

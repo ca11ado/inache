@@ -3,8 +3,8 @@ let React = require('react');
 
 let NavLink = require('../../framework/NavLink.react/navlink.js');
 
-let Element = React.createClass({
-  render: function () {
+class Element extends React.Component {
+  render() {
     let tab = this.props.tab;
 
     return (
@@ -15,6 +15,6 @@ let Element = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = Element;

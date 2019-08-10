@@ -32,7 +32,7 @@ function getTours (year = moment().year()) {
     });
 }
 
-const ToursContainer = React.createClass({
+class ToursContainer extends React.Component {
   componentDidMount () {
     API
       .getAvailableYears('tours')
@@ -43,13 +43,13 @@ const ToursContainer = React.createClass({
         });
       });
     getTours(this.props.params.year);
-  },
+  }
 
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.params.year !== this.props.params.year) {
       getTours(nextProps.params.year);
     }
-  },
+  }
 
   render () {
     const { tours, years, location, loader = true } = this.props;
@@ -81,7 +81,7 @@ const ToursContainer = React.createClass({
       </div>
     );
   }
-});
+}
 
 const mapStateToProps = ({ toursState }) => ({
   tours: toursState.tours,

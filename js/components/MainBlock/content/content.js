@@ -1,7 +1,7 @@
 let css = require('./content.css');
 let React = require('react');
 
-let Content = React.createClass({
+class Content extends React.Component {
   render () {
     return (
       <div className={css.block}>
@@ -9,6 +9,6 @@ let Content = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = Content;

@@ -50,7 +50,7 @@ const BlockWrapper = styled.div`
   min-height: 400px;
 `;
 
-let NewsContainer = React.createClass({
+class NewsContainer extends React.Component {
   componentDidMount () {
     API
       .getAvailableYears('news')
@@ -61,19 +61,19 @@ let NewsContainer = React.createClass({
         })
       });
     getNews(this.props.params.year);
-  },
+  }
 
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.params.year !== this.props.params.year) {
       getNews(nextProps.params.year);
     }
-  },
+  }
 
   getDefaultProps () {
     return {
       isPreloader: true
     };
-  },
+  }
 
   render () {
     let years = this.props.years;
@@ -90,7 +90,7 @@ let NewsContainer = React.createClass({
       </BlockWrapper>
     );
   }
-});
+}
 
 const mapStateToProps = ({ newsState }) => ({
   news: newsState.news,

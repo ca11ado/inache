@@ -2,11 +2,11 @@ let css = require('./menu.css');
 let React = require('react');
 let Element = require('./MenuElement.react/element');
 
-let Menu = React.createClass({
+class Menu extends React.Component {
   /**
    * @return {object}
    */
-  render: function() {
+  render() {
     let menuSections = [
       { name: 'Новости', link: '/news' },
       { name: 'Афиша', link: '/tour' },
@@ -33,6 +33,6 @@ let Menu = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = Menu;

@@ -50,16 +50,16 @@ const BlockWrapper = styled.div`
   min-height: 400px;
 `;
 
-let MusicContainer = React.createClass({
+class MusicContainer extends React.Component {
   componentDidMount () {
     getMusic(this.props.params.year);
-  },
+  }
 
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.params.year !== this.props.params.year) {
       getMusic(nextProps.params.year);
     }
-  },
+  }
 
   render () {
     let albums = this.props.albums;
@@ -81,7 +81,7 @@ let MusicContainer = React.createClass({
       </BlockWrapper>
     );
   }
-});
+}
 
 const mapStateToProps = ({ musicState }) => ({
   albums: musicState.albums,
