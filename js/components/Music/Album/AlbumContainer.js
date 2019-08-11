@@ -79,4 +79,4 @@ const mapStateToProps = ({ albumState }) => ({
   activeSongNumber: albumState.activeSongNumber
 });
 
-module.exports = connect(mapStateToProps)(AlbumContainer);
+export default connect(mapStateToProps)(AlbumContainer);

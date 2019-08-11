@@ -98,5 +98,4 @@ const mapStateToProps = ({ newsState }) => ({
   loader: newsState.loader
 });
 
-module.exports = connect(mapStateToProps)(NewsContainer);
-
+export default connect(mapStateToProps)(NewsContainer);

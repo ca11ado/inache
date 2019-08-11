@@ -88,4 +88,4 @@ const mapStateToProps = ({ musicState }) => ({
   loader: musicState.loader
 });
 
-module.exports = connect(mapStateToProps)(MusicContainer);
+export default connect(mapStateToProps)(MusicContainer);

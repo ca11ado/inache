@@ -49,5 +49,4 @@ let NewsView = (props) => {
   );
 };
 
-module.exports = NewsView;
-
+export default NewsView;

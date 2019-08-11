@@ -1,33 +1,55 @@
 import EntryPage from './components/entry-page/entry-page';
 import includes from 'lodash/includes';
-const { Router, Redirect, browserHistory, Route, IndexRoute, IndexRedirect } = require('react-router');
+const { BrowserRouter, Route, Switch } = require('react-router-dom');
 const React = require('react');
 const moment = require('moment');
-
-const MainLayout = require('./components/MainLayout/MainLayout.js');
-const News = require('./components/News/NewsContainer');
-const Tours = require('./components/Tours/ToursContainer');
-const Band = require('./components/Band/BandContainer');
-const Video = require('./components/Video/VideoContainer');
+//const MainLayout = require('./components/MainLayout/MainLayout.js');
+//const News = require('./components/News/NewsContainer');
+//const Tours = require('./components/Tours/ToursContainer');
+//const Band = require('./components/Band/BandContainer');
+//const Video = require('./components/Video/VideoContainer');
 //const Albums = require('./components/Gallery/AlbumsContainer');
 //const Album = require('./components/Gallery/Album/AlbumContainer');
-const Press = require('./components/Press/PressContainer');
+//const Press = require('./components/Press/PressContainer');
 //const Photo = require('./components/Gallery/Photo/Photo');
-const PageNotFound = require('./components/PageNotFound');
-const Music = require('./components/Music/MusicContainer');
-const MusicAlbum = require('./components/Music/Album/AlbumContainer');
-const MainPage = require('./components/MainPage/MainPageContainer');
+//const PageNotFound = require('./components/PageNotFound');
+//const Music = require('./components/Music/MusicContainer');
+//const MusicAlbum = require('./components/Music/Album/AlbumContainer');
+//const MainPage = require('./components/MainPage/MainPageContainer');
 
 const currentYear = moment().year();
-const mainPagePath = '/main';
-const entryPagePath = '/entry';
-const newsIndexPath = `/news/${currentYear}`;
-const toursIndexPath = `/tour/${currentYear}`;
-const galleryIndexPath = `/gallery/${currentYear}`;
+//const mainPagePath = '/main';
+//const newsIndexPath = `/news/${currentYear}`;
+//const toursIndexPath = `/tour/${currentYear}`;
+//const galleryIndexPath = `/gallery/${currentYear}`;
 /*<Route path=":year/:albumId/:photoId" component={Photo} />*/
 
 const isProdDomain = includes(location.hostname, 'vovremeni');
 
+class TestComponent extends React.Component {
+  render() {
+    return (<div>Hello, wor</div>);
+  }
+}
+
+class EntryComponent extends React.Component {
+  render() {
+    return (<div>Entry page</div>);
+  }
+}
+
+function AppRouter() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route component={EntryPage} />
+      </Switch>
+    </BrowserRouter>
+  );
+}
+
+export default AppRouter;
+/*
 module.exports = isProdDomain
     ? (
       <Router history={browserHistory}>
@@ -43,13 +65,11 @@ module.exports = isProdDomain
         <Route path="/" component={MainLayout}>
           <IndexRedirect to={entryPagePath} />
           <Route path="press" component={Press} />
-          /*
           <Route path="gallery">
             <IndexRedirect to={galleryIndexPath} />
             <Route path=":year" component={Albums} />
             <Route path=":year/:albumId" component={Photo} />
           </Route>
-          */
           <Route path="band" component={Band} />
           <Route path="tour">
             <IndexRedirect to={toursIndexPath} />
@@ -72,3 +92,4 @@ module.exports = isProdDomain
         <Route path="/entry" component={EntryPage} />
       </Router>
     );
+*/

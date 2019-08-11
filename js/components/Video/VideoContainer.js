@@ -26,4 +26,4 @@ const Video = () => {
   return nothingToShow;
 };
 
-module.exports = Video;
+export default Video;

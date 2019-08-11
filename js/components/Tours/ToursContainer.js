@@ -89,5 +89,4 @@ const mapStateToProps = ({ toursState }) => ({
   loader: toursState.loader
 });
 
-module.exports = connect(mapStateToProps)(ToursContainer);
-
+export default connect(mapStateToProps)(ToursContainer);
