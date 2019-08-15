@@ -2,9 +2,9 @@ let _ = require('lodash');
 let css = require('./navlink.css');
 
 let React = require('react');
-const { Link } = require('react-router-dom');
+const { NavLink } = require('react-router-dom');
 
-class NavLink extends React.Component {
+class MyNavLink extends React.Component {
   render () {
     let def = {
       className: css.link,
@@ -12,8 +12,8 @@ class NavLink extends React.Component {
     };
     let props = _.defaults({}, this.props, def);
 
-    return <Link { ...props } />
+    return <NavLink { ...props } />
   }
 }
 
-module.exports = NavLink;
+module.exports = MyNavLink;

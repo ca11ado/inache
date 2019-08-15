@@ -3,14 +3,14 @@ import includes from 'lodash/includes';
 const { BrowserRouter, Route, Switch } = require('react-router-dom');
 const React = require('react');
 const moment = require('moment');
-//const MainLayout = require('./components/MainLayout/MainLayout.js');
-//const News = require('./components/News/NewsContainer');
+const MainLayout = require('./components/MainLayout/MainLayout.js');
+const News = require('./components/News/NewsContainer');
 //const Tours = require('./components/Tours/ToursContainer');
 //const Band = require('./components/Band/BandContainer');
 //const Video = require('./components/Video/VideoContainer');
 //const Albums = require('./components/Gallery/AlbumsContainer');
 //const Album = require('./components/Gallery/Album/AlbumContainer');
-//const Press = require('./components/Press/PressContainer');
+const Press = require('./components/Press/PressContainer');
 //const Photo = require('./components/Gallery/Photo/Photo');
 //const PageNotFound = require('./components/PageNotFound');
 //const Music = require('./components/Music/MusicContainer');
@@ -24,28 +24,40 @@ const currentYear = moment().year();
 //const galleryIndexPath = `/gallery/${currentYear}`;
 /*<Route path=":year/:albumId/:photoId" component={Photo} />*/
 
+const css = require('./components/MainLayout/main-layout.css');
+const Logo = require('./components/Logo.react/logo');
+const Menu = require('./components/Menu.react/menu');
+const MainBlock = require('./components/MainBlock/mainBlock');
+const Content = require('./components/MainBlock/content/content');
 const isProdDomain = includes(location.hostname, 'vovremeni');
-
-class TestComponent extends React.Component {
-  render() {
-    return (<div>Hello, wor</div>);
-  }
+function fwefe() {
+  return (<h1>Hello world</h1>);
 }
-
-class EntryComponent extends React.Component {
-  render() {
-    return (<div>Entry page</div>);
-  }
-}
-
 function AppRouter() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route component={EntryPage} />
-      </Switch>
-    </BrowserRouter>
-  );
+  return isProdDomain
+    ? (
+      <BrowserRouter>
+        <Switch>
+          <Route component={EntryPage} />
+        </Switch>
+      </BrowserRouter>
+    )
+    : (
+      <BrowserRouter>
+        <Switch>
+          <div className={css.flexBox}>
+            <Logo />
+            <Menu />
+            <MainBlock>
+              <Content>
+                <Route path="/press" component={Press} />
+                <Route path="/news" component={News} />
+              </Content>
+            </MainBlock>
+          </div>
+        </Switch>
+      </BrowserRouter>
+    );
 }
 
 export default AppRouter;

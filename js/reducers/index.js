@@ -8,8 +8,8 @@ const toursReducer = require('./ToursReducer');
 const musicReducer = require('./Music');
 const albumReducer = require('./Music/AlbumReducer');
 const newsReducer = require('./NewsReducer');
-const modalReducer = require('./ModalReducer');
 */
+const modalReducer = require('./ModalReducer');
 
 // Combine Reducers
 const reducers = combineReducers({
@@ -20,8 +20,8 @@ const reducers = combineReducers({
   musicState: musicReducer,
   albumState: albumReducer,
   newsState: newsReducer,
-  modalState: modalReducer
   */
+  modalState: modalReducer
 });
 
 export default reducers;

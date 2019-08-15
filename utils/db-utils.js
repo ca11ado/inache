@@ -210,7 +210,7 @@ const defaultScheme = {
 function setDefaultScheme (scheme) {
   return db
     .defaults(scheme)
-    .value();
+    .write();
 }
 
 function getSection (name) {
