@@ -3,7 +3,7 @@ import styled from 'styled-components';
 let _ = require('lodash');
 let React = require('react');
 let moment = require('moment');
-//const { ThreeBallsLoader } = require('t0s-components');
+//import { ThreeBallsLoader } from 't0s-components';
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
