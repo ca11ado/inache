@@ -1,4 +1,3 @@
-//const News = require('./components/News/NewsContainer');
 //const Tours = require('./components/Tours/ToursContainer');
 //const Band = require('./components/Band/BandContainer');
 //const Video = require('./components/Video/VideoContainer');
@@ -22,6 +21,7 @@ import React from 'react';
 import moment from 'moment';
 import MainLayout from 'js/components/MainLayout/MainLayout.js';
 import PressPage from 'js/components/Press/PressContainer';
+import NewsPage from 'js/components/News/NewsContainer';
 
 const currentYear = moment().year();
 
@@ -62,7 +62,7 @@ function AppRouter() {
         <Switch>
           <SiteBody>
             <Route path="/press" component={PressPage} />
-            <Route path="/news" component={PressPage} />
+            <Route path="/news/:year" component={NewsPage} />
           </SiteBody>
         </Switch>
       </BrowserRouter>

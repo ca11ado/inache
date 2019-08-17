@@ -3,15 +3,21 @@ import styled from 'styled-components';
 let _ = require('lodash');
 let React = require('react');
 let moment = require('moment');
-const { ThreeBallsLoader } = require('t0s-components');
+//const { ThreeBallsLoader } = require('t0s-components');
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
 let SubNavigation = require('../SubNavigation/subNavigation');
-let NewsView = require('./NewsView');
+import NewsView from './NewsView';
 const { alt } = require('./../../composes/colors-scheme');
 
 const API = require('../../api');
+
+class ThreeBallsLoader extends React.Component {
+  render() {
+    return (<h1>Here will be ThreeBallsLoader</h1>);
+  }
+}
 
 function getNews (year = moment().year()) {
   loaderUtil.start();
@@ -60,22 +66,22 @@ class NewsContainer extends React.Component {
           years
         })
       });
-    getNews(this.props.params.year);
+    getNews(this.props.match.params.year);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.params.year !== this.props.params.year) {
-      getNews(nextProps.params.year);
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.year !== this.props.match.params.year) {
+      getNews(this.props.match.params.year);
     }
   }
 
-  getDefaultProps () {
+  static defaultProps () {
     return {
       isPreloader: true
     };
   }
 
-  render () {
+  render() {
     let years = this.props.years;
     let news = this.props.news;
     let list = _.map(years, (year) => ({ title: year, link: year }));
@@ -84,7 +90,7 @@ class NewsContainer extends React.Component {
     return (
       <BlockWrapper>
         {isLoader
-          ? (<LoaderWrapper><ThreeBallsLoader theme={alt}/></LoaderWrapper>)
+          ? (<LoaderWrapper><ThreeBallsLoader theme={alt}/></LoaderWrapper>) 
           : (<div><SubNavigation base='news' list={list}/><NewsView news={news}/></div>)
         }
       </BlockWrapper>

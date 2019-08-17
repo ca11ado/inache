@@ -4,8 +4,14 @@ let css = require('./news.css');
 let React = require('react');
 let NavLink = require('../framework/NavLink.react/navlink');
 let moment = require('moment');
-const Smile = require('t0s-components').Smile;
+//const Smile = require('t0s-components').Smile;
 moment.locale('ru');
+
+class Smile extends React.Component {
+  render() {
+    return (<h1>Here will be smile</h1>);
+  }
+}
 
 const NothingWrapper = styled.div`
   text-align: center;
