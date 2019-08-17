@@ -16,7 +16,7 @@
 
 import EntryPage from 'js/components/entry-page/entry-page';
 import includes from 'lodash/includes';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import moment from 'moment';
 import MainLayout from 'js/components/MainLayout/MainLayout.js';
@@ -48,6 +48,11 @@ class SiteBody extends React.Component {
   }
 }
 
+const newsLastYearPath = `/news/${currentYear}`;
+function RedirectToLastYearNews() {
+  return (<Redirect to={newsLastYearPath} />);
+}
+
 function AppRouter() {
   return isProdDomain
     ? (
@@ -62,6 +67,7 @@ function AppRouter() {
         <Switch>
           <SiteBody>
             <Route path="/press" component={PressPage} />
+            <Route path="/news" component={RedirectToLastYearNews} />
             <Route path="/news/:year" component={NewsPage} />
           </SiteBody>
         </Switch>
