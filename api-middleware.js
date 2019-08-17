@@ -27,7 +27,7 @@ module.exports = (req, res, next) => {
   let prom;
   switch (section) {
     case METHODS.press:
-      prom = Promise.resolve(db.get(METHODS.press));
+      prom = Promise.resolve(db.get(METHODS.press).value());
       break;
     case METHODS.tours:
       if (path1) {

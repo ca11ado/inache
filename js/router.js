@@ -10,7 +10,7 @@ const MainLayout = require('./components/MainLayout/MainLayout.js');
 //const Video = require('./components/Video/VideoContainer');
 //const Albums = require('./components/Gallery/AlbumsContainer');
 //const Album = require('./components/Gallery/Album/AlbumContainer');
-const Press = require('./components/Press/PressContainer');
+const PressPage = require('./components/Press/PressContainer');
 //const Photo = require('./components/Gallery/Photo/Photo');
 //const PageNotFound = require('./components/PageNotFound');
 //const Music = require('./components/Music/MusicContainer');
@@ -33,6 +33,23 @@ const isProdDomain = includes(location.hostname, 'vovremeni');
 function fwefe() {
   return (<h1>Hello world</h1>);
 }
+
+class SiteBody extends React.Component {
+  render() {
+    return (
+      <div className={css.flexBox}>
+        <Logo />
+        <Menu />
+        <MainBlock>
+          <Content>
+            {this.props.children}
+          </Content>
+        </MainBlock>
+      </div>
+    );
+  }
+}
+
 function AppRouter() {
   return isProdDomain
     ? (
@@ -45,15 +62,9 @@ function AppRouter() {
     : (
       <BrowserRouter>
         <Switch>
-          <div className={css.flexBox}>
-            <Logo />
-            <Menu />
-            <MainBlock>
-              <Content>
-                <Route path="/press" component={Press} />
-              </Content>
-            </MainBlock>
-          </div>
+          <SiteBody>
+            <Route path="/press" component={PressPage} />
+          </SiteBody>
         </Switch>
       </BrowserRouter>
     );

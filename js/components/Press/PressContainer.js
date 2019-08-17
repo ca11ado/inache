@@ -14,7 +14,6 @@ class Press extends React.Component {
     api
       .getPressItems()
       .then((items) => {
-        console.log(items);
         store.dispatch({
           type: TYPES.GET_PRESS_ITEMS,
           pressItems: items
