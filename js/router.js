@@ -4,7 +4,7 @@ const { BrowserRouter, Route, Switch } = require('react-router-dom');
 const React = require('react');
 const moment = require('moment');
 const MainLayout = require('./components/MainLayout/MainLayout.js');
-const News = require('./components/News/NewsContainer');
+//const News = require('./components/News/NewsContainer');
 //const Tours = require('./components/Tours/ToursContainer');
 //const Band = require('./components/Band/BandContainer');
 //const Video = require('./components/Video/VideoContainer');
@@ -51,7 +51,6 @@ function AppRouter() {
             <MainBlock>
               <Content>
                 <Route path="/press" component={Press} />
-                <Route path="/news" component={News} />
               </Content>
             </MainBlock>
           </div>
