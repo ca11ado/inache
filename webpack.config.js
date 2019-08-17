@@ -74,6 +74,12 @@ module.exports = {
 		open: true
 	},
 
+  resolve: {
+    alias: {
+      js: path.resolve(__dirname, 'js/')
+    },
+  },
+
   node: {
     console: true,
     fs: 'empty',

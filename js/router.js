@@ -1,28 +1,29 @@
-import EntryPage from './components/entry-page/entry-page';
-import includes from 'lodash/includes';
-const { BrowserRouter, Route, Switch } = require('react-router-dom');
-const React = require('react');
-const moment = require('moment');
-const MainLayout = require('./components/MainLayout/MainLayout.js');
 //const News = require('./components/News/NewsContainer');
 //const Tours = require('./components/Tours/ToursContainer');
 //const Band = require('./components/Band/BandContainer');
 //const Video = require('./components/Video/VideoContainer');
 //const Albums = require('./components/Gallery/AlbumsContainer');
 //const Album = require('./components/Gallery/Album/AlbumContainer');
-const PressPage = require('./components/Press/PressContainer');
 //const Photo = require('./components/Gallery/Photo/Photo');
 //const PageNotFound = require('./components/PageNotFound');
 //const Music = require('./components/Music/MusicContainer');
 //const MusicAlbum = require('./components/Music/Album/AlbumContainer');
 //const MainPage = require('./components/MainPage/MainPageContainer');
-
-const currentYear = moment().year();
 //const mainPagePath = '/main';
 //const newsIndexPath = `/news/${currentYear}`;
 //const toursIndexPath = `/tour/${currentYear}`;
 //const galleryIndexPath = `/gallery/${currentYear}`;
 /*<Route path=":year/:albumId/:photoId" component={Photo} />*/
+
+import EntryPage from 'js/components/entry-page/entry-page';
+import includes from 'lodash/includes';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import moment from 'moment';
+import MainLayout from 'js/components/MainLayout/MainLayout.js';
+import PressPage from 'js/components/Press/PressContainer';
+
+const currentYear = moment().year();
 
 const css = require('./components/MainLayout/main-layout.css');
 const Logo = require('./components/Logo.react/logo');
@@ -30,9 +31,6 @@ const Menu = require('./components/Menu.react/menu');
 const MainBlock = require('./components/MainBlock/mainBlock');
 const Content = require('./components/MainBlock/content/content');
 const isProdDomain = includes(location.hostname, 'vovremeni');
-function fwefe() {
-  return (<h1>Hello world</h1>);
-}
 
 class SiteBody extends React.Component {
   render() {
@@ -64,6 +62,7 @@ function AppRouter() {
         <Switch>
           <SiteBody>
             <Route path="/press" component={PressPage} />
+            <Route path="/news" component={PressPage} />
           </SiteBody>
         </Switch>
       </BrowserRouter>
