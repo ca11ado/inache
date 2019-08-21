@@ -3,7 +3,7 @@ import styled from 'styled-components';
 let _ = require('lodash');
 let React = require('react');
 let moment = require('moment');
-//import { ThreeBallsLoader } from 't0s-components';
+import t0s from 't0s-components';
 let store = require('../../store');
 let { connect } = require('react-redux');
 let TYPES = require('../../actions/action-types');
@@ -12,6 +12,9 @@ import NewsView from './NewsView';
 const { alt } = require('./../../composes/colors-scheme');
 
 const API = require('../../api');
+
+console.log(t0s)
+
 
 class ThreeBallsLoader extends React.Component {
   render() {

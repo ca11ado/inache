@@ -28,15 +28,6 @@ module.exports = {
 				test: /.(js|jsx)$/,
 				include: [path.resolve(__dirname, 'js')],
         loader: 'babel-loader',
-
-				options: {
-					plugins: ['syntax-dynamic-import'],
-
-					presets: [
-            ['@babel/preset-react'],
-						['@babel/preset-env', { modules: false }]
-					]
-				}
 			}, {
         test: /\.css$/i,
         use: [
