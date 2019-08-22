@@ -4,14 +4,16 @@ let css = require('./news.css');
 let React = require('react');
 let NavLink = require('../framework/NavLink.react/navlink');
 let moment = require('moment');
-//const Smile = require('t0s-components').Smile;
+import Components from 't0s-components';
 moment.locale('ru');
 
+/*
 class Smile extends React.Component {
   render() {
     return (<h1>Here will be smile</h1>);
   }
 }
+*/
 
 const NothingWrapper = styled.div`
   text-align: center;
@@ -44,7 +46,7 @@ let NewsView = (props) => {
   const nothingToShow = (
     <NothingWrapper>
       <h2>За этот год нет ни одной новости</h2>
-      <Smile bold='4' baseSize='30' />
+      <Components.Smile />
     </NothingWrapper>
   );
 

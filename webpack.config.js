@@ -26,7 +26,10 @@ module.exports = {
 		rules: [
 			{
 				test: /.(js|jsx)$/,
-				include: [path.resolve(__dirname, 'js')],
+				include: [
+          path.resolve(__dirname, 'js'),
+          path.resolve(__dirname, 'node_modules/t0s-components'),
+        ],
         loader: 'babel-loader',
 			}, {
         test: /\.css$/i,
