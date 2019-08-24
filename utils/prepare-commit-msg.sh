@@ -1,0 +1,37 @@
+#!/bin/bash
+#
+# Automatically adds branch name and branch description to every commit message.
+# Modified from the gist here https://gist.github.com/bartoszmajsak/1396344
+#
+
+RED='\033[0;31m'
+NORMAL='\033[0m'
+
+PROJECT_DIR=$HOME/Projects/inache/.git
+if [ ! -d "$PROJECT_DIR" ]; then
+  echo -e "${RED}ERROR: check your \$PROJECT_DIR variable.${NORMAL} \$PROJECT_DIR=${PROJECT_DIR}"
+  #todo try assign another dir to PROJECT_DIR variable
+fi
+
+# This way you can customize which branches should be skipped when
+# prepending commit message.
+if [ -z "$BRANCHES_TO_SKIP" ]; then
+  BRANCHES_TO_SKIP=(master develop)
+fi
+
+# Get branch name and description
+BRANCH_NAME=$(git branch | grep '*' | sed 's|* ||')
+
+# Branch name should be excluded from the prepend
+BRANCH_EXCLUDED=$(printf "%s\n" "${BRANCHES_TO_SKIP[@]}" | grep -c "^$BRANCH_NAME$")
+
+# Branch rebased
+BRANCH_REBASED=$(printf "%s\n" "$BRANCH_NAME" | grep -c "no branch, rebasing")
+
+# A developer has already prepended the commit in the format [BRANCH_NAME]
+BRANCH_IN_COMMIT=$(grep -c "\[$BRANCH_NAME\]" $PROJECT_DIR/COMMIT_EDITMSG)
+
+if [ -n "$BRANCH_NAME" ] && ! [[ $BRANCH_EXCLUDED -eq 1 ]] && ! [[ $BRANCH_IN_COMMIT -ge 1 ]] && ! [[ $BRANCH_REBASED -ge 1 ]]; then
+  sed -i.bak -e "1s|^|[$BRANCH_NAME] |" "$PROJECT_DIR/COMMIT_EDITMSG"
+fi
+
