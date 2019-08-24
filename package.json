@@ -36,8 +36,8 @@
   },
   "scripts": {
     "start": "npm run cp-files && if test \"$NODE_ENV\" != \"production\" ; then npm run start:dev; else npm run start:prod; fi",
-    "start:dev": "npm run update-db && (webpack --watch & node serverNode.js)",
-    "start:prod": "webpack --mode=production && node serverNode.js",
+    "start:dev": "npm run update-db && webpack --watch",
+    "start:prod": "webpack --mode=production",
     "cp-files": "mkdir -p public/img && cp -R img public",
     "update-db": "rm -f db.json && node ./utils/db-utils.js",
     "test": "jest",

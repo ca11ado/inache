@@ -13,14 +13,6 @@ const { alt } = require('./../../composes/colors-scheme');
 
 const API = require('../../api');
 
-/*
-class ThreeBallsLoader extends React.Component {
-  render() {
-    return (<h1>Here will be ThreeBallsLoader</h1>);
-  }
-}
-*/
-
 function getNews (year = moment().year()) {
   loaderUtil.start();
   store.dispatch({ type: TYPES.SET_NEWS_LOADER });
@@ -92,7 +84,7 @@ class NewsContainer extends React.Component {
     return (
       <BlockWrapper>
         {isLoader
-          ? (<LoaderWrapper><Components.ThreeBallsLoader /></LoaderWrapper>) 
+          ? (<LoaderWrapper><Components.ThreeBallsLoader theme={alt} /></LoaderWrapper>) 
           : (<div><SubNavigation base='news' list={list}/><NewsView news={news}/></div>)
         }
       </BlockWrapper>

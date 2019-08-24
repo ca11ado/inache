@@ -7,14 +7,6 @@ let moment = require('moment');
 import Components from 't0s-components';
 moment.locale('ru');
 
-/*
-class Smile extends React.Component {
-  render() {
-    return (<h1>Here will be smile</h1>);
-  }
-}
-*/
-
 const NothingWrapper = styled.div`
   text-align: center;
   margin: 0 auto;
@@ -46,7 +38,7 @@ let NewsView = (props) => {
   const nothingToShow = (
     <NothingWrapper>
       <h2>За этот год нет ни одной новости</h2>
-      <Components.Smile />
+      <Components.Smile  bold='4' baseSize='30' />
     </NothingWrapper>
   );
 
