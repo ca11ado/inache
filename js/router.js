@@ -30,7 +30,17 @@ const Logo = require('./components/Logo.react/logo');
 const Menu = require('./components/Menu.react/menu');
 const MainBlock = require('./components/MainBlock/mainBlock');
 const Content = require('./components/MainBlock/content/content');
+
 const isProdDomain = includes(location.hostname, 'vovremeni');
+const isAuthorized = () => true;
+
+class AdminPage extends React.Component {
+  render() {
+    return (!isAuthorized()) 
+      ?  (<div>You should authorize</div>)
+      : (<div>You are authorized</div>);
+  }
+}
 
 class SiteBody extends React.Component {
   render() {
@@ -65,6 +75,7 @@ function AppRouter() {
     : (
       <BrowserRouter>
         <Switch>
+          <Route path="/admin" component={AdminPage} />
           <SiteBody>
             <Route path="/press" component={PressPage} />
             <Route path="/news" component={RedirectToLastYearNews} />
