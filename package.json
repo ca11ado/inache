@@ -43,7 +43,7 @@
     "update-db": "rm -f db.json && node ./utils/db-utils.js",
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "build": "npm run cp-files && webpack"
+    "build": "npm run cp-files && webpack --mode=production"
   },
   "husky": {
     "hooks": {
