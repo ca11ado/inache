@@ -1,15 +1,4 @@
-# 🚀 Welcome to your new awesome project!
-
-This project has been created using **webpack scaffold**, you can now run
-
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+docker image build -t servernode:1.5 .
+docker container run --publish 8001:3008 --detach --name servernode servernode:1.5
+docker container stop servernode
+docker container rm servernode
