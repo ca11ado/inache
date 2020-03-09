@@ -6,7 +6,7 @@ export default () => (
     type="text/html"
     width="600"
     height="300"
-    src="https://youtu.be/1k92r7ChUOY"
+    src="https://www.youtube.com/embed/1k92r7ChUOY"
     frameBorder="0">
   </iframe>
 );
