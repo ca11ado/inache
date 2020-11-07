@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const configHtmlWebpackPlugin = { template: "src/index.html" };
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin2 = require('mini-css-extract-plugin');
 
 module.exports = {
 	mode: 'development',
